@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>while true: continue</title>
-    <link>https://while-true-continue.com/</link>
+    <link>http://jad-b.github.io/</link>
     <description>Recent content on while true: continue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 05 May 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://while-true-continue.com/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://jad-b.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Testing Timeouts In Go With Channel Selects</title>
-      <link>https://while-true-continue.com/post/Testing%20Timeouts%20in%20Go/</link>
+      <link>http://jad-b.github.io/post/Testing%20Timeouts%20in%20Go/</link>
       <pubDate>Thu, 05 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://while-true-continue.com/post/Testing%20Timeouts%20in%20Go/</guid>
+      <guid>http://jad-b.github.io/post/Testing%20Timeouts%20in%20Go/</guid>
       <description>&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;import (
     &amp;quot;net&amp;quot;
     &amp;quot;testing&amp;quot;
@@ -49,10 +49,10 @@ func TestAddrResolve(t *testing.T) {
     
     <item>
       <title>Testing Distributed Systems</title>
-      <link>https://while-true-continue.com/post/Testing%20Distributed%20Systems/</link>
+      <link>http://jad-b.github.io/post/Testing%20Distributed%20Systems/</link>
       <pubDate>Tue, 19 Apr 2016 14:52:38 -0400</pubDate>
       
-      <guid>https://while-true-continue.com/post/Testing%20Distributed%20Systems/</guid>
+      <guid>http://jad-b.github.io/post/Testing%20Distributed%20Systems/</guid>
       <description>
 
 &lt;p&gt;&lt;strong&gt;TL;DR: Takeaways&lt;/strong&gt;&lt;/p&gt;
@@ -157,10 +157,10 @@ key events. Just two events interacting accounted for 50% of CFs.&lt;/p&gt;
     
     <item>
       <title>An Expert On Feeling Good</title>
-      <link>https://while-true-continue.com/quote/An%20Expert%20On%20Feeling%20Good/</link>
+      <link>http://jad-b.github.io/quote/An%20Expert%20On%20Feeling%20Good/</link>
       <pubDate>Thu, 14 Apr 2016 10:18:07 -0400</pubDate>
       
-      <guid>https://while-true-continue.com/quote/An%20Expert%20On%20Feeling%20Good/</guid>
+      <guid>http://jad-b.github.io/quote/An%20Expert%20On%20Feeling%20Good/</guid>
       <description>&lt;p&gt;Their advice on seducing women was simply: &amp;ldquo;Become an expert in how to feel
 good.&amp;rdquo;&lt;/p&gt;
 </description>
@@ -168,10 +168,10 @@ good.&amp;rdquo;&lt;/p&gt;
     
     <item>
       <title>Born Artists</title>
-      <link>https://while-true-continue.com/quote/Born%20Artists/</link>
+      <link>http://jad-b.github.io/quote/Born%20Artists/</link>
       <pubDate>Thu, 14 Apr 2016 10:17:18 -0400</pubDate>
       
-      <guid>https://while-true-continue.com/quote/Born%20Artists/</guid>
+      <guid>http://jad-b.github.io/quote/Born%20Artists/</guid>
       <description>&lt;p&gt;All children are born artists. The problem is to remain an artist as they
 grow up.&lt;/p&gt;
 </description>
@@ -179,10 +179,10 @@ grow up.&lt;/p&gt;
     
     <item>
       <title>Civilization Advances</title>
-      <link>https://while-true-continue.com/quote/Civilization%20Advances/</link>
+      <link>http://jad-b.github.io/quote/Civilization%20Advances/</link>
       <pubDate>Tue, 12 Apr 2016 10:28:35 -0400</pubDate>
       
-      <guid>https://while-true-continue.com/quote/Civilization%20Advances/</guid>
+      <guid>http://jad-b.github.io/quote/Civilization%20Advances/</guid>
       <description>&lt;p&gt;Civilization advances by extending the number of important operations that we
 can do without thinking about them&lt;/p&gt;
 </description>
@@ -190,10 +190,10 @@ can do without thinking about them&lt;/p&gt;
     
     <item>
       <title>Abstractions</title>
-      <link>https://while-true-continue.com/quote/Abstractions/</link>
+      <link>http://jad-b.github.io/quote/Abstractions/</link>
       <pubDate>Mon, 11 Apr 2016 08:16:04 -0400</pubDate>
       
-      <guid>https://while-true-continue.com/quote/Abstractions/</guid>
+      <guid>http://jad-b.github.io/quote/Abstractions/</guid>
       <description>&lt;p&gt;Abstractions that seek to simplify but actually complicate the system are
 called magic.&lt;/p&gt;
 </description>
@@ -201,10 +201,10 @@ called magic.&lt;/p&gt;
     
     <item>
       <title>Concurrency vs. Parallelism</title>
-      <link>https://while-true-continue.com/quote/Concurrency%20vs.%20Parallelism/</link>
+      <link>http://jad-b.github.io/quote/Concurrency%20vs.%20Parallelism/</link>
       <pubDate>Sat, 09 Apr 2016 09:25:06 -0400</pubDate>
       
-      <guid>https://while-true-continue.com/quote/Concurrency%20vs.%20Parallelism/</guid>
+      <guid>http://jad-b.github.io/quote/Concurrency%20vs.%20Parallelism/</guid>
       <description>&lt;p&gt;In programming, concurrency is the composition of independently executing
 processes, while parallelism is the simultaneous execution of (possibly
 related) computations.&lt;/p&gt;
@@ -213,10 +213,10 @@ related) computations.&lt;/p&gt;
     
     <item>
       <title>Shame</title>
-      <link>https://while-true-continue.com/quote/Shame/</link>
+      <link>http://jad-b.github.io/quote/Shame/</link>
       <pubDate>Thu, 07 Apr 2016 06:50:35 -0400</pubDate>
       
-      <guid>https://while-true-continue.com/quote/Shame/</guid>
+      <guid>http://jad-b.github.io/quote/Shame/</guid>
       <description>&lt;p&gt;&amp;hellip;And, it turned out to be &amp;ldquo;shame&amp;rdquo;&amp;hellip;.no one wants to talk about it, and the
 less you talk about it the more you have it.&lt;/p&gt;
 
@@ -227,10 +227,10 @@ from love and connection, is our fear that we&amp;rsquo;re not worthy of love an
     
     <item>
       <title>Naturally Iterative</title>
-      <link>https://while-true-continue.com/quote/Naturally%20Iterative/</link>
+      <link>http://jad-b.github.io/quote/Naturally%20Iterative/</link>
       <pubDate>Thu, 07 Apr 2016 06:48:04 -0400</pubDate>
       
-      <guid>https://while-true-continue.com/quote/Naturally%20Iterative/</guid>
+      <guid>http://jad-b.github.io/quote/Naturally%20Iterative/</guid>
       <description>&lt;p&gt;Software development is a naturally iterative process that thrives on the
 establishment of effective feedback loops, and we deceive ourselves if we
 perceive it any other way.&lt;/p&gt;
@@ -239,20 +239,20 @@ perceive it any other way.&lt;/p&gt;
     
     <item>
       <title>about</title>
-      <link>https://while-true-continue.com/about/</link>
+      <link>http://jad-b.github.io/about/</link>
       <pubDate>Sat, 02 Apr 2016 15:16:28 -0400</pubDate>
       
-      <guid>https://while-true-continue.com/about/</guid>
+      <guid>http://jad-b.github.io/about/</guid>
       <description>&lt;p&gt;All the cool kids were doing it.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>The Aggressive Student</title>
-      <link>https://while-true-continue.com/post/The%20Aggressive%20Student/</link>
+      <link>http://jad-b.github.io/post/The%20Aggressive%20Student/</link>
       <pubDate>Mon, 28 Mar 2016 09:55:02 -0400</pubDate>
       
-      <guid>https://while-true-continue.com/post/The%20Aggressive%20Student/</guid>
+      <guid>http://jad-b.github.io/post/The%20Aggressive%20Student/</guid>
       <description>
 
 &lt;p&gt;Learning is being in a race against yourself. These things help.&lt;/p&gt;
@@ -326,10 +326,10 @@ gaps.&lt;/p&gt;
     
     <item>
       <title>On Learning</title>
-      <link>https://while-true-continue.com/post/On%20Learning/</link>
+      <link>http://jad-b.github.io/post/On%20Learning/</link>
       <pubDate>Sat, 10 Oct 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://while-true-continue.com/post/On%20Learning/</guid>
+      <guid>http://jad-b.github.io/post/On%20Learning/</guid>
       <description>
 
 &lt;p&gt;This document will serve as a case study on learning, using learning databases as the problem.&lt;/p&gt;

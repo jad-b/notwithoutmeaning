@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Thoughts on while true: continue</title>
-    <link>https://while-true-continue.com/categories/thoughts/</link>
+    <link>http://jad-b.github.io/categories/thoughts/</link>
     <description>Recent content in Thoughts on while true: continue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 10 Oct 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://while-true-continue.com/categories/thoughts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://jad-b.github.io/categories/thoughts/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>On Learning</title>
-      <link>https://while-true-continue.com/post/On%20Learning/</link>
+      <link>http://jad-b.github.io/post/On%20Learning/</link>
       <pubDate>Sat, 10 Oct 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://while-true-continue.com/post/On%20Learning/</guid>
+      <guid>http://jad-b.github.io/post/On%20Learning/</guid>
       <description>
 
 &lt;p&gt;This document will serve as a case study on learning, using learning databases as the problem.&lt;/p&gt;

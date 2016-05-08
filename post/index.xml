@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on while true: continue</title>
-    <link>https://while-true-continue.com/post/</link>
+    <link>http://jad-b.github.io/post/</link>
     <description>Recent content in Posts on while true: continue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 05 May 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://while-true-continue.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://jad-b.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Testing Timeouts In Go With Channel Selects</title>
-      <link>https://while-true-continue.com/post/Testing%20Timeouts%20in%20Go/</link>
+      <link>http://jad-b.github.io/post/Testing%20Timeouts%20in%20Go/</link>
       <pubDate>Thu, 05 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://while-true-continue.com/post/Testing%20Timeouts%20in%20Go/</guid>
+      <guid>http://jad-b.github.io/post/Testing%20Timeouts%20in%20Go/</guid>
       <description>&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;import (
     &amp;quot;net&amp;quot;
     &amp;quot;testing&amp;quot;
@@ -49,10 +49,10 @@ func TestAddrResolve(t *testing.T) {
     
     <item>
       <title>Testing Distributed Systems</title>
-      <link>https://while-true-continue.com/post/Testing%20Distributed%20Systems/</link>
+      <link>http://jad-b.github.io/post/Testing%20Distributed%20Systems/</link>
       <pubDate>Tue, 19 Apr 2016 14:52:38 -0400</pubDate>
       
-      <guid>https://while-true-continue.com/post/Testing%20Distributed%20Systems/</guid>
+      <guid>http://jad-b.github.io/post/Testing%20Distributed%20Systems/</guid>
       <description>
 
 &lt;p&gt;&lt;strong&gt;TL;DR: Takeaways&lt;/strong&gt;&lt;/p&gt;
@@ -157,10 +157,10 @@ key events. Just two events interacting accounted for 50% of CFs.&lt;/p&gt;
     
     <item>
       <title>The Aggressive Student</title>
-      <link>https://while-true-continue.com/post/The%20Aggressive%20Student/</link>
+      <link>http://jad-b.github.io/post/The%20Aggressive%20Student/</link>
       <pubDate>Mon, 28 Mar 2016 09:55:02 -0400</pubDate>
       
-      <guid>https://while-true-continue.com/post/The%20Aggressive%20Student/</guid>
+      <guid>http://jad-b.github.io/post/The%20Aggressive%20Student/</guid>
       <description>
 
 &lt;p&gt;Learning is being in a race against yourself. These things help.&lt;/p&gt;
@@ -234,10 +234,10 @@ gaps.&lt;/p&gt;
     
     <item>
       <title>On Learning</title>
-      <link>https://while-true-continue.com/post/On%20Learning/</link>
+      <link>http://jad-b.github.io/post/On%20Learning/</link>
       <pubDate>Sat, 10 Oct 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://while-true-continue.com/post/On%20Learning/</guid>
+      <guid>http://jad-b.github.io/post/On%20Learning/</guid>
       <description>
 
 &lt;p&gt;This document will serve as a case study on learning, using learning databases as the problem.&lt;/p&gt;
