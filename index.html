@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+
+    <link rel="stylesheet" href="/css/stark.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy|Lato:100,300,400,600">
+  </head>
+
+  <body>
+
+    <header class="hero grid">
+      <a class="logo" href="">
+        <p>while true:</p><p class="logo-continue">continue</p>
+      </a>
+    </header>
+
+      
+      <main class="site-content grid">
+
+
+
+  <section>
+    <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="https://while-true-continue.com/post/Testing%20Timeouts%20in%20Go/"> Testing Timeouts In Go With Channel Selects </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Thu, May 5, 2016</p>
+
+</div>
+
+
+
+<p class="content-keywords">golang, concurrency, testing</p>
+
+
+    <pre><code class="language-go">import (
+    &quot;net&quot;
+    &quot;testing&quot;
+    &quot;time&quot;
+)
+
+func TestAddrResolve(t *testing.T) {
+    network, addr := &quot;ip4&quot;, &quot;127.0.0.125:44151&quot;
+    addrChan := make(chan error)
+
+    // Attempt to resolve IP addr
+    go func(ch chan error) {
+        _, err := net.DialTimeout(network, addr, 1 * time.Second)
+        addrChan &lt;- err
+    }(addrChan)
+
+    // Now, see who returns a msg first
+    select {
+    case e := &lt;-addrChan:
+        if e == nil {
+            t.Fatalf(&quot;%s://%s should fail to resolve&quot;, network, addr)
+        } else if testing.Verbose() { // Success!
+            t.Logf(&quot;Call to %s://%s timed out.\nError\n\t%s&quot;, network, addr, e)
+        }
+    case &lt;-time.After(1 * time.Second):
+        t.Fatal(&quot;Address resolution failed to timeout in one second.&quot;)
+    }
+}
+</code></pre>
+
+  </section>
+
+  <section>
+    <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="https://while-true-continue.com/post/Testing%20Distributed%20Systems/"> Testing Distributed Systems </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Tue, Apr 19, 2016</p>
+
+</div>
+
+
+
+<p class="content-keywords">programming, distributed systems, testing</p>
+
+
+    <p><strong>TL;DR: Takeaways</strong></p>
+
+<ul>
+<li>Always, always, always handle errors appropriately. No <code>pass</code>, no <code>/* TODO
+*/</code>. <em>Something</em> in the chain needs to verify it&rsquo;s handled.</li>
+<li>Using 3 nodes lets you reproduce 98% of error cases in distributed systems.</li>
+<li>77% of catastrophic failures can be reproduced through unit tests</li>
+<li>Log aggressively, and on both sides of events (message passing).</li>
+<li>The big 5 error-ing events:
+
+<ol>
+<li>Startup</li>
+<li>Writes from client</li>
+<li>Node down/unreachable</li>
+<li>Configuration change</li>
+<li>Node join</li>
+</ol></li>
+</ul>
+
+  </section>
+
+  <section>
+    <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="https://while-true-continue.com/post/The%20Aggressive%20Student/"> The Aggressive Student </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Mon, Mar 28, 2016</p>
+
+</div>
+
+
+
+
+    Learning is being in a race against yourself. These things help. The Rapid Acquisistion of Highly-Technical Information Learning very technical information is unique from the general problem of learning in a few ways. First of all, the end-result is entirely mental. Either you understand the concepts well enough to accomplish your task, or you do not. This is in contrast to learning a song on the piano, where a subconscious system is learning instead, like training motor patterns for rote memorization.
+  </section>
+
+  <section>
+    <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="https://while-true-continue.com/post/On%20Learning/"> On Learning </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Sat, Oct 10, 2015</p>
+
+</div>
+
+
+
+<p class="content-keywords">learning, metalearning</p>
+
+
+    This document will serve as a case study on learning, using learning databases as the problem. Glossay grounding give (something abstract) a firm theoretical or practical basis Concepts &hellip;and what matters most is Understanding. And Understanding starts with &ldquo;What Matters&rdquo; - Quora: Forays into AI because we get better with practice as we get more experience, which is a hallmark of any Intuition based skill - Reductionism Considered Harmful This is another hallmark of Intuition based skills: they cannot be taught as high level rules, they have to be experienced bottom up.
+  </section>
+
+
+  </main>
+
+    <footer>
+
+      <span class="copyright">
+        <i class="fa fa-copyright"></i>
+        <a href="j.american.db@gmail.com">j.american.db@gmail.com</a>
+      </span>
+
+
+      <span class="profile-links">
+
+        
+        <a href="https://github.com/jad-b">
+          <img alt="jad-b @ GitHub"
+               src="/img/octocat.svg"
+               width="32"
+               height="32">
+        </a>
+
+        
+        <a href="https://www.goodreads.com/user/show/43556621-jeremy-dobbins-bucklad">
+          <img alt="Goodreads"
+               src="https://www.goodreads.com/assets/layout/header/nav_g_icon.svg"
+               width="32"
+               height="32">
+        </a>
+
+        
+        <iframe allowtransparency="true" scrolling="no" frameborder="no"
+          src="https://w.soundcloud.com/icon/?url=http%3A%2F%2Fsoundcloud.com%2Fjeremy-dobbins-bucklad&color=orange_white&size=32"
+          style="width: 32px; height: 32px;"></iframe>
+
+        
+        <a href="http://8tracks.com/herbert-finkleton">
+          <img alt="8Tracks"
+               src="http://images.8tracks.com/avatar/i/006/193/171/52608.original-3203.jpg?rect=0,0,500,500&q=98&fm=jpg&fit=max&w=56&h=56"
+               width="32"
+               height="32">
+        </a>
+      </span> 
+
+    </footer>
+
+  
+<script src="js/prism.js"></script>
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+
+
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  
+  
+  
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+
+<script id="dsq-count-scr" src="//while-true-continue.disqus.com/count.js" async></script>
+
+  </body>
+
+</html>
+

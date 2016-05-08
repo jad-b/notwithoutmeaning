@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>while true: continue</title>
+    <link>https://while-true-continue.com/</link>
+    <description>Recent content on while true: continue</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 05 May 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://while-true-continue.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Testing Timeouts In Go With Channel Selects</title>
+      <link>https://while-true-continue.com/post/Testing%20Timeouts%20in%20Go/</link>
+      <pubDate>Thu, 05 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://while-true-continue.com/post/Testing%20Timeouts%20in%20Go/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;import (
+    &amp;quot;net&amp;quot;
+    &amp;quot;testing&amp;quot;
+    &amp;quot;time&amp;quot;
+)
+
+func TestAddrResolve(t *testing.T) {
+    network, addr := &amp;quot;ip4&amp;quot;, &amp;quot;127.0.0.125:44151&amp;quot;
+    addrChan := make(chan error)
+
+    // Attempt to resolve IP addr
+    go func(ch chan error) {
+        _, err := net.DialTimeout(network, addr, 1 * time.Second)
+        addrChan &amp;lt;- err
+    }(addrChan)
+
+    // Now, see who returns a msg first
+    select {
+    case e := &amp;lt;-addrChan:
+        if e == nil {
+            t.Fatalf(&amp;quot;%s://%s should fail to resolve&amp;quot;, network, addr)
+        } else if testing.Verbose() { // Success!
+            t.Logf(&amp;quot;Call to %s://%s timed out.\nError\n\t%s&amp;quot;, network, addr, e)
+        }
+    case &amp;lt;-time.After(1 * time.Second):
+        t.Fatal(&amp;quot;Address resolution failed to timeout in one second.&amp;quot;)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Testing Distributed Systems</title>
+      <link>https://while-true-continue.com/post/Testing%20Distributed%20Systems/</link>
+      <pubDate>Tue, 19 Apr 2016 14:52:38 -0400</pubDate>
+      
+      <guid>https://while-true-continue.com/post/Testing%20Distributed%20Systems/</guid>
+      <description>
+
+&lt;p&gt;&lt;strong&gt;TL;DR: Takeaways&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Always, always, always handle errors appropriately. No &lt;code&gt;pass&lt;/code&gt;, no &lt;code&gt;/* TODO
+*/&lt;/code&gt;. &lt;em&gt;Something&lt;/em&gt; in the chain needs to verify it&amp;rsquo;s handled.&lt;/li&gt;
+&lt;li&gt;Using 3 nodes lets you reproduce 98% of error cases in distributed systems.&lt;/li&gt;
+&lt;li&gt;77% of catastrophic failures can be reproduced through unit tests&lt;/li&gt;
+&lt;li&gt;Log aggressively, and on both sides of events (message passing).&lt;/li&gt;
+&lt;li&gt;The big 5 error-ing events:
+
+&lt;ol&gt;
+&lt;li&gt;Startup&lt;/li&gt;
+&lt;li&gt;Writes from client&lt;/li&gt;
+&lt;li&gt;Node down/unreachable&lt;/li&gt;
+&lt;li&gt;Configuration change&lt;/li&gt;
+&lt;li&gt;Node join&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As a work project involving multiple moving pieces begins the move from
+proof-of-concept to preparing for production traffic, the various
+pieces are beginning to knit into a whole. In particular, a client-driven event
+requires that a list of registered services receive an update. Simple enough,
+but failure in this system would result in bad API traffic routing, or worse,
+all APIs becoming externally unavailable. Undesirable!&lt;/p&gt;
+
+&lt;p&gt;My previous experiences involved nothing more distributed than your basic
+web-server=&amp;gt;DB setup, so I took this as an opportunity to learn from other&amp;rsquo;s
+mistakes. Searching around turns up the following advice:&lt;/p&gt;
+
+&lt;h3 id=&#34;simple-testing-can-prevent-most-critical-failures:fab8ffd47911301da93228e4cb7d5640&#34;&gt;Simple Testing Can Prevent Most Critical Failures&lt;/h3&gt;
+
+&lt;p&gt;A whitepaper&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:fab8ffd47911301da93228e4cb7d5640:whitepaper&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:fab8ffd47911301da93228e4cb7d5640:whitepaper&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; out of the University of Toronto with some incredible
+statistics on avoiding the worst-of-the-bad: catastrophic failures&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:fab8ffd47911301da93228e4cb7d5640:catfail&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:fab8ffd47911301da93228e4cb7d5640:catfail&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. They
+attribute 92% of CFs to bad error handling, with a further breakdown of&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;35% due to
+
+&lt;ul&gt;
+&lt;li&gt;Catching but not doing anything about the error&lt;/li&gt;
+&lt;li&gt;Aborting on an overly-general error (java&amp;rsquo;s &lt;code&gt;Throwable&lt;/code&gt;, Python&amp;rsquo;s
+&lt;code&gt;except:&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;A TODO/FIXME in place, but no handling&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;And 23% on aborting on a non-fatal error (failed to delete a temporary file)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;77%&lt;/strong&gt; of these failures they could reproduce using only unit tests. Admittedly,
+this is their example unit test:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void testLogRollAfterSplitStart {
+    // Create HBase cluster with 1 master and 2 Region Servers
+    startMiniCluster();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;hellip;which may stretch your imagining of unit tests. I believe what they were
+getting at is that the problems are testable within the scope of a single
+function&amp;rsquo;s setup/run/cleanup scope. Also, when your definition of unit test is
+&amp;ldquo;code that I wrote&amp;rdquo;, and the code that you wrote was HBase, that&amp;rsquo;s quite the
+scope.&lt;/p&gt;
+
+&lt;p&gt;Oh, and how about this: &lt;strong&gt;98% of problems could be recreated using no more than
+3 nodes&lt;/strong&gt;. Your 120 node Cassandra cluster&amp;rsquo;s dying? Odds are, you only need
+three players to recreate it locally.&lt;/p&gt;
+
+&lt;p&gt;An interesting point of difference the author&amp;rsquo;s noted between distributed and
+non-distributed systems was that distributed systems tend to have much better
+logging. As such, 84% of the studied failures had their triggering events
+logged. They logged so much that the author&amp;rsquo;s recommended more advanced log
+analysis techniques than a simple &lt;code&gt;grep ERROR&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;And to wrap this up: Starting up was the most dangerous time for a process, as
+summarized under &amp;ldquo;Lessons Learned&amp;rdquo;. More important is to take that list and mix
+it up - 90% of the failures could be categorized as a permutation of only three
+key events. Just two events interacting accounted for 50% of CFs.&lt;/p&gt;
+
+&lt;h4 id=&#34;further-reading:fab8ffd47911301da93228e4cb7d5640&#34;&gt;Further reading&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ConfErr - tests configuration errors within a realistic range&lt;/li&gt;
+&lt;li&gt;MODIST - Model checking for distributed system&lt;/li&gt;
+&lt;li&gt;FATE and DESTINI - Framework for cloud recovery testing&lt;/li&gt;
+&lt;li&gt;This looks interesting: KLEE - a code-coverage generator for C programs.
+  Can&amp;rsquo;t find any examples for Python though, which would be my use-case.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:fab8ffd47911301da93228e4cb7d5640:whitepaper&#34;&gt;&lt;a href=&#34;https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-yuan.pdf&#34;&gt;https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-yuan.pdf&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:fab8ffd47911301da93228e4cb7d5640:whitepaper&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:fab8ffd47911301da93228e4cb7d5640:catfail&#34;&gt;Failure of the system for a majority to all users.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:fab8ffd47911301da93228e4cb7d5640:catfail&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>An Expert On Feeling Good</title>
+      <link>https://while-true-continue.com/quote/An%20Expert%20On%20Feeling%20Good/</link>
+      <pubDate>Thu, 14 Apr 2016 10:18:07 -0400</pubDate>
+      
+      <guid>https://while-true-continue.com/quote/An%20Expert%20On%20Feeling%20Good/</guid>
+      <description>&lt;p&gt;Their advice on seducing women was simply: &amp;ldquo;Become an expert in how to feel
+good.&amp;rdquo;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Born Artists</title>
+      <link>https://while-true-continue.com/quote/Born%20Artists/</link>
+      <pubDate>Thu, 14 Apr 2016 10:17:18 -0400</pubDate>
+      
+      <guid>https://while-true-continue.com/quote/Born%20Artists/</guid>
+      <description>&lt;p&gt;All children are born artists. The problem is to remain an artist as they
+grow up.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Civilization Advances</title>
+      <link>https://while-true-continue.com/quote/Civilization%20Advances/</link>
+      <pubDate>Tue, 12 Apr 2016 10:28:35 -0400</pubDate>
+      
+      <guid>https://while-true-continue.com/quote/Civilization%20Advances/</guid>
+      <description>&lt;p&gt;Civilization advances by extending the number of important operations that we
+can do without thinking about them&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Abstractions</title>
+      <link>https://while-true-continue.com/quote/Abstractions/</link>
+      <pubDate>Mon, 11 Apr 2016 08:16:04 -0400</pubDate>
+      
+      <guid>https://while-true-continue.com/quote/Abstractions/</guid>
+      <description>&lt;p&gt;Abstractions that seek to simplify but actually complicate the system are
+called magic.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Concurrency vs. Parallelism</title>
+      <link>https://while-true-continue.com/quote/Concurrency%20vs.%20Parallelism/</link>
+      <pubDate>Sat, 09 Apr 2016 09:25:06 -0400</pubDate>
+      
+      <guid>https://while-true-continue.com/quote/Concurrency%20vs.%20Parallelism/</guid>
+      <description>&lt;p&gt;In programming, concurrency is the composition of independently executing
+processes, while parallelism is the simultaneous execution of (possibly
+related) computations.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Shame</title>
+      <link>https://while-true-continue.com/quote/Shame/</link>
+      <pubDate>Thu, 07 Apr 2016 06:50:35 -0400</pubDate>
+      
+      <guid>https://while-true-continue.com/quote/Shame/</guid>
+      <description>&lt;p&gt;&amp;hellip;And, it turned out to be &amp;ldquo;shame&amp;rdquo;&amp;hellip;.no one wants to talk about it, and the
+less you talk about it the more you have it.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s what I can tell you it boils down to: &amp;hellip;the thing that keeps us away
+from love and connection, is our fear that we&amp;rsquo;re not worthy of love and connection.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Naturally Iterative</title>
+      <link>https://while-true-continue.com/quote/Naturally%20Iterative/</link>
+      <pubDate>Thu, 07 Apr 2016 06:48:04 -0400</pubDate>
+      
+      <guid>https://while-true-continue.com/quote/Naturally%20Iterative/</guid>
+      <description>&lt;p&gt;Software development is a naturally iterative process that thrives on the
+establishment of effective feedback loops, and we deceive ourselves if we
+perceive it any other way.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>about</title>
+      <link>https://while-true-continue.com/about/</link>
+      <pubDate>Sat, 02 Apr 2016 15:16:28 -0400</pubDate>
+      
+      <guid>https://while-true-continue.com/about/</guid>
+      <description>&lt;p&gt;All the cool kids were doing it.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Aggressive Student</title>
+      <link>https://while-true-continue.com/post/The%20Aggressive%20Student/</link>
+      <pubDate>Mon, 28 Mar 2016 09:55:02 -0400</pubDate>
+      
+      <guid>https://while-true-continue.com/post/The%20Aggressive%20Student/</guid>
+      <description>
+
+&lt;p&gt;Learning is being in a race against yourself. These things help.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-rapid-acquisistion-of-highly-technical-information:04d7ba831a5d03aab2a2b90cdbe484ff&#34;&gt;The Rapid Acquisistion of Highly-Technical Information&lt;/h2&gt;
+
+&lt;p&gt;Learning very technical information is unique from the general problem of
+learning in a few ways. First of all, the end-result is entirely mental. Either
+you understand the concepts well enough to accomplish your task, or you do not.
+This is in contrast to learning a song on the piano, where a subconscious system
+is learning instead, like training motor patterns for rote memorization.&lt;/p&gt;
+
+&lt;p&gt;Imagine your current state of skill or knowledge as a wavefront. Inside its
+boundary is your &amp;ldquo;known&amp;rdquo;, and outside is the &amp;ldquo;unknown&amp;rdquo;.
+Your awareness of an Unknown item is determined by its distance from the
+boundary of this wavefront.&lt;/p&gt;
+
+&lt;p&gt;A few corollaries:
+1) You can only learn what lies against this wavefront.
+2) You can &amp;ldquo;reach&amp;rdquo; into the Unknown by attempting (and failing) to
+This &amp;ldquo;reaching&amp;rdquo; is defined by your failure to completely learn; otherwise,
+you&amp;rsquo;d be at step one. However, this primes you to learn the material.&lt;/p&gt;
+
+&lt;p&gt;Imagine casting a net around a topic you don&amp;rsquo;t understand. The &amp;ldquo;net&amp;rdquo; is made of
+all the possible connections you can make to this topic; previous training,
+analogy to other fields, half-notions of concepts.&lt;/p&gt;
+
+&lt;h3 id=&#34;how-it-feels:04d7ba831a5d03aab2a2b90cdbe484ff&#34;&gt;How it feels&lt;/h3&gt;
+
+&lt;p&gt;The most important feelings I can associate with learning are boredom,
+frustration, confusion, and flow.&lt;/p&gt;
+
+&lt;p&gt;Boredom tells you the work is too easy.&lt;/p&gt;
+
+&lt;p&gt;Frustration says you are missing something.&lt;/p&gt;
+
+&lt;p&gt;Confusion says you have over-reached. This is only a bad thing in large
+amounts.&lt;/p&gt;
+
+&lt;p&gt;Flow says you&amp;rsquo;ve got it just right. It lies between boredom and confusion.&lt;/p&gt;
+
+&lt;h3 id=&#34;sequencing-when-to-learn-what:04d7ba831a5d03aab2a2b90cdbe484ff&#34;&gt;Sequencing | When to Learn What&lt;/h3&gt;
+
+&lt;p&gt;Find the highest-level summary of the topic you can. Then a slightly more
+verbose description. Then yet another more verbosity write-up. Etc., etc.&lt;/p&gt;
+
+&lt;p&gt;When in doubt, jump in. Write down what confuses you. Keep going until the
+confusion reaches a point that you can no longer pretend to know what&amp;rsquo;s going
+on. The list you&amp;rsquo;ve written is where you&amp;rsquo;ll start tomorrow.&lt;/p&gt;
+
+&lt;h3 id=&#34;spacing-when-to-learn:04d7ba831a5d03aab2a2b90cdbe484ff&#34;&gt;Spacing | When to Learn&lt;/h3&gt;
+
+&lt;p&gt;Learn until one of these two things happen: You feel confused, or you&amp;rsquo;ve
+grasped a new topic but wouldn&amp;rsquo;t be able to teach it well yourself. This is
+where you&amp;rsquo;ll pick up from.&lt;/p&gt;
+
+&lt;p&gt;As you revisit topics, mix in sources. If you began your exploration with an
+online course, try: A blog post, a YouTube video, a textbook.&lt;/p&gt;
+
+&lt;p&gt;The day after learning, review your notes.  The next day, summarize them. Where
+possible, use drawings and analogy.&lt;/p&gt;
+
+&lt;h2 id=&#34;basic-tips:04d7ba831a5d03aab2a2b90cdbe484ff&#34;&gt;Basic tips&lt;/h2&gt;
+
+&lt;p&gt;Only highlight/underline what you don&amp;rsquo;t understand. It doesn&amp;rsquo;t help you
+remember, but it does help you find the gaps when you revisit the material.
+Use some kind of notation for removing highlights as you do comprehend the
+gaps.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>On Learning</title>
+      <link>https://while-true-continue.com/post/On%20Learning/</link>
+      <pubDate>Sat, 10 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://while-true-continue.com/post/On%20Learning/</guid>
+      <description>
+
+&lt;p&gt;This document will serve as a case study on learning, using learning databases as the problem.&lt;/p&gt;
+
+&lt;h3 id=&#34;glossay:7a16559f2e7bb44f60862eae17319468&#34;&gt;Glossay&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;grounding&lt;/strong&gt; give (something abstract) a firm theoretical or practical basis&lt;/p&gt;
+
+&lt;h2 id=&#34;concepts:7a16559f2e7bb44f60862eae17319468&#34;&gt;Concepts&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&amp;hellip;and what matters most is Understanding. And Understanding starts with &amp;ldquo;What Matters&amp;rdquo; - &lt;a href=&#34;http://www.quora.com/How-do-I-get-started-in-Artificial-Intelligence&#34;&gt;Quora: Forays into AI&lt;/a&gt;
+because we get better with practice as we get more experience, which is a hallmark of any Intuition based skill - &lt;a href=&#34;http://syntience.com/rch.pdf&#34;&gt;Reductionism Considered Harmful&lt;/a&gt;
+This is another hallmark of Intuition based skills: they cannot be taught as high level rules, they have to be experienced bottom up. This is, incidentally, also the difference between Teaching and Coaching - [ibid]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Using features of the information to classifying &amp;amp; divide concepts.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Begin with the problem space. Overview of &amp;ldquo;Why are we learning this? What are the fundamental problems this is trying to address?&amp;rdquo; Try and use a &lt;em&gt;concrete&lt;/em&gt; example; &lt;em&gt;ground&lt;/em&gt; it.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Why do we use databases? We need ways to manage incredibly large sets of data and its metadata. Metadata can include the relationships within data.
+
+&lt;ul&gt;
+&lt;li&gt;This grounds the upcoming concept against the student&amp;rsquo;s pre-existing
+patterns.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;What problems do databases have to solve? Writing to disk is very slow compared to the rest of I/O, so all databases need to optimize this. How they do so is a significant difference between databases.
+
+&lt;ul&gt;
+&lt;li&gt;We can use this difference as a means of classifying and comparing different databases.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Provide a framework for comparison&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Would listing up-front the variables for comparison overwhelm or assist? Perhaps this is size-dependent on the number of variables.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Use a common example across the different categories&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For databases, have a given set of data, and depict how it&amp;rsquo;s stored in different DBs.&lt;/li&gt;
+&lt;li&gt;In military terms, this would be the &amp;ldquo;walk&amp;rdquo; phase - hand-holding still involved. The &amp;ldquo;run&amp;rdquo; might be creating a data set, and having the student depict the different style of storage.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;techniques:7a16559f2e7bb44f60862eae17319468&#34;&gt;Techniques&lt;/h2&gt;
+
+&lt;p&gt;Tim Ferris promotes &lt;code&gt;DSSS&lt;/code&gt; and it&amp;rsquo;s sub-steps, &lt;code&gt;CaFE&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;DSSS&lt;/strong&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Deconstruction
+
+&lt;ul&gt;
+&lt;li&gt;Reducing&lt;/li&gt;
+&lt;li&gt;Interviewing&lt;/li&gt;
+&lt;li&gt;Reversal&lt;/li&gt;
+&lt;li&gt;Translating&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Selection (The &lt;sup&gt;80&lt;/sup&gt;&amp;frasl;&lt;sub&gt;20&lt;/sub&gt; rule)&lt;/li&gt;
+&lt;li&gt;Sequencing (The order in which you choose to learn)&lt;/li&gt;
+&lt;li&gt;Stakes (The carrot &amp;amp; the stick)&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CaFE&lt;/strong&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Compression
+
+&lt;ul&gt;
+&lt;li&gt;How can I represent the essential 20% in a compact reference?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Frequency
+
+&lt;ul&gt;
+&lt;li&gt;What is most sustainable schedule I can manage for learning this information?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Encoding
+
+&lt;ul&gt;
+&lt;li&gt;How can I leverage anchors, connections, and whatever tricks possible to make this information stick?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;recursive-horizon-expansion:7a16559f2e7bb44f60862eae17319468&#34;&gt;Recursive Horizon Expansion&lt;/h3&gt;
+
+&lt;h4 id=&#34;phase-1-unknown-unknown-s:7a16559f2e7bb44f60862eae17319468&#34;&gt;Phase 1) Unknown Unknown&amp;rsquo;s&lt;/h4&gt;
+
+&lt;p&gt;Read summaries
+Gather resources
+Identify major questions and early stumbling blocks. For instance, machine
+Learning requires linear algebra basics from the get-go, and an intermediate
+skills in such in order to understand things like PCA.&lt;/p&gt;
+
+&lt;h4 id=&#34;phase-2-intake:7a16559f2e7bb44f60862eae17319468&#34;&gt;Phase 2) Intake&lt;/h4&gt;
+
+&lt;p&gt;Read through material until confused (diminishing returns), or 45 minutes.
+Perform an assessment of prevous material.&lt;/p&gt;
+
+&lt;h4 id=&#34;phase-3-understand:7a16559f2e7bb44f60862eae17319468&#34;&gt;Phase 3) Understand&lt;/h4&gt;
+
+&lt;p&gt;Do; else, teach.&lt;/p&gt;
+
+&lt;h2 id=&#34;explaining-101:7a16559f2e7bb44f60862eae17319468&#34;&gt;Explaining, 101&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;What the hell is it?
+
+&lt;ul&gt;
+&lt;li&gt;As explained in terms I already know. Or if there&amp;rsquo;s no way for this to
+relate it to me without explaining something else, start there.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Why do I need it?
+
+&lt;ul&gt;
+&lt;li&gt;Why is this relevant? Why are people excited?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
