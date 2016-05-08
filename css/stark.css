@@ -436,6 +436,10 @@ body {
       -ms-flex: 1;
           flex: 1;
   /* Use all available space */
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   /* Forces footer to the bottom */
   min-height: 100vh;
   color: #555;
@@ -883,7 +887,7 @@ code.has-jax {
 
 @media (min-width: 72rem) {
   .site-content {
-    margin: 1rem 10%;
+    margin: 1rem auto;
     max-width: 72rem;
   }
 }
