@@ -502,21 +502,21 @@ h1, h1 > a {
 
 @media (max-width: 48em) {
   html {
-    font-size: 100%;
+    font-size: 80%;
   }
 }
 
 /* Roughly half-screen on a desktop monitor */
 @media (min-width: 48em) {
   html {
-    font-size: 120%;
+    font-size: 100%;
   }
 }
 
 /* Full-screen on a desktop monitor */
-@media (min-width: 72em) {
+@media (min-width: 1440px) {
   html {
-    font-size: 140%;
+    font-size: 120%;
   }
 }
 
@@ -794,7 +794,7 @@ h1, h1 > a {
   }
 }
 
-@media (min-width: 72rem) {
+@media (min-width: 1440px) {
   .site-content > section,
   .site-content > article,
   .site-content > div {
