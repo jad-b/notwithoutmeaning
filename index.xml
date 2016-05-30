@@ -6,8 +6,97 @@
     <description>Recent content on while true: continue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 May 2016 10:21:22 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 28 May 2016 07:42:13 -0400</lastBuildDate>
     <atom:link href="http://jad-b.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Why I&#39;m Not Getting My Graduate Degree (Yet).</title>
+      <link>http://jad-b.github.io/post/Why%20Not%20School/</link>
+      <pubDate>Sat, 28 May 2016 07:42:13 -0400</pubDate>
+      
+      <guid>http://jad-b.github.io/post/Why%20Not%20School/</guid>
+      <description>&lt;p&gt;In case you &lt;em&gt;haven&amp;rsquo;t&lt;/em&gt; heard, data science is big right now. And when you say
+&amp;ldquo;data science&amp;rdquo; you also get &amp;ldquo;machine learning&amp;rdquo; packaged in for free, and that stuff&amp;rsquo;s
+cool, so even better!  Plus, the booming field of data engineering is making
+all &lt;em&gt;kinds&lt;/em&gt; of advances in dealing with Big Data, like real-time streaming from
+massive amounts of data sources, and you can&amp;rsquo;t tell me that&amp;rsquo;s not going to be
+necessity for the widgets of tomorrow.&lt;/p&gt;
+
+&lt;p&gt;Maybe, like me, you&amp;rsquo;d like to learn more about all of this. And perhaps,
+like me, you&amp;rsquo;ve got a job, and maybe it&amp;rsquo;s a pretty good job. But the knee-jerk
+response you hear is, &amp;ldquo;Get your master&amp;rsquo;s degree&amp;rdquo;, or even further, a Ph.D. And
+this is a problem. Not just the money&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:0dd3d526e46395327a1e0149bbb97370:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:0dd3d526e46395327a1e0149bbb97370:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;, or the potential move, or the
+commitment, but the lack of &lt;em&gt;optimality&lt;/em&gt;: is this the best way to learn?&lt;/p&gt;
+
+&lt;p&gt;How much of your undergraduate education got left in a notebook, or existed
+only for a test? Do you remember anything you didn&amp;rsquo;t actually apply? Did you
+ever sit bored in class? How about completely lost (at least a more useful
+feeling)? What a waste. You, or someone, &lt;em&gt;paid&lt;/em&gt; for that lost time.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s look at what a modern &lt;a href=&#34;https://www.google.com/webhp?sourceid=chrome-instant&amp;amp;ion=1&amp;amp;espv=2&amp;amp;ie=UTF-8#q=define%20auto%20didact&#34;&gt;autodidact&lt;/a&gt; can utilize when learning data
+science:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Take advantage of a broad selection of online courses to gain initial
+exposure to concepts and an beginner to intermediate understanding.&lt;/li&gt;
+&lt;li&gt;Anyone can buy textbooks, which are useful twice: once for their table of
+contents to tell you what the field looks like, and again for when you need
+the details.&lt;/li&gt;
+&lt;li&gt;Access to essentially all academic literature, if and when that necessity arises.&lt;/li&gt;
+&lt;li&gt;Take advantage of a &lt;em&gt;huge&lt;/em&gt; amount of open-source software.&lt;/li&gt;
+&lt;li&gt;Get experience from Kaggle competitions, which have directly led to numerous
+people getting jobs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This may seem like a knock against all higher education. It is not. If your
+goal is to research, or simply learn all you can about a topic, then I think
+academia is the perfect, and perhaps only, option. And there are many things
+going for higher-education: Direct access to experts and
+prohibitively-expensive equipment, a guaranteed path, a like-minded community,
+networking and institutional reputation, and job placement services at the end.
+I believe each of those points has a self-learning counter-part, and that
+comparison would deserve its own write-up, in the interest of keeping this
+focused.&lt;/p&gt;
+
+&lt;p&gt;Ask yourself this: After a year of self-tutelage, would you be &lt;em&gt;worse&lt;/em&gt; off if
+you &lt;em&gt;then&lt;/em&gt; decided to start a graduate program? Or, as I believe, would you
+find yourself a better student, questions in mind, with answers to satisfy?
+The self-generated portfolio from your year of self-teaching would certainly
+assist in admissions.&lt;/p&gt;
+
+&lt;p&gt;And, of course, you might find you don&amp;rsquo;t need that graduate&amp;rsquo;s program at all,
+or that your interests have changed as a result of what you learned yourself.
+No one knows you better than yourself. It won&amp;rsquo;t be easy. You&amp;rsquo;ll have to learn
+how &lt;em&gt;you&lt;/em&gt; learn: how to tell when you&amp;rsquo;ve dead-ended, when you&amp;rsquo;re coasting.
+You&amp;rsquo;ll have to find your own projects. And you&amp;rsquo;ll have to manage your own
+motivation, since you won&amp;rsquo;t have a course progression or grades to praise you.
+These are hard things to do. They are also worthwhile things to do. You get to
+take them with you the rest of your life.&lt;/p&gt;
+
+&lt;p&gt;I am taking this path. It&amp;rsquo;s already been difficult. Progress feels like drawing
+loops without lifting the pen from the page; you go forwards, then sideways,
+then backwards, but you never end up where you started, and that becomes your
+new starting point. I want to find more people embarking on this new form of
+open, project-based, crowd-sourced, self-directed education, no matter their
+field of interest. Hopefully our loops will cross paths.&lt;/p&gt;
+
+&lt;p&gt;I write this more for myself than anyone, but don&amp;rsquo;t we always?&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:0dd3d526e46395327a1e0149bbb97370:1&#34;&gt;&lt;p&gt;Because average annual tuition costs are $30-40k, and even with
+50% financial aid, this is still tens of thousands of dollars. And you need
+health insurance. And if you want to get it done fast, you&amp;rsquo;re almost certainly
+not working, although a 2-year degree &lt;em&gt;is&lt;/em&gt; possible if you commit the rest of
+your non-working hours to school, with an associated hit to your quality of
+life.&lt;/p&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:0dd3d526e46395327a1e0149bbb97370:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>ODSC 2016 - Friday</title>
@@ -256,7 +345,7 @@ the cost function(least squares). I was calculating my error by subtracting my
 predicted values from the actual values(y), &lt;code&gt;$error = predicted - y$&lt;/code&gt;, instead of the other
 way around, &lt;code&gt;$ error = y - predicted$&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;This washed out when it came to calculating cost, since you end up square the error:&lt;/p&gt;
+&lt;p&gt;This washed out when it came to calculating cost, since you end up squaring the error:&lt;/p&gt;
 
 &lt;div&gt;$$
     J(\theta) = \frac{1}{2m}\sum_{i=1}^m(h_{\theta}(x^{i}) - y^{i})^{2}
