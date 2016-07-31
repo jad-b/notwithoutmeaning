@@ -15,7 +15,9 @@
     <meta content=" - The education of a curious man." property="og:description">
     <meta content="Testing Distributed Systems - while true: continue" property="og:title">
     
-    <meta content="programming, distributed systems, testing" name="keywords">
+      
+      <meta content="programming, distributed systems, testing" name="keywords">
+      
     
     
 
@@ -89,10 +91,10 @@ all APIs becoming externally unavailable. Undesirable!</p>
 web-server=&gt;DB setup, so I took this as an opportunity to learn from other&rsquo;s
 mistakes. Searching around turns up the following advice:</p>
 
-<h3 id="simple-testing-can-prevent-most-critical-failures:fab8ffd47911301da93228e4cb7d5640">Simple Testing Can Prevent Most Critical Failures</h3>
+<h3 id="simple-testing-can-prevent-most-critical-failures">Simple Testing Can Prevent Most Critical Failures</h3>
 
-<p>A whitepaper<sup class="footnote-ref" id="fnref:fab8ffd47911301da93228e4cb7d5640:whitepaper"><a rel="footnote" href="#fn:fab8ffd47911301da93228e4cb7d5640:whitepaper">1</a></sup> out of the University of Toronto with some incredible
-statistics on avoiding the worst-of-the-bad: catastrophic failures<sup class="footnote-ref" id="fnref:fab8ffd47911301da93228e4cb7d5640:catfail"><a rel="footnote" href="#fn:fab8ffd47911301da93228e4cb7d5640:catfail">2</a></sup>. They
+<p>A whitepaper<sup class="footnote-ref" id="fnref:whitepaper"><a rel="footnote" href="#fn:whitepaper">1</a></sup> out of the University of Toronto with some incredible
+statistics on avoiding the worst-of-the-bad: catastrophic failures<sup class="footnote-ref" id="fnref:catfail"><a rel="footnote" href="#fn:catfail">2</a></sup>. They
 attribute 92% of CFs to bad error handling, with a further breakdown of</p>
 
 <ul>
@@ -136,7 +138,7 @@ summarized under &ldquo;Lessons Learned&rdquo;. More important is to take that l
 it up - 90% of the failures could be categorized as a permutation of only three
 key events. Just two events interacting accounted for 50% of CFs.</p>
 
-<h4 id="further-reading:fab8ffd47911301da93228e4cb7d5640">Further reading</h4>
+<h4 id="further-reading">Further reading</h4>
 
 <ul>
 <li>ConfErr - tests configuration errors within a realistic range</li>
@@ -150,10 +152,10 @@ key events. Just two events interacting accounted for 50% of CFs.</p>
 <hr />
 
 <ol>
-<li id="fn:fab8ffd47911301da93228e4cb7d5640:whitepaper"><a href="https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-yuan.pdf">https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-yuan.pdf</a>
- <a class="footnote-return" href="#fnref:fab8ffd47911301da93228e4cb7d5640:whitepaper"><sup>[return]</sup></a></li>
-<li id="fn:fab8ffd47911301da93228e4cb7d5640:catfail">Failure of the system for a majority to all users.
- <a class="footnote-return" href="#fnref:fab8ffd47911301da93228e4cb7d5640:catfail"><sup>[return]</sup></a></li>
+<li id="fn:whitepaper"><a href="https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-yuan.pdf">https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-yuan.pdf</a>
+ <a class="footnote-return" href="#fnref:whitepaper"><sup>[return]</sup></a></li>
+<li id="fn:catfail">Failure of the system for a majority to all users.
+ <a class="footnote-return" href="#fnref:catfail"><sup>[return]</sup></a></li>
 </ol>
 </div>
 

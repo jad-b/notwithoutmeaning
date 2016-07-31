@@ -15,7 +15,9 @@
     <meta content=" - The education of a curious man." property="og:description">
     <meta content="ODSC 2016 - Friday - while true: continue" property="og:title">
     
-    <meta content="conference, notes, programming, data, machine learning" name="keywords">
+      
+      <meta content="conference, notes, programming, data, machine learning" name="keywords">
+      
     
     
 
@@ -58,27 +60,27 @@
   
     <nav id="TableOfContents">
 <ul>
-<li><a href="#friday-morning:5a52b66b245ed92b1d2f83a5b6b5f33d">Friday - Morning</a>
+<li><a href="#friday-morning">Friday - Morning</a>
 <ul>
-<li><a href="#building-a-recommendation-system:5a52b66b245ed92b1d2f83a5b6b5f33d">Building a Recommendation System</a>
+<li><a href="#building-a-recommendation-system">Building a Recommendation System</a>
 <ul>
-<li><a href="#spark:5a52b66b245ed92b1d2f83a5b6b5f33d">Spark</a>
+<li><a href="#spark">Spark</a>
 <ul>
-<li><a href="#spark-2-0:5a52b66b245ed92b1d2f83a5b6b5f33d">Spark 2.0</a></li>
-<li><a href="#probabilistic-data-structures:5a52b66b245ed92b1d2f83a5b6b5f33d">Probabilistic data structures</a></li>
+<li><a href="#spark-2-0">Spark 2.0</a></li>
+<li><a href="#probabilistic-data-structures">Probabilistic data structures</a></li>
 </ul></li>
-<li><a href="#lessons-from-netflix:5a52b66b245ed92b1d2f83a5b6b5f33d">Lessons from Netflix</a>
+<li><a href="#lessons-from-netflix">Lessons from Netflix</a>
 <ul>
-<li><a href="#data-pipeline:5a52b66b245ed92b1d2f83a5b6b5f33d">Data Pipeline</a></li>
-<li><a href="#the-netflix-prize:5a52b66b245ed92b1d2f83a5b6b5f33d">The Netflix Prize</a></li>
+<li><a href="#data-pipeline">Data Pipeline</a></li>
+<li><a href="#the-netflix-prize">The Netflix Prize</a></li>
 </ul></li>
 </ul></li>
 </ul></li>
-<li><a href="#friday-afternoon:5a52b66b245ed92b1d2f83a5b6b5f33d">Friday - Afternoon</a>
+<li><a href="#friday-afternoon">Friday - Afternoon</a>
 <ul>
-<li><a href="#deploying-serving-models:5a52b66b245ed92b1d2f83a5b6b5f33d">Deploying &amp; Serving models</a></li>
-<li><a href="#good-cool-ideas:5a52b66b245ed92b1d2f83a5b6b5f33d">Good &amp; Cool ideas</a></li>
-<li><a href="#resources:5a52b66b245ed92b1d2f83a5b6b5f33d">Resources</a></li>
+<li><a href="#deploying-serving-models">Deploying &amp; Serving models</a></li>
+<li><a href="#good-cool-ideas">Good &amp; Cool ideas</a></li>
+<li><a href="#resources">Resources</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -92,13 +94,13 @@
 <a href="No page found with path or logical name "post/ODSC2016 - Sunday.md".
 ">Sunday&rsquo;s</a> notes.</p>
 
-<h1 id="friday-morning:5a52b66b245ed92b1d2f83a5b6b5f33d">Friday - Morning</h1>
+<h1 id="friday-morning">Friday - Morning</h1>
 
-<h2 id="building-a-recommendation-system:5a52b66b245ed92b1d2f83a5b6b5f33d">Building a Recommendation System</h2>
+<h2 id="building-a-recommendation-system">Building a Recommendation System</h2>
 
 <p>Speaker: <a href="https://www.linkedin.com/in/cfregly">Chris Fregly</a></p>
 
-<h3 id="spark:5a52b66b245ed92b1d2f83a5b6b5f33d">Spark</h3>
+<h3 id="spark">Spark</h3>
 
 <p><strong>On Spark &amp; Tableau (or Redshift):</strong></p>
 
@@ -118,7 +120,7 @@ to mock up I/O for subsets to confirm functionality.</p>
 
 <p><code>Spark - Packages</code>: a marketplace for Spark packages</p>
 
-<h4 id="spark-2-0:5a52b66b245ed92b1d2f83a5b6b5f33d">Spark 2.0</h4>
+<h4 id="spark-2-0">Spark 2.0</h4>
 
 <p>Big focus on codegen: A <code>map</code> followed by a <code>filter</code> will get re-written into a single method, reducing function calls.
 Relies on <a href="http://unkrig.de/w/Janino">Project Janino</a>.</p>
@@ -129,7 +131,7 @@ to include new low-level data structures, code generation, and more.</p>
 
 <p>Spark 2.0 will support exporting models as PMML. PMML is the common data representation of ML models.</p>
 
-<h4 id="probabilistic-data-structures:5a52b66b245ed92b1d2f83a5b6b5f33d">Probabilistic data structures</h4>
+<h4 id="probabilistic-data-structures">Probabilistic data structures</h4>
 
 <p>Paco Nathan: Good work on probabilistic structures. <a href="https://www.linkedin.com/in/ceteri">https://www.linkedin.com/in/ceteri</a></p>
 
@@ -168,7 +170,7 @@ count of the item. The <code>&gt;</code> is due to overlap with other items.</li
 <p>Came across this <a href="https://en.wikipedia.org/wiki/Bloom_filter">overview</a> when looking up
 info on HyperLogLog.</p>
 
-<h3 id="lessons-from-netflix:5a52b66b245ed92b1d2f83a5b6b5f33d">Lessons from Netflix</h3>
+<h3 id="lessons-from-netflix">Lessons from Netflix</h3>
 
 <blockquote>
 <p>A logging company that also streams movies</p>
@@ -207,7 +209,7 @@ you&rsquo;ve got a connector library going in between all of your API requests.<
 
 <p>Has Hystrix been re-implemented in any other languages?</p>
 
-<h4 id="data-pipeline:5a52b66b245ed92b1d2f83a5b6b5f33d">Data Pipeline</h4>
+<h4 id="data-pipeline">Data Pipeline</h4>
 
 <p><a href="http://www.slideshare.net/cfregly/dc-spark-users-group-march-15-2016-spark-and-netflix-recommendations">Slideshare here, goto slide 104</a></p>
 
@@ -219,7 +221,7 @@ you&rsquo;ve got a connector library going in between all of your API requests.<
 
 <p>Netflix runs a 10k node Memcached cluster that ML models get loaded into, amongst apparently everything else.</p>
 
-<h4 id="the-netflix-prize:5a52b66b245ed92b1d2f83a5b6b5f33d">The Netflix Prize</h4>
+<h4 id="the-netflix-prize">The Netflix Prize</h4>
 
 <p>Background: Given (movieID, userID, userRating, timestamp), improve predictions by 10%.
 For a long time, the improvment was stuck around 7%. The key was when <em>timestamp</em> got
@@ -236,9 +238,9 @@ bias. Some examples of said bias adjustments:</p>
 <li>Mood, time of day, day of week</li>
 </ol>
 
-<h1 id="friday-afternoon:5a52b66b245ed92b1d2f83a5b6b5f33d">Friday - Afternoon</h1>
+<h1 id="friday-afternoon">Friday - Afternoon</h1>
 
-<h2 id="deploying-serving-models:5a52b66b245ed92b1d2f83a5b6b5f33d">Deploying &amp; Serving models</h2>
+<h2 id="deploying-serving-models">Deploying &amp; Serving models</h2>
 
 <p><a href="https://tensorflow.github.io/serving/">TensorFlow Serving</a> provides a means of deploying
 and running predictions on the models.</p>
@@ -281,7 +283,7 @@ SparkSQL being the most <em>immature</em>, when compared to Apache Hive, Impala,
 </ul></li>
 </ul>
 
-<h2 id="good-cool-ideas:5a52b66b245ed92b1d2f83a5b6b5f33d">Good &amp; Cool ideas</h2>
+<h2 id="good-cool-ideas">Good &amp; Cool ideas</h2>
 
 <p>Spark&rsquo;s <code>new StandardScaler=(withMean=True, withStd=False)</code> lets you toggle how you feature scale.
 PCA wants mean normalization, without std dev, but linear regression will want both.</p>
@@ -305,7 +307,7 @@ feedback to the designers saying what they&rsquo;ve learned.</p>
 
 <p>skflow: A scikit-learn API compatible replacment with TensorFlow as a backend.</p>
 
-<h2 id="resources:5a52b66b245ed92b1d2f83a5b6b5f33d">Resources</h2>
+<h2 id="resources">Resources</h2>
 
 <p>&ldquo;Jupyter notebooks for developers&rdquo; &amp; &ldquo;Matplotlib for Developers&rdquo; from O&rsquo;Reilly.</p>
 

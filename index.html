@@ -2,6 +2,7 @@
 <html>
 
   <head>
+	<meta name="generator" content="Hugo 0.16" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 
     <link rel="stylesheet" href="http://jad-b.github.io/css/stark.css">
@@ -15,7 +16,7 @@
     <meta content="The education of a curious man." property="og:description">
     <meta content="while true: continue" property="og:title">
     <meta
-      content="quote, machine-learning, metalearning, programming, testing, notes, golang, data, math, learning, autodidact, conference, concurrency, data-science, mlsl, distributed-systems, "
+      content="quote, programming, machine-learning, metalearning, testing, autodidact, concurrency, conference, data, data-science, deployment, distributed-systems, golang, learning, math, mlsl, notes, "
       name="keywords">
     
 
@@ -33,6 +34,96 @@
       <main class="site-content grid">
 
 
+
+  <section>
+    <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="http://jad-b.github.io/post/Concept%20for%20a%20Vice-Driven%20Deployment%20System/"> Concept for a Vice Driven Deployment System </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Fri, Jul 29, 2016</p>
+
+</div>
+
+
+
+<p class="content-keywords">deployment</p>
+
+
+    
+      <p>Alright, here me out: we could totally write a deployment service that was leveraged each of the seven cardinal sins.
+Here&rsquo;s my take on it:</p>
+
+    
+    
+      <div class="read-more-link">
+        <a href="/post/Concept%20for%20a%20Vice-Driven%20Deployment%20System/">Read more...</a.>
+      </div>
+    
+  </section>
+
+  <section>
+    <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="http://jad-b.github.io/post/Multi-_%20Modeling/"> Multi-[_blank_] Modeling </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Thu, Jul 28, 2016</p>
+
+</div>
+
+
+
+
+    
+      Multilevel models are statistical models of parameters that vary at more than one level. - source: [Multilevel model:wikipedia]. This implies that the same parameters can take different values amongst sibling models of different parents. To illustrate, let&rsquo;s work through the example given in wikipedia: A basic linear regression model for predicting income may take age, class, gender, and race as parameters: $f(age,class,gender,race) = income$. However, this is likely to predict the same income for a 45-year old black man in Seattle, WA as it would for one in Mobile, AL.
+    
+    
+      <div class="read-more-link">
+        <a href="/post/Multi-_%20Modeling/">Read more...</a.>
+      </div>
+    
+  </section>
+
+  <section>
+    <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="http://jad-b.github.io/post/Lessons%20Learned:%20Software/"> Lessons Learned: Software </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Thu, Jul 28, 2016</p>
+
+</div>
+
+
+
+<p class="content-keywords">programming</p>
+
+
+    
+      Use TLS from the beginning. There aren&rsquo;t many reasons you shouldn&rsquo;t. Snakeoil gets you in the practice of managing the keys, but a self-signed or corporate wildcard cert that&rsquo;s scoped to your development domain are even better. I&rsquo;m finally seeing a plethora of key management tools1 begin to propagate, so no excuses. Write functional tests to run against any envinromnet. This means they need to accept configuration options, and should only affect test data they&rsquo;re responsible for creating and deleting.
+    
+    
+      <div class="read-more-link">
+        <a href="/post/Lessons%20Learned:%20Software/">Read more...</a.>
+      </div>
+    
+  </section>
 
   <section>
     <div class="grid content-title">
@@ -58,6 +149,11 @@
       A new option is emerging alongside graduate programs for ambitious would-be
 students: Teach yourself.
     
+    
+      <div class="read-more-link">
+        <a href="/post/Why%20Not%20School/">Read more...</a.>
+      </div>
+    
   </section>
 
   <section>
@@ -82,6 +178,11 @@ students: Teach yourself.
 
     
       Goto: Saturday &amp; Sunday&rsquo;s notes. Friday - Morning Building a Recommendation System Speaker: Chris Fregly Spark On Spark &amp; Tableau (or Redshift): When you&rsquo;re connecting Tableau to Spark, it&rsquo;s all going through one JVM, the HiveThrift server (which converts SQL into Java talk). You want to make sure you&rsquo;re pushding down as much computation as possible to Spark, saving the HiveThrift server cycles. This way you collect the results of your computation for display in your visualization engine.
+    
+    
+      <div class="read-more-link">
+        <a href="/post/ODSC2016%20-%20Friday/">Read more...</a.>
+      </div>
     
   </section>
 
@@ -115,6 +216,11 @@ the cost function(least squares). I was calculating my error by subtracting my
 predicted values from the actual values(y), <code>$error = predicted - y$</code>, instead of the other
 way around, <code>$ error = y - predicted$</code>.</p>
 
+    
+    
+      <div class="read-more-link">
+        <a href="/post/Gradient%20Descent%20Ascending/">Read more...</a.>
+      </div>
     
   </section>
 
@@ -170,6 +276,7 @@ func TestAddrResolve(t *testing.T) {
 </code></pre>
 
     
+    
   </section>
 
   <section>
@@ -213,6 +320,11 @@ func TestAddrResolve(t *testing.T) {
 </ul>
 
     
+    
+      <div class="read-more-link">
+        <a href="/post/Testing%20Distributed%20Systems/">Read more...</a.>
+      </div>
+    
   </section>
 
   <section>
@@ -235,6 +347,11 @@ func TestAddrResolve(t *testing.T) {
 
     
       Learning is being in a race against yourself. These things help. The Rapid Acquisistion of Highly-Technical Information Learning very technical information is unique from the general problem of learning in a few ways. First of all, the end-result is entirely mental. Either you understand the concepts well enough to accomplish your task, or you do not. This is in contrast to learning a song on the piano, where a subconscious system is learning instead, like training motor patterns for rote memorization.
+    
+    
+      <div class="read-more-link">
+        <a href="/post/The%20Aggressive%20Student/">Read more...</a.>
+      </div>
     
   </section>
 
@@ -260,6 +377,11 @@ func TestAddrResolve(t *testing.T) {
 
     
       This document will serve as a case study on learning, using learning databases as the problem. Glossay grounding give (something abstract) a firm theoretical or practical basis Concepts &hellip;and what matters most is Understanding. And Understanding starts with &ldquo;What Matters&rdquo; - Quora: Forays into AI because we get better with practice as we get more experience, which is a hallmark of any Intuition based skill - Reductionism Considered Harmful This is another hallmark of Intuition based skills: they cannot be taught as high level rules, they have to be experienced bottom up.
+    
+    
+      <div class="read-more-link">
+        <a href="/post/On%20Learning/">Read more...</a.>
+      </div>
     
   </section>
 

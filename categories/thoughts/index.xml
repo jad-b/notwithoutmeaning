@@ -19,11 +19,11 @@
 
 &lt;p&gt;This document will serve as a case study on learning, using learning databases as the problem.&lt;/p&gt;
 
-&lt;h3 id=&#34;glossay:7a16559f2e7bb44f60862eae17319468&#34;&gt;Glossay&lt;/h3&gt;
+&lt;h3 id=&#34;glossay&#34;&gt;Glossay&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;grounding&lt;/strong&gt; give (something abstract) a firm theoretical or practical basis&lt;/p&gt;
 
-&lt;h2 id=&#34;concepts:7a16559f2e7bb44f60862eae17319468&#34;&gt;Concepts&lt;/h2&gt;
+&lt;h2 id=&#34;concepts&#34;&gt;Concepts&lt;/h2&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;&amp;hellip;and what matters most is Understanding. And Understanding starts with &amp;ldquo;What Matters&amp;rdquo; - &lt;a href=&#34;http://www.quora.com/How-do-I-get-started-in-Artificial-Intelligence&#34;&gt;Quora: Forays into AI&lt;/a&gt;
@@ -64,7 +64,7 @@ patterns.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;techniques:7a16559f2e7bb44f60862eae17319468&#34;&gt;Techniques&lt;/h2&gt;
+&lt;h2 id=&#34;techniques&#34;&gt;Techniques&lt;/h2&gt;
 
 &lt;p&gt;Tim Ferris promotes &lt;code&gt;DSSS&lt;/code&gt; and it&amp;rsquo;s sub-steps, &lt;code&gt;CaFE&lt;/code&gt;&lt;/p&gt;
 
@@ -105,9 +105,9 @@ patterns.&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;recursive-horizon-expansion:7a16559f2e7bb44f60862eae17319468&#34;&gt;Recursive Horizon Expansion&lt;/h3&gt;
+&lt;h3 id=&#34;recursive-horizon-expansion&#34;&gt;Recursive Horizon Expansion&lt;/h3&gt;
 
-&lt;h4 id=&#34;phase-1-unknown-unknown-s:7a16559f2e7bb44f60862eae17319468&#34;&gt;Phase 1) Unknown Unknown&amp;rsquo;s&lt;/h4&gt;
+&lt;h4 id=&#34;phase-1-unknown-unknown-s&#34;&gt;Phase 1) Unknown Unknown&amp;rsquo;s&lt;/h4&gt;
 
 &lt;p&gt;Read summaries
 Gather resources
@@ -115,16 +115,16 @@ Identify major questions and early stumbling blocks. For instance, machine
 Learning requires linear algebra basics from the get-go, and an intermediate
 skills in such in order to understand things like PCA.&lt;/p&gt;
 
-&lt;h4 id=&#34;phase-2-intake:7a16559f2e7bb44f60862eae17319468&#34;&gt;Phase 2) Intake&lt;/h4&gt;
+&lt;h4 id=&#34;phase-2-intake&#34;&gt;Phase 2) Intake&lt;/h4&gt;
 
 &lt;p&gt;Read through material until confused (diminishing returns), or 45 minutes.
 Perform an assessment of prevous material.&lt;/p&gt;
 
-&lt;h4 id=&#34;phase-3-understand:7a16559f2e7bb44f60862eae17319468&#34;&gt;Phase 3) Understand&lt;/h4&gt;
+&lt;h4 id=&#34;phase-3-understand&#34;&gt;Phase 3) Understand&lt;/h4&gt;
 
 &lt;p&gt;Do; else, teach.&lt;/p&gt;
 
-&lt;h2 id=&#34;explaining-101:7a16559f2e7bb44f60862eae17319468&#34;&gt;Explaining, 101&lt;/h2&gt;
+&lt;h2 id=&#34;explaining-101&#34;&gt;Explaining, 101&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;What the hell is it?

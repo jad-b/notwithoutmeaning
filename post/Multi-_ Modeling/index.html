@@ -11,12 +11,10 @@
 
     
     
-    <title>Testing Timeouts In Go With Channel Selects - while true: continue</title>
+    <title>Multi-[_blank_] Modeling - while true: continue</title>
     <meta content=" - The education of a curious man." property="og:description">
-    <meta content="Testing Timeouts In Go With Channel Selects - while true: continue" property="og:title">
+    <meta content="Multi-[_blank_] Modeling - while true: continue" property="og:title">
     
-      
-      <meta content="golang, concurrency, testing" name="keywords">
       
     
     
@@ -41,53 +39,55 @@
 
   
   <h1 class="cell">
-    <a href="http://jad-b.github.io/post/Testing%20Timeouts%20in%20Go/"> Testing Timeouts In Go With Channel Selects </a>
+    <a href="http://jad-b.github.io/post/Multi-_%20Modeling/"> Multi-[_blank_] Modeling </a>
   </h1>
 
   
 
   
-  <p class="cell content-timestamp">Last updated on Thu, May 5, 2016</p>
+  <p class="cell content-timestamp">Last updated on Thu, Jul 28, 2016</p>
 
 </div>
 
 
 
-<p class="content-keywords">golang, concurrency, testing</p>
-
 
 
   
 
-  <pre><code class="language-go">import (
-    &quot;net&quot;
-    &quot;testing&quot;
-    &quot;time&quot;
-)
+  <blockquote>
+<p>Multilevel models are statistical models of parameters that vary at more than one level. - source: [Multilevel model:wikipedia].</p>
+</blockquote>
 
-func TestAddrResolve(t *testing.T) {
-    network, addr := &quot;ip4&quot;, &quot;127.0.0.125:44151&quot;
-    addrChan := make(chan error)
+<p>This implies that the same parameters can take different values amongst sibling models of different parents. To
+illustrate, let&rsquo;s work through the <a href="https://en.wikipedia.org/wiki/Multilevel_model#Example">example given in wikipedia</a>:</p>
 
-    // Attempt to resolve IP addr
-    go func(ch chan error) {
-        _, err := net.DialTimeout(network, addr, 1 * time.Second)
-        addrChan &lt;- err
-    }(addrChan)
+<p>A basic linear regression model for predicting income may take age, class, gender, and race as parameters:
+<code>$f(age,class,gender,race) = income$</code>. However, this is likely to predict the same income for a 45-year old black man in
+Seattle, WA as it would for one in Mobile, AL. A simple way to attempt account for this would be to determine the <em>bias</em>
+for each location, and add or subtract that from the estimated income. However, it&rsquo;s obvious this is pretty naive; it
+attempts to account for <em>all</em> the differences between locations by a fixed value.</p>
 
-    // Now, see who returns a msg first
-    select {
-    case e := &lt;-addrChan:
-        if e == nil {
-            t.Fatalf(&quot;%s://%s should fail to resolve&quot;, network, addr)
-        } else if testing.Verbose() { // Success!
-            t.Logf(&quot;Call to %s://%s timed out.\nError\n\t%s&quot;, network, addr, e)
-        }
-    case &lt;-time.After(1 * time.Second):
-        t.Fatal(&quot;Address resolution failed to timeout in one second.&quot;)
-    }
-}
-</code></pre>
+<p>A multilevel model allows our parameters of age, class, gender, and race, to take different values per location, by
+adding location as a level to our model. Now, our income estimators are scoped by location.</p>
+
+<p>It&rsquo;s still assumed that <em>all</em> values for each parameters are drawn from a shared underlying distribution. To explain,
+consider all the values we&rsquo;d likely learn to explain the impact of age, a.k.a the coefficient for the age parameter,
+a.k.a <code>$\theta_{age}Age$</code>. Let&rsquo;s pretend that the bigger the location, the more age benefits you; population will be
+proportional to the value with which we weight age, <code>$\theta_{age}Age$</code>. As there are more people in urban areas,
+the distribution of age coefficients will be weighted towards the higher end to reflect that
+<em>in general</em>, people make more as they get older.</p>
+
+<p>I&rsquo;ll posit that people make more as they get older. We could even pretend it&rsquo;s a linear relationship, as simple as
+<code>$income = poverty_line + \theta_{age}Age$</code>. Now, what if we observe that people in cities make <em>even more</em> as they get
+older than people who aren&rsquo;t? And, it turns out, that a majority of older (50+) people live in cities? Well, that means
+the values we&rsquo;re calculating to weight the impact of age, a.k.a the age coefficients, a.k.a <code>$\theta_{age}$</code>,
+will reward age more heavily than if the majority of older people <em>weren&rsquo;t</em> in cities. So the distribution of <em>all</em>
+the age coefficients, <code>$\theta_{age}$</code> we&rsquo;ll learn per location will favor age, up to a point.</p>
+
+<p>Multilevel models are subclasses of Hierarchical Bayesian Models.</p>
+
+<p>Select between models using Bayesian|Akakike Information Criteria (the equivalent of <code>score()</code> in sklearn.)</p>
 
 
 </article>
@@ -95,7 +95,7 @@ func TestAddrResolve(t *testing.T) {
 <div id="disqus_thread"></div>
 <script>
    var disqus_config = function () {
-     this.page.url = "http:\/\/jad-b.github.io\/post\/Testing%20Timeouts%20in%20Go\/";
+     this.page.url = "http:\/\/jad-b.github.io\/post\/Multi-_%20Modeling\/";
      
    };
 

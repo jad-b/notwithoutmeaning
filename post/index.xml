@@ -6,8 +6,220 @@
     <description>Recent content in Posts on while true: continue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 28 May 2016 07:42:13 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 29 Jul 2016 10:43:26 -0400</lastBuildDate>
     <atom:link href="http://jad-b.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Concept for a Vice Driven Deployment System</title>
+      <link>http://jad-b.github.io/post/Concept%20for%20a%20Vice-Driven%20Deployment%20System/</link>
+      <pubDate>Fri, 29 Jul 2016 10:43:26 -0400</pubDate>
+      
+      <guid>http://jad-b.github.io/post/Concept%20for%20a%20Vice-Driven%20Deployment%20System/</guid>
+      <description>&lt;p&gt;Alright, here me out: we could totally write a deployment service that was leveraged each of the seven cardinal sins.
+Here&amp;rsquo;s my take on it:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Pride - Deploys code&lt;/li&gt;
+&lt;li&gt;Envy - Manages config&lt;/li&gt;
+&lt;li&gt;Wrath - Runs functional/smoke tests&lt;/li&gt;
+&lt;li&gt;Gluttony - Data visualization; &amp;ldquo;feast your eyes&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Lust - Messaging &amp;amp; notifications; something about sharing with other people,
+so the community aspect&lt;/li&gt;
+&lt;li&gt;Sloth - Deployment automation; pride =&amp;gt; sloth&lt;/li&gt;
+&lt;li&gt;Greed - Deployment data; greed would feed gluttony&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Throw this behind a CLI &amp;amp; chat bot, and ta-da, you&amp;rsquo;re a &lt;code&gt;vice pride deploy
+&amp;lt;project&amp;gt;&lt;/code&gt; away from releasing code.&lt;/p&gt;
+
+&lt;p&gt;Now, I&amp;rsquo;m going to be partial to this because I&amp;rsquo;m in love with the cleverness of
+my own ideas.  You&amp;rsquo;d have to make it good, and you&amp;rsquo;d have to make it
+future-proof. This is how I&amp;rsquo;d do it:&lt;/p&gt;
+
+&lt;p&gt;Write the interface first. If you&amp;rsquo;ve mastered the deploy of &lt;em&gt;any&lt;/em&gt; piece of
+reasonably complex software (a.k.a. greater than just &lt;code&gt;scp&lt;/code&gt;-ing files to a
+box), you know what you want from a deployment assistant. Code up that
+interface, and stub out the functionality as you go. I&amp;rsquo;d want something like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Retrieve configuration for the deploy; could subsume within the next step
+vice envy &amp;lt;options...&amp;gt; &amp;lt;project&amp;gt;
+# Deploy our project!
+vice pride deploy &amp;lt;project&amp;gt;
+# Run our post-release smoke tests
+vice wrath &amp;lt;project&amp;gt; &amp;lt;options...&amp;gt;
+# Visualize how our deploy went
+vice gluttony report &amp;lt;project&amp;gt;
+# See how _all_ our projects are looking
+vice gluttony report &amp;lt;saved dashboard name&amp;gt;
+# Drop a message in Slack about the release
+vice lust project -m &amp;quot;Everything&#39;s looking good, guys&amp;quot;
+# Backup our deploy data into S3
+vice greed backup &amp;lt;options...&amp;gt; &amp;lt;S3 URL&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Which means I&amp;rsquo;d need a way of making &lt;code&gt;vice&lt;/code&gt; (I guess the collective name of
+this tool is &lt;code&gt;vice&lt;/code&gt;? Is now.) aware of &lt;code&gt;&amp;lt;project&amp;gt;&lt;/code&gt;. Communication is either
+push- or pull-based, so it&amp;rsquo;s either that &lt;code&gt;vice&lt;/code&gt; know&amp;rsquo;s how to find projects, or
+projects register themselves with &lt;code&gt;vice&lt;/code&gt;. But, you know what? &lt;em&gt;That&lt;/em&gt; matters
+far less than what I want my interaction with &lt;code&gt;vice&lt;/code&gt; to be like. Both models
+would work, just like Chef and Ansible work. If one&amp;rsquo;s better than the other,
+and we start with the lesser, it&amp;rsquo;ll be our good engineering practices of
+writing loosely-coupled, modular code that saves us headaches during the refactor.&lt;/p&gt;
+
+&lt;p&gt;Which brings me to modularity. If you want code to survive over time, it has to
+be modular, which in this context means we need to be able to write new
+backends for emerging technologies that satisfy the same functional interfaces.
+Was that a mouthful? Try this: We want &lt;code&gt;vice&lt;/code&gt; to be compatible with new tech.
+Not in an auto-magical &amp;ldquo;&lt;code&gt;vice&lt;/code&gt; will work with &lt;em&gt;any database ever&lt;/em&gt;&amp;rdquo; way, but
+rather we know what data storage requirements we&amp;rsquo;ll have for &lt;code&gt;greed&lt;/code&gt;, which
+means we can write adapters to hide whether we&amp;rsquo;re storing it in Postgresql,
+DynamoDB, a file system, or HDFS.&lt;/p&gt;
+
+&lt;p&gt;Maybe we won&amp;rsquo;t be able to completely satisfy our DataStorer interface with each
+backend - that&amp;rsquo;s okay! Do a &lt;code&gt;raise NotImplemented&lt;/code&gt;, and allow your calling code
+to deal with partial interfaces in non-critical functionality. Obviously you
+need to read &amp;amp; write data, but maybe you can&amp;rsquo;t provide the same level of
+searching you&amp;rsquo;d like across all backends. Okay. Life is a moving target. Choose
+your trade-offs, and above all stay flexible through modular code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Multi-[_blank_] Modeling</title>
+      <link>http://jad-b.github.io/post/Multi-_%20Modeling/</link>
+      <pubDate>Thu, 28 Jul 2016 10:26:22 -0400</pubDate>
+      
+      <guid>http://jad-b.github.io/post/Multi-_%20Modeling/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Multilevel models are statistical models of parameters that vary at more than one level. - source: [Multilevel model:wikipedia].&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This implies that the same parameters can take different values amongst sibling models of different parents. To
+illustrate, let&amp;rsquo;s work through the &lt;a href=&#34;https://en.wikipedia.org/wiki/Multilevel_model#Example&#34;&gt;example given in wikipedia&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;A basic linear regression model for predicting income may take age, class, gender, and race as parameters:
+&lt;code&gt;$f(age,class,gender,race) = income$&lt;/code&gt;. However, this is likely to predict the same income for a 45-year old black man in
+Seattle, WA as it would for one in Mobile, AL. A simple way to attempt account for this would be to determine the &lt;em&gt;bias&lt;/em&gt;
+for each location, and add or subtract that from the estimated income. However, it&amp;rsquo;s obvious this is pretty naive; it
+attempts to account for &lt;em&gt;all&lt;/em&gt; the differences between locations by a fixed value.&lt;/p&gt;
+
+&lt;p&gt;A multilevel model allows our parameters of age, class, gender, and race, to take different values per location, by
+adding location as a level to our model. Now, our income estimators are scoped by location.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s still assumed that &lt;em&gt;all&lt;/em&gt; values for each parameters are drawn from a shared underlying distribution. To explain,
+consider all the values we&amp;rsquo;d likely learn to explain the impact of age, a.k.a the coefficient for the age parameter,
+a.k.a &lt;code&gt;$\theta_{age}Age$&lt;/code&gt;. Let&amp;rsquo;s pretend that the bigger the location, the more age benefits you; population will be
+proportional to the value with which we weight age, &lt;code&gt;$\theta_{age}Age$&lt;/code&gt;. As there are more people in urban areas,
+the distribution of age coefficients will be weighted towards the higher end to reflect that
+&lt;em&gt;in general&lt;/em&gt;, people make more as they get older.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ll posit that people make more as they get older. We could even pretend it&amp;rsquo;s a linear relationship, as simple as
+&lt;code&gt;$income = poverty_line + \theta_{age}Age$&lt;/code&gt;. Now, what if we observe that people in cities make &lt;em&gt;even more&lt;/em&gt; as they get
+older than people who aren&amp;rsquo;t? And, it turns out, that a majority of older (50+) people live in cities? Well, that means
+the values we&amp;rsquo;re calculating to weight the impact of age, a.k.a the age coefficients, a.k.a &lt;code&gt;$\theta_{age}$&lt;/code&gt;,
+will reward age more heavily than if the majority of older people &lt;em&gt;weren&amp;rsquo;t&lt;/em&gt; in cities. So the distribution of &lt;em&gt;all&lt;/em&gt;
+the age coefficients, &lt;code&gt;$\theta_{age}$&lt;/code&gt; we&amp;rsquo;ll learn per location will favor age, up to a point.&lt;/p&gt;
+
+&lt;p&gt;Multilevel models are subclasses of Hierarchical Bayesian Models.&lt;/p&gt;
+
+&lt;p&gt;Select between models using Bayesian|Akakike Information Criteria (the equivalent of &lt;code&gt;score()&lt;/code&gt; in sklearn.)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Lessons Learned: Software</title>
+      <link>http://jad-b.github.io/post/Lessons%20Learned:%20Software/</link>
+      <pubDate>Thu, 28 Jul 2016 09:59:13 -0400</pubDate>
+      
+      <guid>http://jad-b.github.io/post/Lessons%20Learned:%20Software/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Use TLS from the beginning.&lt;/strong&gt;
+There aren&amp;rsquo;t many reasons you shouldn&amp;rsquo;t. Snakeoil gets you in the practice of
+managing the keys, but a self-signed or corporate wildcard cert that&amp;rsquo;s scoped
+to your development domain are even better. I&amp;rsquo;m finally seeing a plethora of
+key management tools&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:kmt&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:kmt&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; begin to propagate, so no excuses.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Write functional tests to run against any envinromnet.&lt;/strong&gt;
+This means they need to accept configuration options, and should only
+affect test data they&amp;rsquo;re responsible for creating and deleting. Now your
+integration tests can smoke-test production.
+If you can scope which tests run, which I know Python&amp;rsquo;s &lt;code&gt;nose&lt;/code&gt; and &lt;code&gt;pytest&lt;/code&gt;
+and Golang&amp;rsquo;s &lt;code&gt;go test -tags=smoke&lt;/code&gt; can do, you can limit your tests to fit
+your requirements of run time, data safety, and validation.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Incremental modifications over re-writes.&lt;/strong&gt;
+You have code running, and now you need to change it. It&amp;rsquo;s conceptually
+easiest to pretend like that code doesn&amp;rsquo;t exist, and write from scratch.
+But only in concept. Re-writes ignore the ecosystem that code runs within -
+the system&amp;rsquo;s that depend on it, the operational considerations you&amp;rsquo;ve learned to
+account for, and the realities of the world you&amp;rsquo;ve had to code around.
+Re-writes have a place. But they&amp;rsquo;re usually the harder choice, long-term.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s some ideas I&amp;rsquo;ve already had to use:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Don&amp;rsquo;t forget about search &amp;amp; replace. Rename old objects to
+&amp;ldquo;OldStructure&amp;rdquo;, or &amp;ldquo;StructureV1&amp;rdquo; while the deprecation is underway.
+People seem to get nervous about this, but if you missed something, a
+static language won&amp;rsquo;t compile, and a dynamically-typed language will have
+its tests fail. If both of those fail to catch the error, is it really a
+problem with the replacement, or with your safety nets?&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;REST API: Isolate the old and new logic into different functions. Deploy
+new changes to a &amp;ldquo;dark&amp;rdquo; endoint under a different path. Toggle between
+old &amp;amp; new using a query parameter, or swap them at runtime using a flag.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Database: Adding new columns is easy. Modifying existing requires
+staggered deploys between the DB and its clients (probably your
+downstream API(s)). Sorry.  At some point, you will be faced with the
+choice of doing a total re-write, followed by a nerve-wracking deploy,
+replete with cross-team coordination, or biting off that complexity in
+small changes and frequent deployments. Small changes let you deploy
+faster. Deploying faster =&amp;gt; Your work affects people faster. Mattering in
+other people&amp;rsquo;s lives =&amp;gt; putting off existential meaningless for one more
+day. Search &amp;ldquo;zero-downtime DB migration&amp;rdquo; for plenty of resources. I&amp;rsquo;m
+partial to the outline in Chapter 12 of &amp;ldquo;Continuous Delivery&amp;rdquo; by Jez
+Humble, titled &amp;ldquo;Managing Data&amp;rdquo;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Write backwards from your user interfaces&lt;/strong&gt;.
+Writing a web app? Start with the UI. You&amp;rsquo;re writing the REST API the UI calls?
+Start with the API description. &lt;a href=&#34;https://github.com/OAI/OpenAPI-Specification&#34;&gt;OpenAPI is a thing now&lt;/a&gt;, and I&amp;rsquo;m not going
+back. It&amp;rsquo;s a CLI tool? Write the options w/ flags, for what you know you
+need.&lt;/p&gt;
+
+&lt;p&gt;Only write for what someone needs right now. What someone wants but not needs
+should live in a design conversation elsewhere, such as a GitHub issue, a
+text document, or a JIRA ticket.&lt;/p&gt;
+
+&lt;p&gt;I believe this to be a (correct) generalization of &amp;ldquo;API-first&amp;rdquo; design and/or
+contract-driven design.&lt;/p&gt;
+
+&lt;p&gt;One possible argument: This delays potentially deal-breaking backend
+considerations that are far-removed from the end-user experience.&lt;/p&gt;
+
+&lt;p&gt;I think two things are imporant to keep in mind. First, your problem has
+likely been solved before, many times over. This is the case for most
+full-stack work. Thus, the amount of &amp;ldquo;unknowns&amp;rdquo; lurking out there
+are few, and always getting smaller. Second, all this really means is you
+have a conversation with your clients (The web UI team) exactly when you were
+actually building the tool they wanted. If anyone has examples of a tool
+simply can&amp;rsquo;t be made human-friendlier, I&amp;rsquo;d be interested to know.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:kmt&#34;&gt;&lt;p&gt;Such as these:
+&lt;a href=&#34;https://aws.amazon.com/kms/&#34;&gt;Amazon KMS&lt;/a&gt;,
+&lt;a href=&#34;https://www.vaultproject.io/docs/secrets/pki/index.html&#34;&gt;Hashicorp&amp;rsquo;s Vault&amp;rsquo;s PKI Backend&lt;/a&gt;,
+&lt;a href=&#34;https://github.com/square/certstrap&#34;&gt;Square&amp;rsquo;s certstrap&lt;/a&gt;&lt;/p&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:kmt&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Why I&#39;m Not Getting My Graduate Degree (Yet).</title>
@@ -25,7 +237,7 @@ necessity for the widgets of tomorrow.&lt;/p&gt;
 &lt;p&gt;Maybe, like me, you&amp;rsquo;d like to learn more about all of this. And perhaps,
 like me, you&amp;rsquo;ve got a job, and maybe it&amp;rsquo;s a pretty good job. But the knee-jerk
 response you hear is, &amp;ldquo;Get your master&amp;rsquo;s degree&amp;rdquo;, or even further, a Ph.D. And
-this is a problem. Not just the money&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:0dd3d526e46395327a1e0149bbb97370:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:0dd3d526e46395327a1e0149bbb97370:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;, or the potential move, or the
+this is a problem. Not just the money&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;, or the potential move, or the
 commitment, but the lack of &lt;em&gt;optimality&lt;/em&gt;: is this the best way to learn?&lt;/p&gt;
 
 &lt;p&gt;How much of your undergraduate education got left in a notebook, or existed
@@ -86,13 +298,13 @@ field of interest. Hopefully our loops will cross paths.&lt;/p&gt;
 &lt;hr /&gt;
 
 &lt;ol&gt;
-&lt;li id=&#34;fn:0dd3d526e46395327a1e0149bbb97370:1&#34;&gt;&lt;p&gt;Because average annual tuition costs are $30-40k, and even with
+&lt;li id=&#34;fn:1&#34;&gt;&lt;p&gt;Because average annual tuition costs are $30-40k, and even with
 50% financial aid, this is still tens of thousands of dollars. And you need
 health insurance. And if you want to get it done fast, you&amp;rsquo;re almost certainly
 not working, although a 2-year degree &lt;em&gt;is&lt;/em&gt; possible if you commit the rest of
 your non-working hours to school, with an associated hit to your quality of
 life.&lt;/p&gt;
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:0dd3d526e46395327a1e0149bbb97370:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 </description>
@@ -111,13 +323,13 @@ life.&lt;/p&gt;
 &lt;a href=&#34;No page found with path or logical name &#34;post/ODSC2016 - Sunday.md&#34;.
 &#34;&gt;Sunday&amp;rsquo;s&lt;/a&gt; notes.&lt;/p&gt;
 
-&lt;h1 id=&#34;friday-morning:5a52b66b245ed92b1d2f83a5b6b5f33d&#34;&gt;Friday - Morning&lt;/h1&gt;
+&lt;h1 id=&#34;friday-morning&#34;&gt;Friday - Morning&lt;/h1&gt;
 
-&lt;h2 id=&#34;building-a-recommendation-system:5a52b66b245ed92b1d2f83a5b6b5f33d&#34;&gt;Building a Recommendation System&lt;/h2&gt;
+&lt;h2 id=&#34;building-a-recommendation-system&#34;&gt;Building a Recommendation System&lt;/h2&gt;
 
 &lt;p&gt;Speaker: &lt;a href=&#34;https://www.linkedin.com/in/cfregly&#34;&gt;Chris Fregly&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;spark:5a52b66b245ed92b1d2f83a5b6b5f33d&#34;&gt;Spark&lt;/h3&gt;
+&lt;h3 id=&#34;spark&#34;&gt;Spark&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;On Spark &amp;amp; Tableau (or Redshift):&lt;/strong&gt;&lt;/p&gt;
 
@@ -137,7 +349,7 @@ to mock up I/O for subsets to confirm functionality.&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;Spark - Packages&lt;/code&gt;: a marketplace for Spark packages&lt;/p&gt;
 
-&lt;h4 id=&#34;spark-2-0:5a52b66b245ed92b1d2f83a5b6b5f33d&#34;&gt;Spark 2.0&lt;/h4&gt;
+&lt;h4 id=&#34;spark-2-0&#34;&gt;Spark 2.0&lt;/h4&gt;
 
 &lt;p&gt;Big focus on codegen: A &lt;code&gt;map&lt;/code&gt; followed by a &lt;code&gt;filter&lt;/code&gt; will get re-written into a single method, reducing function calls.
 Relies on &lt;a href=&#34;http://unkrig.de/w/Janino&#34;&gt;Project Janino&lt;/a&gt;.&lt;/p&gt;
@@ -148,7 +360,7 @@ to include new low-level data structures, code generation, and more.&lt;/p&gt;
 
 &lt;p&gt;Spark 2.0 will support exporting models as PMML. PMML is the common data representation of ML models.&lt;/p&gt;
 
-&lt;h4 id=&#34;probabilistic-data-structures:5a52b66b245ed92b1d2f83a5b6b5f33d&#34;&gt;Probabilistic data structures&lt;/h4&gt;
+&lt;h4 id=&#34;probabilistic-data-structures&#34;&gt;Probabilistic data structures&lt;/h4&gt;
 
 &lt;p&gt;Paco Nathan: Good work on probabilistic structures. &lt;a href=&#34;https://www.linkedin.com/in/ceteri&#34;&gt;https://www.linkedin.com/in/ceteri&lt;/a&gt;&lt;/p&gt;
 
@@ -187,7 +399,7 @@ count of the item. The &lt;code&gt;&amp;gt;&lt;/code&gt; is due to overlap with 
 &lt;p&gt;Came across this &lt;a href=&#34;https://en.wikipedia.org/wiki/Bloom_filter&#34;&gt;overview&lt;/a&gt; when looking up
 info on HyperLogLog.&lt;/p&gt;
 
-&lt;h3 id=&#34;lessons-from-netflix:5a52b66b245ed92b1d2f83a5b6b5f33d&#34;&gt;Lessons from Netflix&lt;/h3&gt;
+&lt;h3 id=&#34;lessons-from-netflix&#34;&gt;Lessons from Netflix&lt;/h3&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;A logging company that also streams movies&lt;/p&gt;
@@ -226,7 +438,7 @@ you&amp;rsquo;ve got a connector library going in between all of your API reques
 
 &lt;p&gt;Has Hystrix been re-implemented in any other languages?&lt;/p&gt;
 
-&lt;h4 id=&#34;data-pipeline:5a52b66b245ed92b1d2f83a5b6b5f33d&#34;&gt;Data Pipeline&lt;/h4&gt;
+&lt;h4 id=&#34;data-pipeline&#34;&gt;Data Pipeline&lt;/h4&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.slideshare.net/cfregly/dc-spark-users-group-march-15-2016-spark-and-netflix-recommendations&#34;&gt;Slideshare here, goto slide 104&lt;/a&gt;&lt;/p&gt;
 
@@ -238,7 +450,7 @@ you&amp;rsquo;ve got a connector library going in between all of your API reques
 
 &lt;p&gt;Netflix runs a 10k node Memcached cluster that ML models get loaded into, amongst apparently everything else.&lt;/p&gt;
 
-&lt;h4 id=&#34;the-netflix-prize:5a52b66b245ed92b1d2f83a5b6b5f33d&#34;&gt;The Netflix Prize&lt;/h4&gt;
+&lt;h4 id=&#34;the-netflix-prize&#34;&gt;The Netflix Prize&lt;/h4&gt;
 
 &lt;p&gt;Background: Given (movieID, userID, userRating, timestamp), improve predictions by 10%.
 For a long time, the improvment was stuck around 7%. The key was when &lt;em&gt;timestamp&lt;/em&gt; got
@@ -255,9 +467,9 @@ bias. Some examples of said bias adjustments:&lt;/p&gt;
 &lt;li&gt;Mood, time of day, day of week&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h1 id=&#34;friday-afternoon:5a52b66b245ed92b1d2f83a5b6b5f33d&#34;&gt;Friday - Afternoon&lt;/h1&gt;
+&lt;h1 id=&#34;friday-afternoon&#34;&gt;Friday - Afternoon&lt;/h1&gt;
 
-&lt;h2 id=&#34;deploying-serving-models:5a52b66b245ed92b1d2f83a5b6b5f33d&#34;&gt;Deploying &amp;amp; Serving models&lt;/h2&gt;
+&lt;h2 id=&#34;deploying-serving-models&#34;&gt;Deploying &amp;amp; Serving models&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://tensorflow.github.io/serving/&#34;&gt;TensorFlow Serving&lt;/a&gt; provides a means of deploying
 and running predictions on the models.&lt;/p&gt;
@@ -300,7 +512,7 @@ SparkSQL being the most &lt;em&gt;immature&lt;/em&gt;, when compared to Apache H
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;good-cool-ideas:5a52b66b245ed92b1d2f83a5b6b5f33d&#34;&gt;Good &amp;amp; Cool ideas&lt;/h2&gt;
+&lt;h2 id=&#34;good-cool-ideas&#34;&gt;Good &amp;amp; Cool ideas&lt;/h2&gt;
 
 &lt;p&gt;Spark&amp;rsquo;s &lt;code&gt;new StandardScaler=(withMean=True, withStd=False)&lt;/code&gt; lets you toggle how you feature scale.
 PCA wants mean normalization, without std dev, but linear regression will want both.&lt;/p&gt;
@@ -324,7 +536,7 @@ feedback to the designers saying what they&amp;rsquo;ve learned.&lt;/p&gt;
 
 &lt;p&gt;skflow: A scikit-learn API compatible replacment with TensorFlow as a backend.&lt;/p&gt;
 
-&lt;h2 id=&#34;resources:5a52b66b245ed92b1d2f83a5b6b5f33d&#34;&gt;Resources&lt;/h2&gt;
+&lt;h2 id=&#34;resources&#34;&gt;Resources&lt;/h2&gt;
 
 &lt;p&gt;&amp;ldquo;Jupyter notebooks for developers&amp;rdquo; &amp;amp; &amp;ldquo;Matplotlib for Developers&amp;rdquo; from O&amp;rsquo;Reilly.&lt;/p&gt;
 </description>
@@ -435,10 +647,10 @@ all APIs becoming externally unavailable. Undesirable!&lt;/p&gt;
 web-server=&amp;gt;DB setup, so I took this as an opportunity to learn from other&amp;rsquo;s
 mistakes. Searching around turns up the following advice:&lt;/p&gt;
 
-&lt;h3 id=&#34;simple-testing-can-prevent-most-critical-failures:fab8ffd47911301da93228e4cb7d5640&#34;&gt;Simple Testing Can Prevent Most Critical Failures&lt;/h3&gt;
+&lt;h3 id=&#34;simple-testing-can-prevent-most-critical-failures&#34;&gt;Simple Testing Can Prevent Most Critical Failures&lt;/h3&gt;
 
-&lt;p&gt;A whitepaper&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:fab8ffd47911301da93228e4cb7d5640:whitepaper&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:fab8ffd47911301da93228e4cb7d5640:whitepaper&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; out of the University of Toronto with some incredible
-statistics on avoiding the worst-of-the-bad: catastrophic failures&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:fab8ffd47911301da93228e4cb7d5640:catfail&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:fab8ffd47911301da93228e4cb7d5640:catfail&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. They
+&lt;p&gt;A whitepaper&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:whitepaper&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:whitepaper&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; out of the University of Toronto with some incredible
+statistics on avoiding the worst-of-the-bad: catastrophic failures&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:catfail&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:catfail&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. They
 attribute 92% of CFs to bad error handling, with a further breakdown of&lt;/p&gt;
 
 &lt;ul&gt;
@@ -482,7 +694,7 @@ summarized under &amp;ldquo;Lessons Learned&amp;rdquo;. More important is to tak
 it up - 90% of the failures could be categorized as a permutation of only three
 key events. Just two events interacting accounted for 50% of CFs.&lt;/p&gt;
 
-&lt;h4 id=&#34;further-reading:fab8ffd47911301da93228e4cb7d5640&#34;&gt;Further reading&lt;/h4&gt;
+&lt;h4 id=&#34;further-reading&#34;&gt;Further reading&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;ConfErr - tests configuration errors within a realistic range&lt;/li&gt;
@@ -496,10 +708,10 @@ key events. Just two events interacting accounted for 50% of CFs.&lt;/p&gt;
 &lt;hr /&gt;
 
 &lt;ol&gt;
-&lt;li id=&#34;fn:fab8ffd47911301da93228e4cb7d5640:whitepaper&#34;&gt;&lt;a href=&#34;https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-yuan.pdf&#34;&gt;https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-yuan.pdf&lt;/a&gt;
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:fab8ffd47911301da93228e4cb7d5640:whitepaper&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li id=&#34;fn:fab8ffd47911301da93228e4cb7d5640:catfail&#34;&gt;Failure of the system for a majority to all users.
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:fab8ffd47911301da93228e4cb7d5640:catfail&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:whitepaper&#34;&gt;&lt;a href=&#34;https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-yuan.pdf&#34;&gt;https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-yuan.pdf&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:whitepaper&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:catfail&#34;&gt;Failure of the system for a majority to all users.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:catfail&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 </description>
@@ -515,7 +727,7 @@ key events. Just two events interacting accounted for 50% of CFs.&lt;/p&gt;
 
 &lt;p&gt;Learning is being in a race against yourself. These things help.&lt;/p&gt;
 
-&lt;h2 id=&#34;the-rapid-acquisistion-of-highly-technical-information:04d7ba831a5d03aab2a2b90cdbe484ff&#34;&gt;The Rapid Acquisistion of Highly-Technical Information&lt;/h2&gt;
+&lt;h2 id=&#34;the-rapid-acquisistion-of-highly-technical-information&#34;&gt;The Rapid Acquisistion of Highly-Technical Information&lt;/h2&gt;
 
 &lt;p&gt;Learning very technical information is unique from the general problem of
 learning in a few ways. First of all, the end-result is entirely mental. Either
@@ -538,7 +750,7 @@ you&amp;rsquo;d be at step one. However, this primes you to learn the material.&
 all the possible connections you can make to this topic; previous training,
 analogy to other fields, half-notions of concepts.&lt;/p&gt;
 
-&lt;h3 id=&#34;how-it-feels:04d7ba831a5d03aab2a2b90cdbe484ff&#34;&gt;How it feels&lt;/h3&gt;
+&lt;h3 id=&#34;how-it-feels&#34;&gt;How it feels&lt;/h3&gt;
 
 &lt;p&gt;The most important feelings I can associate with learning are boredom,
 frustration, confusion, and flow.&lt;/p&gt;
@@ -552,7 +764,7 @@ amounts.&lt;/p&gt;
 
 &lt;p&gt;Flow says you&amp;rsquo;ve got it just right. It lies between boredom and confusion.&lt;/p&gt;
 
-&lt;h3 id=&#34;sequencing-when-to-learn-what:04d7ba831a5d03aab2a2b90cdbe484ff&#34;&gt;Sequencing | When to Learn What&lt;/h3&gt;
+&lt;h3 id=&#34;sequencing-when-to-learn-what&#34;&gt;Sequencing | When to Learn What&lt;/h3&gt;
 
 &lt;p&gt;Find the highest-level summary of the topic you can. Then a slightly more
 verbose description. Then yet another more verbosity write-up. Etc., etc.&lt;/p&gt;
@@ -561,7 +773,7 @@ verbose description. Then yet another more verbosity write-up. Etc., etc.&lt;/p&
 confusion reaches a point that you can no longer pretend to know what&amp;rsquo;s going
 on. The list you&amp;rsquo;ve written is where you&amp;rsquo;ll start tomorrow.&lt;/p&gt;
 
-&lt;h3 id=&#34;spacing-when-to-learn:04d7ba831a5d03aab2a2b90cdbe484ff&#34;&gt;Spacing | When to Learn&lt;/h3&gt;
+&lt;h3 id=&#34;spacing-when-to-learn&#34;&gt;Spacing | When to Learn&lt;/h3&gt;
 
 &lt;p&gt;Learn until one of these two things happen: You feel confused, or you&amp;rsquo;ve
 grasped a new topic but wouldn&amp;rsquo;t be able to teach it well yourself. This is
@@ -573,7 +785,7 @@ online course, try: A blog post, a YouTube video, a textbook.&lt;/p&gt;
 &lt;p&gt;The day after learning, review your notes.  The next day, summarize them. Where
 possible, use drawings and analogy.&lt;/p&gt;
 
-&lt;h2 id=&#34;basic-tips:04d7ba831a5d03aab2a2b90cdbe484ff&#34;&gt;Basic tips&lt;/h2&gt;
+&lt;h2 id=&#34;basic-tips&#34;&gt;Basic tips&lt;/h2&gt;
 
 &lt;p&gt;Only highlight/underline what you don&amp;rsquo;t understand. It doesn&amp;rsquo;t help you
 remember, but it does help you find the gaps when you revisit the material.
@@ -592,11 +804,11 @@ gaps.&lt;/p&gt;
 
 &lt;p&gt;This document will serve as a case study on learning, using learning databases as the problem.&lt;/p&gt;
 
-&lt;h3 id=&#34;glossay:7a16559f2e7bb44f60862eae17319468&#34;&gt;Glossay&lt;/h3&gt;
+&lt;h3 id=&#34;glossay&#34;&gt;Glossay&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;grounding&lt;/strong&gt; give (something abstract) a firm theoretical or practical basis&lt;/p&gt;
 
-&lt;h2 id=&#34;concepts:7a16559f2e7bb44f60862eae17319468&#34;&gt;Concepts&lt;/h2&gt;
+&lt;h2 id=&#34;concepts&#34;&gt;Concepts&lt;/h2&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;&amp;hellip;and what matters most is Understanding. And Understanding starts with &amp;ldquo;What Matters&amp;rdquo; - &lt;a href=&#34;http://www.quora.com/How-do-I-get-started-in-Artificial-Intelligence&#34;&gt;Quora: Forays into AI&lt;/a&gt;
@@ -637,7 +849,7 @@ patterns.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;techniques:7a16559f2e7bb44f60862eae17319468&#34;&gt;Techniques&lt;/h2&gt;
+&lt;h2 id=&#34;techniques&#34;&gt;Techniques&lt;/h2&gt;
 
 &lt;p&gt;Tim Ferris promotes &lt;code&gt;DSSS&lt;/code&gt; and it&amp;rsquo;s sub-steps, &lt;code&gt;CaFE&lt;/code&gt;&lt;/p&gt;
 
@@ -678,9 +890,9 @@ patterns.&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;recursive-horizon-expansion:7a16559f2e7bb44f60862eae17319468&#34;&gt;Recursive Horizon Expansion&lt;/h3&gt;
+&lt;h3 id=&#34;recursive-horizon-expansion&#34;&gt;Recursive Horizon Expansion&lt;/h3&gt;
 
-&lt;h4 id=&#34;phase-1-unknown-unknown-s:7a16559f2e7bb44f60862eae17319468&#34;&gt;Phase 1) Unknown Unknown&amp;rsquo;s&lt;/h4&gt;
+&lt;h4 id=&#34;phase-1-unknown-unknown-s&#34;&gt;Phase 1) Unknown Unknown&amp;rsquo;s&lt;/h4&gt;
 
 &lt;p&gt;Read summaries
 Gather resources
@@ -688,16 +900,16 @@ Identify major questions and early stumbling blocks. For instance, machine
 Learning requires linear algebra basics from the get-go, and an intermediate
 skills in such in order to understand things like PCA.&lt;/p&gt;
 
-&lt;h4 id=&#34;phase-2-intake:7a16559f2e7bb44f60862eae17319468&#34;&gt;Phase 2) Intake&lt;/h4&gt;
+&lt;h4 id=&#34;phase-2-intake&#34;&gt;Phase 2) Intake&lt;/h4&gt;
 
 &lt;p&gt;Read through material until confused (diminishing returns), or 45 minutes.
 Perform an assessment of prevous material.&lt;/p&gt;
 
-&lt;h4 id=&#34;phase-3-understand:7a16559f2e7bb44f60862eae17319468&#34;&gt;Phase 3) Understand&lt;/h4&gt;
+&lt;h4 id=&#34;phase-3-understand&#34;&gt;Phase 3) Understand&lt;/h4&gt;
 
 &lt;p&gt;Do; else, teach.&lt;/p&gt;
 
-&lt;h2 id=&#34;explaining-101:7a16559f2e7bb44f60862eae17319468&#34;&gt;Explaining, 101&lt;/h2&gt;
+&lt;h2 id=&#34;explaining-101&#34;&gt;Explaining, 101&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;What the hell is it?

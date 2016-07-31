@@ -6,8 +6,178 @@
     <description>Recent content in Programming on while true: continue</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 May 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 29 Jul 2016 10:43:26 -0400</lastBuildDate>
     <atom:link href="http://jad-b.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Concept for a Vice Driven Deployment System</title>
+      <link>http://jad-b.github.io/post/Concept%20for%20a%20Vice-Driven%20Deployment%20System/</link>
+      <pubDate>Fri, 29 Jul 2016 10:43:26 -0400</pubDate>
+      
+      <guid>http://jad-b.github.io/post/Concept%20for%20a%20Vice-Driven%20Deployment%20System/</guid>
+      <description>&lt;p&gt;Alright, here me out: we could totally write a deployment service that was leveraged each of the seven cardinal sins.
+Here&amp;rsquo;s my take on it:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Pride - Deploys code&lt;/li&gt;
+&lt;li&gt;Envy - Manages config&lt;/li&gt;
+&lt;li&gt;Wrath - Runs functional/smoke tests&lt;/li&gt;
+&lt;li&gt;Gluttony - Data visualization; &amp;ldquo;feast your eyes&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Lust - Messaging &amp;amp; notifications; something about sharing with other people,
+so the community aspect&lt;/li&gt;
+&lt;li&gt;Sloth - Deployment automation; pride =&amp;gt; sloth&lt;/li&gt;
+&lt;li&gt;Greed - Deployment data; greed would feed gluttony&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Throw this behind a CLI &amp;amp; chat bot, and ta-da, you&amp;rsquo;re a &lt;code&gt;vice pride deploy
+&amp;lt;project&amp;gt;&lt;/code&gt; away from releasing code.&lt;/p&gt;
+
+&lt;p&gt;Now, I&amp;rsquo;m going to be partial to this because I&amp;rsquo;m in love with the cleverness of
+my own ideas.  You&amp;rsquo;d have to make it good, and you&amp;rsquo;d have to make it
+future-proof. This is how I&amp;rsquo;d do it:&lt;/p&gt;
+
+&lt;p&gt;Write the interface first. If you&amp;rsquo;ve mastered the deploy of &lt;em&gt;any&lt;/em&gt; piece of
+reasonably complex software (a.k.a. greater than just &lt;code&gt;scp&lt;/code&gt;-ing files to a
+box), you know what you want from a deployment assistant. Code up that
+interface, and stub out the functionality as you go. I&amp;rsquo;d want something like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Retrieve configuration for the deploy; could subsume within the next step
+vice envy &amp;lt;options...&amp;gt; &amp;lt;project&amp;gt;
+# Deploy our project!
+vice pride deploy &amp;lt;project&amp;gt;
+# Run our post-release smoke tests
+vice wrath &amp;lt;project&amp;gt; &amp;lt;options...&amp;gt;
+# Visualize how our deploy went
+vice gluttony report &amp;lt;project&amp;gt;
+# See how _all_ our projects are looking
+vice gluttony report &amp;lt;saved dashboard name&amp;gt;
+# Drop a message in Slack about the release
+vice lust project -m &amp;quot;Everything&#39;s looking good, guys&amp;quot;
+# Backup our deploy data into S3
+vice greed backup &amp;lt;options...&amp;gt; &amp;lt;S3 URL&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Which means I&amp;rsquo;d need a way of making &lt;code&gt;vice&lt;/code&gt; (I guess the collective name of
+this tool is &lt;code&gt;vice&lt;/code&gt;? Is now.) aware of &lt;code&gt;&amp;lt;project&amp;gt;&lt;/code&gt;. Communication is either
+push- or pull-based, so it&amp;rsquo;s either that &lt;code&gt;vice&lt;/code&gt; know&amp;rsquo;s how to find projects, or
+projects register themselves with &lt;code&gt;vice&lt;/code&gt;. But, you know what? &lt;em&gt;That&lt;/em&gt; matters
+far less than what I want my interaction with &lt;code&gt;vice&lt;/code&gt; to be like. Both models
+would work, just like Chef and Ansible work. If one&amp;rsquo;s better than the other,
+and we start with the lesser, it&amp;rsquo;ll be our good engineering practices of
+writing loosely-coupled, modular code that saves us headaches during the refactor.&lt;/p&gt;
+
+&lt;p&gt;Which brings me to modularity. If you want code to survive over time, it has to
+be modular, which in this context means we need to be able to write new
+backends for emerging technologies that satisfy the same functional interfaces.
+Was that a mouthful? Try this: We want &lt;code&gt;vice&lt;/code&gt; to be compatible with new tech.
+Not in an auto-magical &amp;ldquo;&lt;code&gt;vice&lt;/code&gt; will work with &lt;em&gt;any database ever&lt;/em&gt;&amp;rdquo; way, but
+rather we know what data storage requirements we&amp;rsquo;ll have for &lt;code&gt;greed&lt;/code&gt;, which
+means we can write adapters to hide whether we&amp;rsquo;re storing it in Postgresql,
+DynamoDB, a file system, or HDFS.&lt;/p&gt;
+
+&lt;p&gt;Maybe we won&amp;rsquo;t be able to completely satisfy our DataStorer interface with each
+backend - that&amp;rsquo;s okay! Do a &lt;code&gt;raise NotImplemented&lt;/code&gt;, and allow your calling code
+to deal with partial interfaces in non-critical functionality. Obviously you
+need to read &amp;amp; write data, but maybe you can&amp;rsquo;t provide the same level of
+searching you&amp;rsquo;d like across all backends. Okay. Life is a moving target. Choose
+your trade-offs, and above all stay flexible through modular code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Lessons Learned: Software</title>
+      <link>http://jad-b.github.io/post/Lessons%20Learned:%20Software/</link>
+      <pubDate>Thu, 28 Jul 2016 09:59:13 -0400</pubDate>
+      
+      <guid>http://jad-b.github.io/post/Lessons%20Learned:%20Software/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Use TLS from the beginning.&lt;/strong&gt;
+There aren&amp;rsquo;t many reasons you shouldn&amp;rsquo;t. Snakeoil gets you in the practice of
+managing the keys, but a self-signed or corporate wildcard cert that&amp;rsquo;s scoped
+to your development domain are even better. I&amp;rsquo;m finally seeing a plethora of
+key management tools&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:kmt&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:kmt&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; begin to propagate, so no excuses.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Write functional tests to run against any envinromnet.&lt;/strong&gt;
+This means they need to accept configuration options, and should only
+affect test data they&amp;rsquo;re responsible for creating and deleting. Now your
+integration tests can smoke-test production.
+If you can scope which tests run, which I know Python&amp;rsquo;s &lt;code&gt;nose&lt;/code&gt; and &lt;code&gt;pytest&lt;/code&gt;
+and Golang&amp;rsquo;s &lt;code&gt;go test -tags=smoke&lt;/code&gt; can do, you can limit your tests to fit
+your requirements of run time, data safety, and validation.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Incremental modifications over re-writes.&lt;/strong&gt;
+You have code running, and now you need to change it. It&amp;rsquo;s conceptually
+easiest to pretend like that code doesn&amp;rsquo;t exist, and write from scratch.
+But only in concept. Re-writes ignore the ecosystem that code runs within -
+the system&amp;rsquo;s that depend on it, the operational considerations you&amp;rsquo;ve learned to
+account for, and the realities of the world you&amp;rsquo;ve had to code around.
+Re-writes have a place. But they&amp;rsquo;re usually the harder choice, long-term.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s some ideas I&amp;rsquo;ve already had to use:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Don&amp;rsquo;t forget about search &amp;amp; replace. Rename old objects to
+&amp;ldquo;OldStructure&amp;rdquo;, or &amp;ldquo;StructureV1&amp;rdquo; while the deprecation is underway.
+People seem to get nervous about this, but if you missed something, a
+static language won&amp;rsquo;t compile, and a dynamically-typed language will have
+its tests fail. If both of those fail to catch the error, is it really a
+problem with the replacement, or with your safety nets?&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;REST API: Isolate the old and new logic into different functions. Deploy
+new changes to a &amp;ldquo;dark&amp;rdquo; endoint under a different path. Toggle between
+old &amp;amp; new using a query parameter, or swap them at runtime using a flag.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Database: Adding new columns is easy. Modifying existing requires
+staggered deploys between the DB and its clients (probably your
+downstream API(s)). Sorry.  At some point, you will be faced with the
+choice of doing a total re-write, followed by a nerve-wracking deploy,
+replete with cross-team coordination, or biting off that complexity in
+small changes and frequent deployments. Small changes let you deploy
+faster. Deploying faster =&amp;gt; Your work affects people faster. Mattering in
+other people&amp;rsquo;s lives =&amp;gt; putting off existential meaningless for one more
+day. Search &amp;ldquo;zero-downtime DB migration&amp;rdquo; for plenty of resources. I&amp;rsquo;m
+partial to the outline in Chapter 12 of &amp;ldquo;Continuous Delivery&amp;rdquo; by Jez
+Humble, titled &amp;ldquo;Managing Data&amp;rdquo;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Write backwards from your user interfaces&lt;/strong&gt;.
+Writing a web app? Start with the UI. You&amp;rsquo;re writing the REST API the UI calls?
+Start with the API description. &lt;a href=&#34;https://github.com/OAI/OpenAPI-Specification&#34;&gt;OpenAPI is a thing now&lt;/a&gt;, and I&amp;rsquo;m not going
+back. It&amp;rsquo;s a CLI tool? Write the options w/ flags, for what you know you
+need.&lt;/p&gt;
+
+&lt;p&gt;Only write for what someone needs right now. What someone wants but not needs
+should live in a design conversation elsewhere, such as a GitHub issue, a
+text document, or a JIRA ticket.&lt;/p&gt;
+
+&lt;p&gt;I believe this to be a (correct) generalization of &amp;ldquo;API-first&amp;rdquo; design and/or
+contract-driven design.&lt;/p&gt;
+
+&lt;p&gt;One possible argument: This delays potentially deal-breaking backend
+considerations that are far-removed from the end-user experience.&lt;/p&gt;
+
+&lt;p&gt;I think two things are imporant to keep in mind. First, your problem has
+likely been solved before, many times over. This is the case for most
+full-stack work. Thus, the amount of &amp;ldquo;unknowns&amp;rdquo; lurking out there
+are few, and always getting smaller. Second, all this really means is you
+have a conversation with your clients (The web UI team) exactly when you were
+actually building the tool they wanted. If anyone has examples of a tool
+simply can&amp;rsquo;t be made human-friendlier, I&amp;rsquo;d be interested to know.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:kmt&#34;&gt;&lt;p&gt;Such as these:
+&lt;a href=&#34;https://aws.amazon.com/kms/&#34;&gt;Amazon KMS&lt;/a&gt;,
+&lt;a href=&#34;https://www.vaultproject.io/docs/secrets/pki/index.html&#34;&gt;Hashicorp&amp;rsquo;s Vault&amp;rsquo;s PKI Backend&lt;/a&gt;,
+&lt;a href=&#34;https://github.com/square/certstrap&#34;&gt;Square&amp;rsquo;s certstrap&lt;/a&gt;&lt;/p&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:kmt&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Testing Timeouts In Go With Channel Selects</title>
@@ -85,10 +255,10 @@ all APIs becoming externally unavailable. Undesirable!&lt;/p&gt;
 web-server=&amp;gt;DB setup, so I took this as an opportunity to learn from other&amp;rsquo;s
 mistakes. Searching around turns up the following advice:&lt;/p&gt;
 
-&lt;h3 id=&#34;simple-testing-can-prevent-most-critical-failures:fab8ffd47911301da93228e4cb7d5640&#34;&gt;Simple Testing Can Prevent Most Critical Failures&lt;/h3&gt;
+&lt;h3 id=&#34;simple-testing-can-prevent-most-critical-failures&#34;&gt;Simple Testing Can Prevent Most Critical Failures&lt;/h3&gt;
 
-&lt;p&gt;A whitepaper&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:fab8ffd47911301da93228e4cb7d5640:whitepaper&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:fab8ffd47911301da93228e4cb7d5640:whitepaper&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; out of the University of Toronto with some incredible
-statistics on avoiding the worst-of-the-bad: catastrophic failures&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:fab8ffd47911301da93228e4cb7d5640:catfail&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:fab8ffd47911301da93228e4cb7d5640:catfail&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. They
+&lt;p&gt;A whitepaper&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:whitepaper&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:whitepaper&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; out of the University of Toronto with some incredible
+statistics on avoiding the worst-of-the-bad: catastrophic failures&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:catfail&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:catfail&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. They
 attribute 92% of CFs to bad error handling, with a further breakdown of&lt;/p&gt;
 
 &lt;ul&gt;
@@ -132,7 +302,7 @@ summarized under &amp;ldquo;Lessons Learned&amp;rdquo;. More important is to tak
 it up - 90% of the failures could be categorized as a permutation of only three
 key events. Just two events interacting accounted for 50% of CFs.&lt;/p&gt;
 
-&lt;h4 id=&#34;further-reading:fab8ffd47911301da93228e4cb7d5640&#34;&gt;Further reading&lt;/h4&gt;
+&lt;h4 id=&#34;further-reading&#34;&gt;Further reading&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;ConfErr - tests configuration errors within a realistic range&lt;/li&gt;
@@ -146,10 +316,10 @@ key events. Just two events interacting accounted for 50% of CFs.&lt;/p&gt;
 &lt;hr /&gt;
 
 &lt;ol&gt;
-&lt;li id=&#34;fn:fab8ffd47911301da93228e4cb7d5640:whitepaper&#34;&gt;&lt;a href=&#34;https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-yuan.pdf&#34;&gt;https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-yuan.pdf&lt;/a&gt;
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:fab8ffd47911301da93228e4cb7d5640:whitepaper&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li id=&#34;fn:fab8ffd47911301da93228e4cb7d5640:catfail&#34;&gt;Failure of the system for a majority to all users.
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:fab8ffd47911301da93228e4cb7d5640:catfail&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:whitepaper&#34;&gt;&lt;a href=&#34;https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-yuan.pdf&#34;&gt;https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-yuan.pdf&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:whitepaper&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:catfail&#34;&gt;Failure of the system for a majority to all users.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:catfail&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 </description>
