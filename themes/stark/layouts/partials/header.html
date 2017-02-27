@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/stark.css">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/prism.css">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy|Lato:100,300,400,600">
+
+    <!--SEO-->
+    {{ if .IsHome }}
+    <title>{{ .Site.Title }}</title>
+    <meta content="{{ .Site.Params.description }}" property="og:description">
+    <meta content="{{ .Site.Title }}" property="og:title">
+    <meta
+      content="{{ range $name, $taxonomy := .Site.Taxonomies.tags.ByCount }}{{ $taxonomy.Term }}, {{ end }}"
+      name="keywords">
+    {{ else }}
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
+    <meta content="{{ .Description }} - {{ .Site.Params.description }}" property="og:description">
+    <meta content="{{ .Title }} - {{ .Site.Title }}" property="og:title">
+    {{ with .Keywords }}
+    <meta content="{{ delimit . ", "}}" name="keywords">
+    {{ else }}
+      {{ with .Params.tags }}
+      <meta content="{{ delimit . ", "}}" name="keywords">
+      {{ end }}
+    {{ end }}
+    {{ end }}
+
+  </head>
+
+  <body>
+
+    <header class="hero grid">
+      <a class="logo" href="#"><!--"{{ .Site.BaseURL }}"-->
+        <p>while true:</p><p class="logo-continue">continue</p>
+      </a>
+    </header>
+
+      <!--Main Body Content-->
+      <main class="site-content grid">

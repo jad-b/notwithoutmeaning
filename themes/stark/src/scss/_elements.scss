@@ -1,0 +1,93 @@
+/*
+ * Element-based Styling
+ */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  display: flex;
+  flex-direction: column; /* Add vertically, not horiztonally */
+  flex: 1; /* Use all available space */
+  justify-content: center;
+  /* Forces footer to the bottom */
+  min-height: 100vh;
+  color: #555;
+  font: 400 /* font-weight */
+        1rem/1.6rem /* font-size/line-height */
+        "Sorts Mill Goudy", "Source Sans Pro", "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+a {
+  color: #4d4e53;
+  /*text-decoration: none;  no underline */
+}
+
+a:hover {
+  /*text-decoration: underline;*/
+  color: #166d99;
+}
+
+a:visited {
+  font-style: italic;
+}
+
+/* "Depress" quotes into a gray panel */
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5rem 10px;
+  padding: 0.5rem 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4rem;
+  line-height: 0.1rem;
+  margin-right: 0.25rem;
+  vertical-align: -0.4rem;
+}
+
+blockquote p {
+  display: inline;
+}
+
+footer {
+  background: #282828;
+  display: flex;
+  justify-content: space-between;
+  font-size: .9rem;
+}
+
+/* Wrapped h1's tend to overlap on themselves with the other line-heights */
+h1, h1 > a {
+  line-height: 2rem;
+}
+
+@media (max-width: 48em) {
+ html {
+  font-size: 90%;
+ }
+}
+
+/* Roughly half-screen on a desktop monitor */
+@media (min-width: 48em) {
+  html {
+    font-size: 105%;
+  }
+}
+
+/* Full-screen on a desktop monitor */
+@media (min-width: 1440px) {
+  html {
+    font-size: 120%;
+  }
+}

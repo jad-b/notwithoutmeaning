@@ -1,0 +1,14 @@
+baseurl = "http://jad-b.github.io"
+languageCode = "en-us"
+title = "not without meaning"
+theme = "cure"
+editor = "vi"
+
+disqusShortname = "not-without-meaning"
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+
+[params]
+description="The education of a curious man."

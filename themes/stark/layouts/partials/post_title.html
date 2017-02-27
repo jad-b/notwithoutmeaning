@@ -1,0 +1,18 @@
+<div class="grid content-title">
+
+  <!--Title-->
+  <h1 class="cell">
+    <a href="{{ .Permalink }}"> {{ .Title }} </a>
+  </h1>
+
+  {{ if .Draft }}<p class="cell draft-tag">DRAFT</p>{{ end }}
+
+  <!--Timestamp-->
+  <p class="cell content-timestamp">Last updated on {{ .Lastmod.Format "Mon, Jan 2, 2006" }}</p>
+
+</div>
+
+<!--Keywords-->
+{{ with .Params.tags }}
+<p class="content-keywords">{{ delimit . ", " }}</p>
+{{ end }}

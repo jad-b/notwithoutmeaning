@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+
+    <link rel="stylesheet" href="http://jad-b.github.io/css/stark.css">
+    <link rel="stylesheet" href="http://jad-b.github.io/css/prism.css">
+    <link rel="stylesheet" href="http://jad-b.github.io/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy|Lato:100,300,400,600">
+
+    
+    
+    <title> - while true: continue</title>
+    <meta content=" - The education of a curious man." property="og:description">
+    <meta content=" - while true: continue" property="og:title">
+    
+      
+    
+    
+
+  </head>
+
+  <body>
+
+    <header class="hero grid">
+      <a class="logo" href="#">
+        <p>while true:</p><p class="logo-continue">continue</p>
+      </a>
+    </header>
+
+      
+      <main class="site-content grid">
+
+
+<article>
+
+  <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="http://jad-b.github.io/sweng/DDoS%20Simulator/">  </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Mon, Jan 1, 0001</p>
+
+</div>
+
+
+
+
+
+  
+
+  
+
+<h1 id="thesis:9731617ea594a91f6f813d8b19dc4739">Thesis</h1>
+
+<p>Execute and record internet traffic scenarios.</p>
+
+<h1 id="summary:9731617ea594a91f6f813d8b19dc4739">Summary</h1>
+
+<p>An ideal test of traffic control combines both black-box testing and white-box
+monitoring. This requires being both in control of the traffic sources and
+sinks. Traffic sources can be orchestrated to execute Scenarios, instructions
+answering the questions &ldquo;what kind, how much, how often, and where&rdquo; where
+sending traffic, recording whether the traffic succeeded, failed, or is pending.
+Sinks listen for and record Scenario traffic. Analysis of the Scenario&rsquo;s outcome
+is available for later analysis.</p>
+
+<h1 id="explanation:9731617ea594a91f6f813d8b19dc4739">Explanation</h1>
+
+<ul>
+<li>The Problem</li>
+<li>The Solution</li>
+<li>Components
+
+<ul>
+<li>Scenario</li>
+<li>Source</li>
+<li>Sink</li>
+<li>Orchestrator</li>
+</ul></li>
+<li>Leveraging existing monitoring</li>
+<li>Post-Scenario Analysis</li>
+<li>Outstanding Questions</li>
+</ul>
+
+<p>DDoS is a crippling yet easily-obtained capability that threatens any internet
+presence. Recent examples include the Playstation Network, the journalist
+Brian Krebs, and Dyn, a DNS provider. Importantly, the recent attack on Dyn showed how
+single points of failure, such as DNS, can result in multi-company impact for a
+single attack. With companies for whom their online accessibility if critical to
+their services, correctly handling identified malicious traffic is key to their
+continued existence. This assumption, when coupled with the mantra &ldquo;that which
+is untested is broken&rdquo;, implies that without realistic yet safe means of
+simulating malicious traffic, all preparations aren&rsquo;t proven effective until the
+next attack. Can we do better?</p>
+
+<p>Simluating DDoS attacks requires a few</p>
+
+<p>Clients record route traffic into Client x Route tables. The cell of each table
+holds the State of the traffic: Pending, Success, or Failed. Metadata concerning
+the actual sending of the traffic is indexed by a FK of (Client, Route).</p>
+
+<p>Similar to Clients, Hosts store the State of route traffic in a Host x Route
+table. Given an arbitrary number of intermediate steps between a client and its
+destination, which a <code>traceroute</code> to a any given public service can display,
+hosts may not be able to easily identify whether or not they <em>should</em> receive a
+given Route&rsquo;s traffic. Some introspection may be possible for things like HTTP,
+where the Host: header can be examined, but other protocols may not offer such
+clues. Thus, (Host,Route) State must <em>assume</em> that they&rsquo;re not meant to receive
+traffic and begin in the Success state, changing to Failure upon receipt of
+traffic.</p>
+
+<h1 id="excrutiating-detail:9731617ea594a91f6f813d8b19dc4739">Excrutiating Detail</h1>
+
+
+</article>
+
+<div id="disqus_thread"></div>
+<script>
+   var disqus_config = function () {
+     this.page.url = "http:\/\/jad-b.github.io\/sweng\/DDoS%20Simulator\/";
+     
+   };
+
+  
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var d = document, s = d.createElement('script');
+
+    s.src = "//while-true-continue.disqus.com/embed.js";
+
+    s.setAttribute('data-timestamp', + new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+<noscript>Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+    comments powered by Disqus.
+  </a>
+</noscript>
+
+
+  </main>
+
+    <footer>
+
+      <span class="copyright">
+        <i class="fa fa-copyright"></i>
+        <a href="j.american.db@gmail.com">j.american.db@gmail.com</a>
+      </span>
+
+
+      <span class="profile-links">
+
+        
+        <a href="https://github.com/jad-b">
+          <img alt="jad-b @ GitHub"
+               src="http://jad-b.github.io/img/octocat.svg"
+               width="32"
+               height="32">
+        </a>
+
+        
+        <a href="https://www.goodreads.com/user/show/43556621-jeremy-dobbins-bucklad">
+          <img alt="Goodreads"
+               src="https://www.goodreads.com/assets/layout/header/nav_g_icon.svg"
+               width="32"
+               height="32">
+        </a>
+
+        
+        <iframe allowtransparency="true" scrolling="no" frameborder="no"
+          src="https://w.soundcloud.com/icon/?url=http%3A%2F%2Fsoundcloud.com%2Fjeremy-dobbins-bucklad&color=orange_white&size=32"
+          style="width: 32px; height: 32px;"></iframe>
+
+        
+        <a href="http://8tracks.com/herbert-finkleton">
+          <img alt="8Tracks"
+               src="http://images.8tracks.com/avatar/i/006/193/171/52608.original-3203.jpg?rect=0,0,500,500&q=98&fm=jpg&fit=max&w=56&h=56"
+               width="32"
+               height="32">
+        </a>
+      </span> 
+
+    </footer>
+
+  
+<script src="http://jad-b.github.iojs/prism.js" async></script>
+
+<script type="text/javascript" src="http://jad-b.github.iojs/MathJax.js" async></script>
+<script type="text/x-mathjax-config" defer>
+
+
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config" defer>
+  
+  
+  
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+
+<script id="dsq-count-scr" src="//while-true-continue.disqus.com/count.js" async></script>
+
+  </body>
+
+</html>
+

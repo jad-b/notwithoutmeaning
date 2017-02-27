@@ -1,0 +1,19 @@
+{{ partial "header.html" . }}
+
+{{ range first 10 (where .Data.Pages "Section" "post") }}
+  <section>
+    {{ partial "post_title.html" . }}
+    {{ with .Description }}
+      {{ . }}
+    {{ else }}
+      {{ .Summary }}
+    {{ end }}
+    {{ if .Truncated }}
+      <div class="read-more-link">
+        <a href="{{ .RelPermalink }}">Read more...</a.>
+      </div>
+    {{ end }}
+  </section>
+{{ end }}
+
+{{ partial "footer.html" . }}

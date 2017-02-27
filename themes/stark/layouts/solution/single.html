@@ -1,0 +1,16 @@
+{{ partial "header.html" . }}
+
+
+<article>
+  {{ partial "post_title.html" . }}
+
+  <blockquote> {{ .Params.question }} </blockquote>
+  <p> -- {{ .Params.problemid }}</p>
+
+  {{ .Content }}
+
+</article>
+
+{{ partial "disqus.html" . }}
+
+{{ partial "footer.html" . }}

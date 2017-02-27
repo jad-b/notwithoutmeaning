@@ -1,0 +1,18 @@
+{{ partial "header.html" . }}
+
+<article>
+
+  {{ partial "post_title.html" . }}
+
+  {{ if isset .Params "toc" }}
+    {{ .TableOfContents }}
+    <!--more-->
+  {{ end }}
+
+  {{ .Content }}
+
+</article>
+
+{{ partial "disqus.html" . }}
+
+{{ partial "footer.html" . }}

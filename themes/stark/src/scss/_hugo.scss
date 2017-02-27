@@ -1,0 +1,12 @@
+/*
+ * Overrides styles provided by vendor code, including Hugo's.
+ */
+
+.footnotes li {
+    display: flex;
+}
+
+.disqus_thread {
+  width: 100% !important;
+  height: 100% !important;
+}

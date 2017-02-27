@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thoughts on while true: continue</title>
+    <link>http://jad-b.github.io/categories/thoughts/</link>
+    <description>Recent content in Thoughts on while true: continue</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 10 Oct 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://jad-b.github.io/categories/thoughts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>On Learning</title>
+      <link>http://jad-b.github.io/post/On%20Learning/</link>
+      <pubDate>Sat, 10 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://jad-b.github.io/post/On%20Learning/</guid>
+      <description>
+
+&lt;h1 id=&#34;why-optimize-learning:7a16559f2e7bb44f60862eae17319468&#34;&gt;Why Optimize Learning?&lt;/h1&gt;
+
+&lt;p&gt;Why spend time learning &lt;em&gt;how&lt;/em&gt; to learn, instead of just learning what you want?
+What are the problems we overcome when learning? What are our goals?
+What are the short and long-term benefits from optimizing how we learn?&lt;/p&gt;
+
+&lt;h1 id=&#34;how-to-learn:7a16559f2e7bb44f60862eae17319468&#34;&gt;How to Learn&lt;/h1&gt;
+
+&lt;h2 id=&#34;figuring-out-what-to-learn:7a16559f2e7bb44f60862eae17319468&#34;&gt;Figuring Out What to Learn&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Guess at a topic&lt;/li&gt;
+&lt;li&gt;Overreach
+
+&lt;ol&gt;
+&lt;li&gt;Identify what you&amp;rsquo;re confused by.
+
+&lt;ul&gt;
+&lt;li&gt;Write down every word, concept, and reference you don&amp;rsquo;t understand.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Find the prerequisite concepts for what confuses you.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Repeat until you&amp;rsquo;re on known ground.&lt;/li&gt;
+&lt;li&gt;Gather resources
+
+&lt;ol&gt;
+&lt;li&gt;Identify at least three resources. Each should take a different
+approach: different wording, different examples, different formats
+(slide deck, pdf, video, q&amp;amp;a).&lt;/li&gt;
+&lt;li&gt;Scope the material
+
+&lt;ol&gt;
+&lt;li&gt;Table of contents from textbooks&lt;/li&gt;
+&lt;li&gt;Syllabus from a college course&lt;/li&gt;
+&lt;li&gt;Progression of a YouTube video series&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;how-to-study:7a16559f2e7bb44f60862eae17319468&#34;&gt;How to Study&lt;/h2&gt;
+
+&lt;h3 id=&#34;learn:7a16559f2e7bb44f60862eae17319468&#34;&gt;Learn&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;(Optional) These may help in getting more out of a session.
+
+&lt;ol&gt;
+&lt;li&gt;Guess at Why it matters, and What problem it solves.  1. Look at some problems beforehand 1. Come up with questions&lt;/li&gt;
+&lt;li&gt;Warm-up by skimming the material, or reading a higher-level resource like
+slides or an introductory text.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Begin
+
+&lt;ol&gt;
+&lt;li&gt;Note your start time.&lt;/li&gt;
+&lt;li&gt;(Optional) Set a timer. This can help focus you on the task at hand.
+You may want to set enough time aside to perform a wrap-up of your notes.&lt;/li&gt;
+&lt;li&gt;Note questions and missing prerequisites as you go.
+
+&lt;ul&gt;
+&lt;li&gt;Jargon you need to define, statements you don&amp;rsquo;t understand, completely mysterious
+concepts.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Write, like with a pen, down difficult sections to work through. Writing
+shows superior assistance in retention over typing&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:7a16559f2e7bb44f60862eae17319468:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:7a16559f2e7bb44f60862eae17319468:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/li&gt;
+&lt;li&gt;Consume material until confused (%50 comprehension), or out of time.
+
+&lt;ol&gt;
+&lt;li&gt;Note your end time, and calculate your adjusted velocity:
+(pages read / time spent) * % comprehension = pg/min&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;review:7a16559f2e7bb44f60862eae17319468&#34;&gt;Review&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Attempt to recall material before referring to external resources.
+
+&lt;ol&gt;
+&lt;li&gt;Outlining key concepts can assist in reminding you what you learned.
+It can also help for classifying the concept.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Every review, attempt to re-summarize what you wrote previously. Eventually
+contain it down to a sentence or two.&lt;/li&gt;
+&lt;li&gt;Use your list of questions you built while learning to lookup answers.&lt;/li&gt;
+&lt;li&gt;Indicate relationships to other topics.&lt;/li&gt;
+&lt;li&gt;Use a system, like Anki SRS, for long-term memorization
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://rs.io/anki-tips/&#34;&gt;http://rs.io/anki-tips/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.reddit.com/r/medicalschool/comments/4ocdyb/a_list_of_anki_tips_and_suggestions_that_i_wrote/&#34;&gt;https://www.reddit.com/r/medicalschool/comments/4ocdyb/a_list_of_anki_tips_and_suggestions_that_i_wrote/&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;lessons-learned:7a16559f2e7bb44f60862eae17319468&#34;&gt;Lessons Learned&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Don&amp;rsquo;t learn faster than you can review&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;study-template:7a16559f2e7bb44f60862eae17319468&#34;&gt;Study Template&lt;/h3&gt;
+
+&lt;p&gt;By following the below template, you perform the critical actions needed to
+enhance your understanding.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;##### Before
+What&#39;s the problem)
+
+Why is this a problem?)
+
+**Action: Skim material**
+
+Theme of HW Problems)
+
+Initial Questions)
+
+##### During
+**Action: Start timer**
+
+Key Concepts)
+
+Relationships)
+
+Notes)
+
+Questions)
+
+Unknowns)
+
+##### After
+**Action: Stop timer**
+
+Review Questions)
+
+Feynman)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;how-to-apply:7a16559f2e7bb44f60862eae17319468&#34;&gt;How to Apply&lt;/h2&gt;
+
+&lt;h3 id=&#34;lessons-learned-1:7a16559f2e7bb44f60862eae17319468&#34;&gt;Lessons Learned&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Doing problems is insufficient as a review, but, for some reason, critical for
+developing a complete understanding.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;doing-problems:7a16559f2e7bb44f60862eae17319468&#34;&gt;Doing Problems&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Discovery: Read the problems, w/o attempting to solve them.&lt;/li&gt;
+&lt;li&gt;Understanding: Read the problems, and solve them in a high-level way.&lt;/li&gt;
+&lt;li&gt;Remembering: Solve the problems which you deem to give you the most value.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Apply the five methods from CCtI:
+1. Examplify: Write out examples, look for the pattern
+2. Pattern Matching: What is the problem similar to?
+3. Simplify &amp;amp; Generalize: Solve a simpler version of the problem, then abstract
+   it to solve the larger case.
+4. Base Case &amp;amp; Build: Solve the problem for a single element. Think &amp;ldquo;recursion&amp;rdquo;.
+5. Data Structure Brainstorm: Try to apply every data structure you can think of
+   until something sticks.&lt;/p&gt;
+
+&lt;h3 id=&#34;apply:7a16559f2e7bb44f60862eae17319468&#34;&gt;Apply&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Begin by conducting a Review.&lt;/li&gt;
+&lt;li&gt;Solve problems or build something
+
+&lt;ol&gt;
+&lt;li&gt;Use a timer to focus.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Cap at 30 minutes. If still unsolved, look up the solution, but reschedule as
+it like any other problem.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Q.&lt;/strong&gt; Scheduling: How often should problems be worked? Re-worked?&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;talking-to-myself:7a16559f2e7bb44f60862eae17319468&#34;&gt;Talking to myself&lt;/h3&gt;
+
+&lt;h4 id=&#34;on-homework-problems:7a16559f2e7bb44f60862eae17319468&#34;&gt;On Homework Problems&lt;/h4&gt;
+
+&lt;p&gt;I remember spending the summer before my senior year doing hundreds of chemistry
+problems, as assigned to me by my AP Chemistry teacher. For weeks straight, I
+spent hours a day churning through them. Did I come to understand stoichoimetry?
+Uh huh. And it&amp;rsquo;s with experiences like this, and the continuing assignment of
+homework in school, that makes me think doing homework &lt;em&gt;does&lt;/em&gt; increase
+understanding. But where do the diminishing returns lie?&lt;/p&gt;
+
+&lt;p&gt;Ever since hearing Ben Vigoda mention off-hand during an OSCON 2015 presentation
+on probabilistic programming that research has shown humans can learn to
+recognize a new object after about 3-5 exposures, I&amp;rsquo;ve wondered if there&amp;rsquo;s a bit
+of magic to that range. Coupling that with phenomenon like Spaced Repetition for
+studying, can we arrive at a approximately-optimal solution for studying?&lt;/p&gt;
+
+&lt;p&gt;I think we can. Say you&amp;rsquo;re reading a textbook split into chapters, with sections
+within those chapters. I propose a schedule like this:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Day one) Read the first section of the first chapter.&lt;/li&gt;
+&lt;li&gt;Day two) Read the second section, and do 2-3 problems from the first section.&lt;/li&gt;
+&lt;li&gt;Day three) Read the third section, do 2-3 problems from the second section,
+and 1 problem from the first section.&lt;/li&gt;
+&lt;li&gt;Day four) Read fourth section; 2 problems from third, 1 problem from second&lt;/li&gt;
+&lt;li&gt;Day five) Chapter&amp;rsquo;s finished; do 2 end-of-chapter problems, 2 fourth section
+problems, 1 third section problem.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can view the schedule as a table, with rows of topics, columns of dates, and
+cells holding the action you took to learn. The action could be solving a
+problem, reading a section, or reviewing your notes; intuitively, it makes sense
+to read the material, work on some problems, and save review for the long game.&lt;/p&gt;
+
+&lt;p&gt;The problem&amp;rsquo;s been defined; how can we automate? At its simplest, we have an
+ever-growing queue of work that needs to be scheduled at some point in the
+future. There&amp;rsquo;s also a hierarchy amongst topics that we&amp;rsquo;ll want to leverage; obviously
+the sections of a chapter are grouped together for a reason. Come a year from
+now, we want our review to be focused on the &lt;em&gt;chapter&lt;/em&gt;, not on problem 4.2-5.
+Indeed, the problems are simply tools for the much more valuable concepts they
+engage us with.&lt;/p&gt;
+
+&lt;p&gt;SuperMemo has a distinction between &lt;em&gt;topics&lt;/em&gt; and &lt;em&gt;items&lt;/em&gt; which I think applies
+here. To a point, we can treat the structure recursively; scholarly fields keep
+their information in textbooks, which have chapters, which have sections. At the
+lowest point, we must distinguish between the tools we use to learn at the
+topics we wish to learn.&lt;/p&gt;
+
+&lt;h2 id=&#34;how-to-measure:7a16559f2e7bb44f60862eae17319468&#34;&gt;How to Measure&lt;/h2&gt;
+
+&lt;h3 id=&#34;data-collection:7a16559f2e7bb44f60862eae17319468&#34;&gt;Data Collection&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Reading
+
+&lt;ul&gt;
+&lt;li&gt;Topic of section/chapter/textbook&lt;/li&gt;
+&lt;li&gt;Time spent reading&lt;/li&gt;
+&lt;li&gt;Number of pages read&lt;/li&gt;
+&lt;li&gt;% comprehension&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Watching
+
+&lt;ul&gt;
+&lt;li&gt;Time of video v. time spent watching&lt;/li&gt;
+&lt;li&gt;% comprehension&lt;/li&gt;
+&lt;li&gt;Topic of video/video series&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;# of notes taken&lt;/li&gt;
+&lt;li&gt;# of questions raised&lt;/li&gt;
+&lt;li&gt;# of unknowns&lt;/li&gt;
+&lt;li&gt;Quality of material (1-10 ranking)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;quick-reference:7a16559f2e7bb44f60862eae17319468&#34;&gt;Quick Reference&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Learn
+
+&lt;ol&gt;
+&lt;li&gt;Warm-up
+
+&lt;ol&gt;
+&lt;li&gt;What is the problem? Why does it matter?&lt;/li&gt;
+&lt;li&gt;(If Applicable) Review problems.&lt;/li&gt;
+&lt;li&gt;Come up with additional questions.&lt;/li&gt;
+&lt;li&gt;Skim material or warm-up with alt. introductory material&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Set a timer&lt;/li&gt;
+&lt;li&gt;Write down questions and unknowns.&lt;/li&gt;
+&lt;li&gt;Work through difficult sections by hand&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Review
+
+&lt;ol&gt;
+&lt;li&gt;Write-up what you learned
+
+&lt;ol&gt;
+&lt;li&gt;Attempt to recall from memory&lt;/li&gt;
+&lt;li&gt;Outline key concepts to assist.&lt;/li&gt;
+&lt;li&gt;Use Feynman Technique&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Summarize previous reviews.&lt;/li&gt;
+&lt;li&gt;Note relationships to other topics&lt;/li&gt;
+&lt;li&gt;Lookup answers to questions&lt;/li&gt;
+&lt;li&gt;Create Anki cards.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Apply
+
+&lt;ol&gt;
+&lt;li&gt;Perform a review&lt;/li&gt;
+&lt;li&gt;Set a timer&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;other-methodologies:7a16559f2e7bb44f60862eae17319468&#34;&gt;Other Methodologies&lt;/h1&gt;
+
+&lt;h2 id=&#34;how-to-read-a-book:7a16559f2e7bb44f60862eae17319468&#34;&gt;How to Read a Book&lt;/h2&gt;
+
+&lt;h3 id=&#34;discover-inspectional:7a16559f2e7bb44f60862eae17319468&#34;&gt;Discover (Inspectional)&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Discern the &lt;em&gt;structure&lt;/em&gt; by reading the key elements
+
+&lt;ol&gt;
+&lt;li&gt;Generate questions&lt;/li&gt;
+&lt;li&gt;Highlight what &lt;em&gt;seem to be&lt;/em&gt; key points&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Answer key questions&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Who is the author?&lt;/li&gt;
+&lt;li&gt;What are the book&amp;rsquo;s arguments?&lt;/li&gt;
+&lt;li&gt;What is the evidence that supports these?&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;What are the book&amp;rsquo;s conclusions?
+1.&lt;/p&gt;
+
+&lt;h3 id=&#34;understand-analytical:7a16559f2e7bb44f60862eae17319468&#34;&gt;Understand (Analytical)&lt;/h3&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Re-read, taking more time.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Attempt to answer questions from the Discover phase&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;remember:7a16559f2e7bb44f60862eae17319468&#34;&gt;Remember&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Consolidate your notes about the assumptions, arguments, evidence, and
+conclusions. Sort of like a Feynman, but with more detail.&lt;/li&gt;
+&lt;li&gt;Create a &lt;strong&gt;rehearsal schedule&lt;/strong&gt;, using notes that &lt;em&gt;you&amp;rsquo;ve&lt;/em&gt; determined to be
+key from your readings.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;time-feriss-disss:7a16559f2e7bb44f60862eae17319468&#34;&gt;Time Feriss&amp;rsquo; DiSSS&lt;/h2&gt;
+
+&lt;h2 id=&#34;sq3r:7a16559f2e7bb44f60862eae17319468&#34;&gt;SQ3R&lt;/h2&gt;
+
+&lt;h1 id=&#34;what-can-we-learn-fron-teachers:7a16559f2e7bb44f60862eae17319468&#34;&gt;What Can We Learn Fron Teachers?&lt;/h1&gt;
+
+&lt;h2 id=&#34;harvard-university-s-teaching-for-understanding-project-zero:7a16559f2e7bb44f60862eae17319468&#34;&gt;Harvard University&amp;rsquo;s Teaching for Understanding/Project Zero&lt;/h2&gt;
+
+&lt;h2 id=&#34;berkely-the-how-students-learn-project:7a16559f2e7bb44f60862eae17319468&#34;&gt;Berkely: The How Students Learn Project&lt;/h2&gt;
+
+&lt;h1 id=&#34;good-quotes:7a16559f2e7bb44f60862eae17319468&#34;&gt;Good Quotes&lt;/h1&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&amp;hellip;and what matters most is Understanding. And Understanding starts with &amp;ldquo;What Matters&amp;rdquo; - &lt;a href=&#34;http://www.quora.com/How-do-I-get-started-in-Artificial-Intelligence&#34;&gt;Quora:
+Forays into AI&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;because we get better with practice as we get more experience, which is a
+hallmark of any Intuition based skill - &lt;a href=&#34;http://syntience.com/rch.pdf&#34;&gt;Reductionism Considered Harmful&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This is another hallmark of Intuition based skills: they cannot be taught as
+high level rules, they have to be experienced bottom up. This is,
+incidentally, also the difference between Teaching and Coaching - [ibid]&lt;/p&gt;
+
+&lt;p&gt;Forgetting what you&amp;rsquo;ve learned from a class is not the course&amp;rsquo;s fault. Without
+spaced, repetitive recall, no memories will be formed. - [me]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;[grounding]: to give (something abstract) a firm theoretical or practical basis&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:7a16559f2e7bb44f60862eae17319468:1&#34;&gt;Ref needed.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:7a16559f2e7bb44f60862eae17319468:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

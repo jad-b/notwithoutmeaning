@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+
+    <link rel="stylesheet" href="http://jad-b.github.io/css/stark.css">
+    <link rel="stylesheet" href="http://jad-b.github.io/css/prism.css">
+    <link rel="stylesheet" href="http://jad-b.github.io/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy|Lato:100,300,400,600">
+
+    
+    
+    <title>ODSC 2016 - Friday - while true: continue</title>
+    <meta content=" - The education of a curious man." property="og:description">
+    <meta content="ODSC 2016 - Friday - while true: continue" property="og:title">
+    
+      
+      <meta content="conference, notes, programming, data, machine learning" name="keywords">
+      
+    
+    
+
+  </head>
+
+  <body>
+
+    <header class="hero grid">
+      <a class="logo" href="#">
+        <p>while true:</p><p class="logo-continue">continue</p>
+      </a>
+    </header>
+
+      
+      <main class="site-content grid">
+
+
+<article>
+
+  <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="http://jad-b.github.io/notes/ODSC2016%20-%20Friday/"> ODSC 2016 - Friday </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Fri, May 20, 2016</p>
+
+</div>
+
+
+
+<p class="content-keywords">conference, notes, programming, data, machine learning</p>
+
+
+
+  
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#friday-morning:5a52b66b245ed92b1d2f83a5b6b5f33d">Friday - Morning</a>
+<ul>
+<li><a href="#building-a-recommendation-system:5a52b66b245ed92b1d2f83a5b6b5f33d">Building a Recommendation System</a>
+<ul>
+<li><a href="#spark:5a52b66b245ed92b1d2f83a5b6b5f33d">Spark</a>
+<ul>
+<li><a href="#spark-2-0:5a52b66b245ed92b1d2f83a5b6b5f33d">Spark 2.0</a></li>
+<li><a href="#probabilistic-data-structures:5a52b66b245ed92b1d2f83a5b6b5f33d">Probabilistic data structures</a></li>
+</ul></li>
+<li><a href="#lessons-from-netflix:5a52b66b245ed92b1d2f83a5b6b5f33d">Lessons from Netflix</a>
+<ul>
+<li><a href="#data-pipeline:5a52b66b245ed92b1d2f83a5b6b5f33d">Data Pipeline</a></li>
+<li><a href="#the-netflix-prize:5a52b66b245ed92b1d2f83a5b6b5f33d">The Netflix Prize</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#friday-afternoon:5a52b66b245ed92b1d2f83a5b6b5f33d">Friday - Afternoon</a>
+<ul>
+<li><a href="#deploying-serving-models:5a52b66b245ed92b1d2f83a5b6b5f33d">Deploying &amp; Serving models</a></li>
+<li><a href="#good-cool-ideas:5a52b66b245ed92b1d2f83a5b6b5f33d">Good &amp; Cool ideas</a></li>
+<li><a href="#resources:5a52b66b245ed92b1d2f83a5b6b5f33d">Resources</a></li>
+</ul></li>
+</ul>
+</nav>
+    
+  
+
+  
+
+<p><strong>Goto</strong>: <a href="No page found with path or logical name "post/ODSC2016 - Saturday.md".
+">Saturday</a> &amp;
+<a href="No page found with path or logical name "post/ODSC2016 - Sunday.md".
+">Sunday&rsquo;s</a> notes.</p>
+
+<h1 id="friday-morning:5a52b66b245ed92b1d2f83a5b6b5f33d">Friday - Morning</h1>
+
+<h2 id="building-a-recommendation-system:5a52b66b245ed92b1d2f83a5b6b5f33d">Building a Recommendation System</h2>
+
+<p>Speaker: <a href="https://www.linkedin.com/in/cfregly">Chris Fregly</a></p>
+
+<h3 id="spark:5a52b66b245ed92b1d2f83a5b6b5f33d">Spark</h3>
+
+<p><strong>On Spark &amp; Tableau (or Redshift):</strong></p>
+
+<p>When you&rsquo;re connecting Tableau to Spark, it&rsquo;s all going through one JVM, the HiveThrift
+server (which converts SQL into Java talk).  You want to make sure you&rsquo;re pushding down as
+much computation as possible to Spark, saving the HiveThrift server cycles. This way you
+collect the results of your computation for display in your visualization engine.</p>
+
+<p><strong>On Graph Analysis</strong>
+If you&rsquo;re doing network analysis using Spark, look at using GraphFrames over GraphX.
+GraphFrames is fully supported in Spark2. Both are only good for offline graph analytics;
+transactional graph queries should be loaded into a dedicated Graph DB like Neo4j.</p>
+
+<p>People don&rsquo;t seem to test these systems! I suppose if you&rsquo;re already monitoring
+performance and model prediction accuracy, you <em>are</em> testing them. And it&rsquo;d be easy enough
+to mock up I/O for subsets to confirm functionality.</p>
+
+<p><code>Spark - Packages</code>: a marketplace for Spark packages</p>
+
+<h4 id="spark-2-0:5a52b66b245ed92b1d2f83a5b6b5f33d">Spark 2.0</h4>
+
+<p>Big focus on codegen: A <code>map</code> followed by a <code>filter</code> will get re-written into a single method, reducing function calls.
+Relies on <a href="http://unkrig.de/w/Janino">Project Janino</a>.</p>
+
+<p>Lot of talk about
+<a href="https://databricks.com/blog/2015/04/28/project-tungsten-bringing-spark-closer-to-bare-metal.html">Tungsten</a>,
+to include new low-level data structures, code generation, and more.</p>
+
+<p>Spark 2.0 will support exporting models as PMML. PMML is the common data representation of ML models.</p>
+
+<h4 id="probabilistic-data-structures:5a52b66b245ed92b1d2f83a5b6b5f33d">Probabilistic data structures</h4>
+
+<p>Paco Nathan: Good work on probabilistic structures. <a href="https://www.linkedin.com/in/ceteri">https://www.linkedin.com/in/ceteri</a></p>
+
+<p>When you allow the possibility of error into your queries, a 14 bit structure can store
+1e9 counts, w/ an error of .81%,</p>
+
+<ul>
+<li><strong>HyperLogLog</strong>
+
+<ul>
+<li>Particular hash function used by HLL guarantees the data will be uniformly distributed.
+Something about taking subsets of the data.</li>
+<li>If you have guaranteed uniform distribution, you can check for a distinct number of
+users by only checking the beginning of the structure. Similar to Numenta&rsquo;s SDR
+bitmasks.</li>
+</ul></li>
+<li><strong>CountMin Sketch</strong>
+
+<ul>
+<li>Creates a (# of hash functions, # of bits) table. Every item gets an entry in each
+row (per hash function). Each table cell is a count of how many times a hash
+function has created that bit value. When you want the count for an item, you hash
+it, and take the <em>minimum</em> of all rows. You&rsquo;re guaranteed to always be &gt;= the <em>true</em>
+count of the item. The <code>&gt;</code> is due to overlap with other items.</li>
+</ul></li>
+<li>Also: <a href="https://en.wikipedia.org/wiki/Bloom_filter"><strong>Bloom Filters</strong></a></li>
+<li>Size in Memory of 1e6 item
+
+<ul>
+<li>HyperLogLog: 16,472 bytes</li>
+<li>Naive Array: 4,800,016 bytes</li>
+<li>CountMin Sketch: 310,944 bytes</li>
+</ul></li>
+</ul>
+
+<p>Came across this <a href="https://en.wikipedia.org/wiki/Bloom_filter">overview</a> when looking up
+info on HyperLogLog.</p>
+
+<h3 id="lessons-from-netflix:5a52b66b245ed92b1d2f83a5b6b5f33d">Lessons from Netflix</h3>
+
+<blockquote>
+<p>A logging company that also streams movies</p>
+</blockquote>
+
+<p>Chris worked on the Netflix Streaming Services team as a Data Engineer, and his experience
+there came up in many examples.</p>
+
+<p>Stated &ldquo;Netflix tends to build over buy&rdquo;; if you take their <a href="https://github.com/netflix">GitHub
+repo</a> organization as a good representation of what they&rsquo;ve
+built, that&rsquo;s 111 repos worth of projects (as of 2016May23, using <code>curl</code> + <code>jq</code>). Of
+course, they&rsquo;ve already severly limited how much they have to build by heavily leveraging
+the capabilities of AWS.</p>
+
+<p>Noted they&rsquo;ve been using <a href="https://prestodb.io/">Presto</a>, a ANSI SQL tool for querying
+multiple datasources at once, for ad-hoc analytics. Presto replaces Apache Hive, as long
+as you don&rsquo;t need fault tolerance, as it stores its intermediate results in memory.</p>
+
+<p>As the number of microservices grew, breakages in one API tended to bring down a <em>lot</em> of
+services. Interestingly, <a href="https://www.linkedin.com/in/adriancockcroft">Adrian Cockcroft</a> mentioned these breakages
+tend to show one-level away from the root of the problem in the <em>dependent</em> APIs, which is
+echoes a lesson learned in Athletic Training: Pain starts up the chain. To combat these
+breakages, they developed <a href="https://www.linkedin.com/in/adriancockcroft">Hystrix</a>.
+Hystrix implements the <a href="http://martinfowler.com/bliki/CircuitBreaker.html">Circuit Breaker
+pattern</a>. I haven&rsquo;t dived into the
+library well enough to know exactly, but I know it solved a few problems:</p>
+
+<ol>
+<li>What broke?</li>
+<li>What&rsquo;s the fallback?</li>
+<li>Metric gathering on API requests.</li>
+</ol>
+
+<p>Also: <code>Hystrix</code> can collapse multiple requests for the same object into one. Natural if
+you&rsquo;ve got a connector library going in between all of your API requests.</p>
+
+<p>Has Hystrix been re-implemented in any other languages?</p>
+
+<h4 id="data-pipeline:5a52b66b245ed92b1d2f83a5b6b5f33d">Data Pipeline</h4>
+
+<p><a href="http://www.slideshare.net/cfregly/dc-spark-users-group-march-15-2016-spark-and-netflix-recommendations">Slideshare here, goto slide 104</a></p>
+
+<ol>
+<li>v1 - Producers =&gt; Chukwa =&gt; S3 =&gt; EMR</li>
+<li>v2 - Producers =&gt; Chukwa {=&gt; S3 =&gt; EMR} &amp; {=&gt; Kafka =&gt; Stream Consumers &amp; more}</li>
+<li>v3 - Producers =&gt; Kafka =&gt; Router =&gt; {S3, ElasticSearch, {Kafka =&gt; Stream Consumers}}</li>
+</ol>
+
+<p>Netflix runs a 10k node Memcached cluster that ML models get loaded into, amongst apparently everything else.</p>
+
+<h4 id="the-netflix-prize:5a52b66b245ed92b1d2f83a5b6b5f33d">The Netflix Prize</h4>
+
+<p>Background: Given (movieID, userID, userRating, timestamp), improve predictions by 10%.
+For a long time, the improvment was stuck around 7%. The key was when <em>timestamp</em> got
+incorporated into the predictive models. Essentially, they had to adjust for each humans&rsquo;
+bias. Some examples of said bias adjustments:</p>
+
+<ol>
+<li>Alice effect: Alice rates lower than avg.</li>
+<li>Inception effect: Certain movies always get rated above avg</li>
+<li>Overall mean rating of a movie; high ratings encourage high ratings</li>
+<li># of people who&rsquo;ve rated a movie</li>
+<li># of days since user&rsquo;s first rating</li>
+<li># of days since movie&rsquo;s first rating</li>
+<li>Mood, time of day, day of week</li>
+</ol>
+
+<h1 id="friday-afternoon:5a52b66b245ed92b1d2f83a5b6b5f33d">Friday - Afternoon</h1>
+
+<h2 id="deploying-serving-models:5a52b66b245ed92b1d2f83a5b6b5f33d">Deploying &amp; Serving models</h2>
+
+<p><a href="https://tensorflow.github.io/serving/">TensorFlow Serving</a> provides a means of deploying
+and running predictions on the models.</p>
+
+<p><code>Dstream</code> is the RDD of Spark Streaming; the mini-batch that&rsquo;s just come in.
+Holden Karrau - High Performance Spark talks about using RDDs in place of DataFrames</p>
+
+<p>What he&rsquo;d use in a Production-ready system today:</p>
+
+<ul>
+<li>Workflow: Airflow. Describe DAGs of tasks in Python.</li>
+<li>Extract-Transform-Load (ETL): PySpark. More Python than Java/Scala datasci people running around.</li>
+<li>Serving layer: Redis. Rock-solid, very fast.</li>
+<li>Data Stitching: nifi (maybe). Collects info from many many sources and convert into a single format.</li>
+<li>Storage: Elasticsearch to begin, and maybe forever. Scales well, good APIs; use it until you can&rsquo;t.
+
+<ul>
+<li>Spark-Elasticsearch connector is very advanced; takes advantage of data locality</li>
+<li>Starting to tout itself as a GraphDB?</li>
+</ul></li>
+<li>Monitoring: Ganglia.</li>
+<li>Logging: ELK fo&rsquo; sho&rsquo;</li>
+<li>Queueing: Kafka, if you have the ops team to support it. Otherwise, check out AWS Kinesis.</li>
+<li>Streaming
+
+<ul>
+<li>Kafka Streams or Flink. May want to &ldquo;write to the Apache Beam API&rdquo; - came out of Google.</li>
+<li>Storm is proven, but not getting a lot of new development. Twitter has written an API-compatible replacement
+called Heron.</li>
+<li>Flink has a first-class processing for Complex Data Processing - whatever that
+means.</li>
+</ul></li>
+<li>Machine Learning: Depends on your language preference. If Python, then TensorFlow, sklearn, nltk.</li>
+<li>IDL: Spark is <em>all about</em> Parquet. In-memory version is Apache Arrow.
+
+<ul>
+<li>SparkSQL is the most mature. Edit: A later speaker from Terabyte remarked on
+SparkSQL being the most <em>immature</em>, when compared to Apache Hive, Impala, Drill.</li>
+<li>Any project Michael Armbrust is on is going to be developed well</li>
+</ul></li>
+</ul>
+
+<h2 id="good-cool-ideas:5a52b66b245ed92b1d2f83a5b6b5f33d">Good &amp; Cool ideas</h2>
+
+<p>Spark&rsquo;s <code>new StandardScaler=(withMean=True, withStd=False)</code> lets you toggle how you feature scale.
+PCA wants mean normalization, without std dev, but linear regression will want both.</p>
+
+<p><code>TextRank</code>: Finds the sentence that best summarizes the corpus.</p>
+
+<p>Cluster density can be measured by WSSSE (Within Set Sum of Squared Errors); lower is better.</p>
+
+<p>Speaker mentioned anecdotally that 2 or 3 friends in the last 6 months had ditched
+Cassandra clusters in favor of ElasticSearch.</p>
+
+<p>You don&rsquo;t want to be doing read-heavy analytics on your write-heavy Cassandra
+cluster; either have two separate clusters and setup replication from W=&gt;R, or
+read the SSTable files off the disk.</p>
+
+<p>StitchFix - Fill out preferences for clothes, then a stylist selects five items to ship you. Anything you send back you
+fill out why you don&rsquo;t like it. NLP interpets the written response, neural nets learn the style, and they&rsquo;ll even ship
+feedback to the designers saying what they&rsquo;ve learned.</p>
+
+<p>Interesting thing to note: Often mentioned new technologies as a &ldquo;recruiting point&rdquo;.</p>
+
+<p>skflow: A scikit-learn API compatible replacment with TensorFlow as a backend.</p>
+
+<h2 id="resources:5a52b66b245ed92b1d2f83a5b6b5f33d">Resources</h2>
+
+<p>&ldquo;Jupyter notebooks for developers&rdquo; &amp; &ldquo;Matplotlib for Developers&rdquo; from O&rsquo;Reilly.</p>
+
+
+</article>
+
+<div id="disqus_thread"></div>
+<script>
+   var disqus_config = function () {
+     this.page.url = "http:\/\/jad-b.github.io\/notes\/ODSC2016%20-%20Friday\/";
+     
+   };
+
+  
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var d = document, s = d.createElement('script');
+
+    s.src = "//while-true-continue.disqus.com/embed.js";
+
+    s.setAttribute('data-timestamp', + new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+<noscript>Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+    comments powered by Disqus.
+  </a>
+</noscript>
+
+
+  </main>
+
+    <footer>
+
+      <span class="copyright">
+        <i class="fa fa-copyright"></i>
+        <a href="j.american.db@gmail.com">j.american.db@gmail.com</a>
+      </span>
+
+
+      <span class="profile-links">
+
+        
+        <a href="https://github.com/jad-b">
+          <img alt="jad-b @ GitHub"
+               src="http://jad-b.github.io/img/octocat.svg"
+               width="32"
+               height="32">
+        </a>
+
+        
+        <a href="https://www.goodreads.com/user/show/43556621-jeremy-dobbins-bucklad">
+          <img alt="Goodreads"
+               src="https://www.goodreads.com/assets/layout/header/nav_g_icon.svg"
+               width="32"
+               height="32">
+        </a>
+
+        
+        <iframe allowtransparency="true" scrolling="no" frameborder="no"
+          src="https://w.soundcloud.com/icon/?url=http%3A%2F%2Fsoundcloud.com%2Fjeremy-dobbins-bucklad&color=orange_white&size=32"
+          style="width: 32px; height: 32px;"></iframe>
+
+        
+        <a href="http://8tracks.com/herbert-finkleton">
+          <img alt="8Tracks"
+               src="http://images.8tracks.com/avatar/i/006/193/171/52608.original-3203.jpg?rect=0,0,500,500&q=98&fm=jpg&fit=max&w=56&h=56"
+               width="32"
+               height="32">
+        </a>
+      </span> 
+
+    </footer>
+
+  
+<script src="http://jad-b.github.iojs/prism.js" async></script>
+
+<script type="text/javascript" src="http://jad-b.github.iojs/MathJax.js" async></script>
+<script type="text/x-mathjax-config" defer>
+
+
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config" defer>
+  
+  
+  
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+
+<script id="dsq-count-scr" src="//while-true-continue.disqus.com/count.js" async></script>
+
+  </body>
+
+</html>
+

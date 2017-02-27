@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+
+    <link rel="stylesheet" href="http://jad-b.github.io/css/stark.css">
+    <link rel="stylesheet" href="http://jad-b.github.io/css/prism.css">
+    <link rel="stylesheet" href="http://jad-b.github.io/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy|Lato:100,300,400,600">
+
+    
+    
+    <title>about - while true: continue</title>
+    <meta content=" - The education of a curious man." property="og:description">
+    <meta content="about - while true: continue" property="og:title">
+    
+      
+      <meta content="software engineering" name="keywords">
+      
+    
+    
+
+  </head>
+
+  <body>
+
+    <header class="hero grid">
+      <a class="logo" href="#">
+        <p>while true:</p><p class="logo-continue">continue</p>
+      </a>
+    </header>
+
+      
+      <main class="site-content grid">
+
+
+<article>
+
+  <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="http://jad-b.github.io/seprimer/about/"> about </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Sat, Dec 17, 2016</p>
+
+</div>
+
+
+
+<p class="content-keywords">software engineering</p>
+
+
+
+  
+
+  
+
+<h2 id="the-motivation-for-this-book:6083a88ee3411b0d17ce02d738f69d47">The Motivation For This Book</h2>
+
+<p>This book aims to provide Software Engineers with sensible, modern defaults for
+for delivering high-quality software. It goes further in that it also tries to
+<em>teach</em> the process behind arriving at these decisions, enabling engineers to
+start with the suggestions in this book, modify them in the light of real-life
+situations, and arrive at the optimal outcome.</p>
+
+<p>Develop as an engineer, produce superior work, and save time along the way - not
+bad for reading sequences of words that we collectively made-up out of also
+made-up symbols. Kind of amazing any of this works, actually. But I digress.</p>
+
+<h2 id="who-should-read-this-book:6083a88ee3411b0d17ce02d738f69d47">Who Should Read This Book</h2>
+
+<p>Junior-ish engineers, by which I&rsquo;ll define as having less than five years
+experience, will probably get the most out of this book. This is assuming that
+this engineer is destined for greatness anyway, and that giving them missing
+information gives them a jump on the path before them.</p>
+
+<p>TODO: Building a house</p>
+
+<p>That said, lets interpolate the ideal case to the common. Anyone who feels like
+they&rsquo;ve stagnated in their development, perhaps from a less-than-modern development
+culture, could benefit from <em>parts</em> of the book. Get your logging standards
+up-to-par, or base your team&rsquo;s pre-deployment security checklist off of the one
+here. Notice I said &ldquo;base&rdquo; - this book provides sensible defaults, with the
+rationale that you</p>
+
+<h2 id="what-this-book-is-not:6083a88ee3411b0d17ce02d738f69d47">What this book is <em>not</em></h2>
+
+<p>This book does not to teach you how to program. It assumes you know how to
+program, or are actively learning to <em>right now</em>. If the phrase &ldquo;functions are
+not first-class citizens in Java&rdquo; doesn&rsquo;t hold meaning, you will have trouble.
+This book does not attempt to determine what a formal education for a &ldquo;Software
+Engineer&rdquo; is - you&rsquo;d be thinking of <a href="http://sites.computer.org/ccse/SE2004Volume.pdf">this
+book</a>. And you can keep that
+book to yourself. Nobody here wants to talk about that book.</p>
+
+<h1 id="how-to-read-this-book:6083a88ee3411b0d17ce02d738f69d47">How to Read this Book</h1>
+
+<p>If you are new to the field, and you find yourself wondering on how to quickly
+get up to speed and contributing professional-level work, I suggest quickly
+reading through the entire book. Pay particular attention to the Key Insights at
+the front of each chapter, and largely ignore any of the specific details. Also,
+print out, or at least take note of, the checklists. Then, as you go about your
+job, open up the pertinent section and pair-program with this book in hand.
+Tasked with writing the deployment for the team&rsquo;s microservice? Flip to
+&ldquo;Delivery&rdquo;, and proceed.</p>
+
+<p>For those who feel comfortable in their work (perhaps dangerously so, hmmmm?), I
+suggest scanning down the table of contents for interesting sections, and
+dipping in where the whim or need takes you.</p>
+
+<p>If you&rsquo;re starting a greenfield project (that means &ldquo;brand-new&rdquo;), and you want
+to apply these principles from the get-go, then check out the Roadmap in the
+back of the book. This is <em>a</em> way of checking all the boxes.</p>
+
+<h2 id="assumptions-and-biases:6083a88ee3411b0d17ce02d738f69d47">Assumptions and Biases</h2>
+
+<p>I write from the perspective of a junior-becoming-intermediate engineer. I
+started coding in 2011, and I started figuring out how to <em>engineer software</em>
+when I got my first job in 2014. Turns out there&rsquo;s a lot a CS degree doesn&rsquo;t
+teach you when it comes to actually making software people can happily use and
+easily maintain. Like everyone else, I cobbled together knowledge through
+trial-and-error, code reviews, and Stack Overflow. I learn well from books, so I
+also bought a number of them to learn from as well. Over time, ideas started to
+come together.</p>
+
+<p>I assume you either have deployed, or are trying to deploy, working software for a
+customer, whether that be yourself or someone who actually is giving you money.
+Thus, I assume you can write software in the first place - this book will <em>not</em>
+attempt to bring you up to speed with the basics of programming. Little here is
+what I would dare to call advanced, if only because calling what&rsquo;s
+presented here &ldquo;advanced&rdquo; leaves nothing to describe truly difficult concepts in
+this world. But I&rsquo;ve not shyed from including interesting design patterns or
+techniques where called for, and if they confuse you a little at first, good.
+That means you&rsquo;re learning something. If it wasn&rsquo;t confusing, you already
+understood it, and you&rsquo;re just collecting information.</p>
+
+
+</article>
+
+<div id="disqus_thread"></div>
+<script>
+   var disqus_config = function () {
+     this.page.url = "http:\/\/jad-b.github.io\/seprimer\/about\/";
+     
+   };
+
+  
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var d = document, s = d.createElement('script');
+
+    s.src = "//while-true-continue.disqus.com/embed.js";
+
+    s.setAttribute('data-timestamp', + new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+<noscript>Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+    comments powered by Disqus.
+  </a>
+</noscript>
+
+
+  </main>
+
+    <footer>
+
+      <span class="copyright">
+        <i class="fa fa-copyright"></i>
+        <a href="j.american.db@gmail.com">j.american.db@gmail.com</a>
+      </span>
+
+
+      <span class="profile-links">
+
+        
+        <a href="https://github.com/jad-b">
+          <img alt="jad-b @ GitHub"
+               src="http://jad-b.github.io/img/octocat.svg"
+               width="32"
+               height="32">
+        </a>
+
+        
+        <a href="https://www.goodreads.com/user/show/43556621-jeremy-dobbins-bucklad">
+          <img alt="Goodreads"
+               src="https://www.goodreads.com/assets/layout/header/nav_g_icon.svg"
+               width="32"
+               height="32">
+        </a>
+
+        
+        <iframe allowtransparency="true" scrolling="no" frameborder="no"
+          src="https://w.soundcloud.com/icon/?url=http%3A%2F%2Fsoundcloud.com%2Fjeremy-dobbins-bucklad&color=orange_white&size=32"
+          style="width: 32px; height: 32px;"></iframe>
+
+        
+        <a href="http://8tracks.com/herbert-finkleton">
+          <img alt="8Tracks"
+               src="http://images.8tracks.com/avatar/i/006/193/171/52608.original-3203.jpg?rect=0,0,500,500&q=98&fm=jpg&fit=max&w=56&h=56"
+               width="32"
+               height="32">
+        </a>
+      </span> 
+
+    </footer>
+
+  
+<script src="http://jad-b.github.iojs/prism.js" async></script>
+
+<script type="text/javascript" src="http://jad-b.github.iojs/MathJax.js" async></script>
+<script type="text/x-mathjax-config" defer>
+
+
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config" defer>
+  
+  
+  
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+
+<script id="dsq-count-scr" src="//while-true-continue.disqus.com/count.js" async></script>
+
+  </body>
+
+</html>
+

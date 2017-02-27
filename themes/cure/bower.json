@@ -1,0 +1,28 @@
+{
+  "name": "stark",
+  "homepage": "https://github.com/jad-b/Archimedes",
+  "authors": [
+    "jad-b <j.american.db@gmail.com>"
+  ],
+  "description": "A minimal theme for the Hugo static site generator",
+  "main": "",
+  "keywords": [
+    "Hugo",
+    "simple"
+  ],
+  "license": "GPLv3",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-scss": "normalize.scss#^4.1.0",
+    "MathJax": "^2.6.1"
+  },
+  "devDependencies": {
+    "support-for": "^1.0.5"
+  }
+}

@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming on while true: continue</title>
+    <link>http://jad-b.github.io/categories/programming/</link>
+    <description>Recent content in Programming on while true: continue</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 29 Jul 2016 10:43:26 -0400</lastBuildDate>
+    <atom:link href="http://jad-b.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Vice Driven Deployment</title>
+      <link>http://jad-b.github.io/sweng/Concept%20for%20a%20Vice-Driven%20Deployment%20System/</link>
+      <pubDate>Fri, 29 Jul 2016 10:43:26 -0400</pubDate>
+      
+      <guid>http://jad-b.github.io/sweng/Concept%20for%20a%20Vice-Driven%20Deployment%20System/</guid>
+      <description>
+
+&lt;p&gt;Here me out: we could totally write a deployment service that leveraged each of the seven cardinal sins.
+Here&amp;rsquo;s my take on it:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Pride - Deploys code&lt;/li&gt;
+&lt;li&gt;Envy - Manages config&lt;/li&gt;
+&lt;li&gt;Wrath - Runs functional/smoke tests&lt;/li&gt;
+&lt;li&gt;Lust - External service integration. &amp;lsquo;Cause it&amp;rsquo;s, like, promiscuous.&lt;/li&gt;
+&lt;li&gt;Sloth - Deployment automation. Depends on pride.&lt;/li&gt;
+&lt;li&gt;Greed - Stream processing &amp;amp; data storage.&lt;/li&gt;
+&lt;li&gt;Gluttony - Data visualization; &amp;ldquo;feast your eyes&amp;rdquo;. Feeds off of greed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Throw this behind a CLI &amp;amp; chat bot, and ta-da, you&amp;rsquo;re a &lt;code&gt;vice pride deploy
+&amp;lt;project&amp;gt;&lt;/code&gt; away from releasing code.&lt;/p&gt;
+
+&lt;p&gt;In a little more detail:&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s with deploy|pride. This tool needs to take code artifacts from &lt;em&gt;X&lt;/em&gt; and deploy them onto
+system &lt;em&gt;Y&lt;/em&gt;. Deploy is a simplified interface for triggering your configuration management, like
+Ansible or Chef, or your container management, like Docker Swarm or Kubernetes. It restricts the API
+to just deployment capabilities, so starting &amp;amp; stopping services. It concerns itself with applying
+configuration to one of the aforementioned tools in a reliable manner.&lt;/p&gt;
+
+&lt;p&gt;But a deploy isn&amp;rsquo;t enough; you need to verify it worked. That&amp;rsquo;s where &amp;ldquo;verify|wrath&amp;rdquo; is used. Wrath
+runs a set of acceptance tests against your system, and its output can be used as feedback to the
+deploy. It can also be scheduled to run &lt;em&gt;all&lt;/em&gt; the time, effectively mimicing customer traffic. Bonus
+features: replayability of transaction sequences for debugging and probabilistic traffic generation.&lt;/p&gt;
+
+&lt;p&gt;Deploying and testing generates useful data, data that can be used to audit your infrastructure,
+monitor changes, and trigger events. That&amp;rsquo;s why it all has to get fed into &amp;ldquo;dataproc|greed&amp;rdquo;, the
+stream processing &amp;amp; storage backend. Essentially, dataproc takes events as input, and either 1)
+transforms them for storage into whatever storage backends there are, or 2) triggers an integration.
+In fact, 1) could be viewed as a special case of 2. The use of events as the system primitive
+provides an umbrella abstraction for both of these, which make it so powerful, but more on that
+later.
+    With great systems like Kafka for this, it wouldn&amp;rsquo;t make a lot of sense to try to beat it at
+its own game. What dataproc can offer is a &lt;code&gt;vice&lt;/code&gt;-tuned processing layer either before or after it
+hits a system like Kafka. Or maybe you don&amp;rsquo;t want to run kafka just to use &lt;code&gt;vice&lt;/code&gt;; a simple built-in
+model could suffice.&lt;/p&gt;
+
+&lt;p&gt;As far as &amp;ldquo;trigger an integration&amp;rdquo;, that falls under &amp;ldquo;lust|notify&amp;rdquo;, and the possibilities are
+endless. Certainly you&amp;rsquo;ll want notifications for chat services, maybe emails, possibly updating
+issues in your project management software of choice. But you could trigger an AWS Lambda function,
+or kick off a data analysis job, or a fresh slew of &amp;ldquo;wrath&amp;rdquo; tests, or a custom binary/script - we
+can only guess as to the needs of the future. &amp;ldquo;lust&amp;rdquo; would provide at most a framework, and maybe as
+little as an interface for hooking into &lt;code&gt;vice&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;With great data, comes the need for pretty pictures. It&amp;rsquo;s a poor system that gives you little
+insight into how things are running. This piece gets delivered by &lt;code&gt;gluttony|dataviz&lt;/code&gt;. Enough said?
+It&amp;rsquo;s a dashboard. Enough said.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;config|envy&amp;rdquo; sits in interesting contrast to &amp;ldquo;dataproc|greed&amp;rdquo;; if &amp;ldquo;dataproc&amp;rdquo; is for data
+&lt;em&gt;generated&lt;/em&gt; by the system, &amp;ldquo;config&amp;rdquo; is for data &lt;em&gt;given&lt;/em&gt; to the system by the users. After all, you
+have to store configuration and secrets somewhere. &amp;ldquo;config&amp;rdquo; would be responsible for isolating and
+retrieving data in the correct format.&lt;/p&gt;
+
+&lt;p&gt;Between retrieving configuration, code artifacts, executing configuration software, and running
+verification tests, every project is likely to become its own snowflake. &amp;ldquo;auto|sloth&amp;rdquo; speaks to the
+need to script and automate your deployments. Behind the scenes, all of those actions can be viewed
+as a graph, where each vertice represents an action, and the edges represent the flow of data.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s talk for a minute about events. At a minimum, information sent to &amp;ldquo;dataproc&amp;rdquo; needs to be
+encoded as messages/event notifications. However, I&amp;rsquo;m not convinved the entire system must be
+event-driven. For one, I don&amp;rsquo;t believe each of the above seven services would be a running service.
+In the case of I am open to the possibility of using them throughout, and perhaps experience will
+show this to be best.&lt;/p&gt;
+
+&lt;h3 id=&#34;but-why-this-is-silly:09d83bf38a40a8e0da5bb73a84b36e60&#34;&gt;But why?/This is silly.&lt;/h3&gt;
+
+&lt;p&gt;Deploying and operationalizing code is often harder than writing the code in the first place. And it
+when it comes to monitoring the state of your infrastructure, it feels like you&amp;rsquo;re trying to
+interrogate a child you&amp;rsquo;ve entrusted all of your production configuration too: &amp;ldquo;What are the
+versions running for this service?&amp;rdquo; met by &amp;ldquo;I want candy! Also, that&amp;rsquo;ll be a for-loop followed by
+grep piped to sed piped to cut&amp;hellip;&amp;rdquo; What the hell? The information&amp;rsquo;s there! But you either never made
+it machine-consumable, or you never taught the machine how to consume it.&lt;/p&gt;
+
+&lt;h3 id=&#34;postface:09d83bf38a40a8e0da5bb73a84b36e60&#34;&gt;Postface.&lt;/h3&gt;
+
+&lt;p&gt;Now, I&amp;rsquo;m going to be partial to this because I&amp;rsquo;m in love with the cleverness of
+my own ideas.  You&amp;rsquo;d have to make it good, and you&amp;rsquo;d have to make it
+future-proof. This is how I&amp;rsquo;d do it:&lt;/p&gt;
+
+&lt;p&gt;Write the interface first. If you&amp;rsquo;ve mastered the deploy of &lt;em&gt;any&lt;/em&gt; piece of
+reasonably complex software (a.k.a. greater than just &lt;code&gt;scp&lt;/code&gt;-ing files to a
+box), you know what you want from a deployment assistant. Code up that
+interface, and stub out the functionality as you go. I&amp;rsquo;d want something like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Retrieve configuration for the deploy; could subsume within the next step
+vice envy &amp;lt;options...&amp;gt; &amp;lt;project&amp;gt;
+# Deploy our project!
+vice pride deploy &amp;lt;project&amp;gt;
+# Run our post-release smoke tests
+vice wrath &amp;lt;project&amp;gt; &amp;lt;options...&amp;gt;
+# Visualize how our deploy went
+vice gluttony report &amp;lt;project&amp;gt;
+# See how _all_ our projects are looking
+vice gluttony report &amp;lt;saved dashboard name&amp;gt;
+# Drop a message in Slack about the release
+vice lust project -m &amp;quot;Everything&#39;s looking good, guys&amp;quot;
+# Backup our deploy data into S3
+vice greed backup &amp;lt;options...&amp;gt; &amp;lt;S3 URL&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Which means I&amp;rsquo;d need a way of making &lt;code&gt;vice&lt;/code&gt; (I guess the collective name of
+this tool is &lt;code&gt;vice&lt;/code&gt;? Is now.) aware of &lt;code&gt;&amp;lt;project&amp;gt;&lt;/code&gt;. Communication is either
+push- or pull-based, so it&amp;rsquo;s either that &lt;code&gt;vice&lt;/code&gt; know&amp;rsquo;s how to find projects, or
+projects register themselves with &lt;code&gt;vice&lt;/code&gt;. But, you know what? &lt;em&gt;That&lt;/em&gt; matters
+far less than what I want my interaction with &lt;code&gt;vice&lt;/code&gt; to be like. Both models
+would work, just like Chef and Ansible work. If one&amp;rsquo;s better than the other,
+and we start with the lesser, it&amp;rsquo;ll be our good engineering practices of
+writing loosely-coupled, modular code that saves us headaches during the refactor.&lt;/p&gt;
+
+&lt;p&gt;Which brings me to modularity. If you want code to survive over time, it has to
+be modular, which in this context means we need to be able to write new
+backends for emerging technologies that satisfy the same functional interfaces.
+Was that a mouthful? Try this: We want &lt;code&gt;vice&lt;/code&gt; to be compatible with new tech.
+Not in an auto-magical &amp;ldquo;&lt;code&gt;vice&lt;/code&gt; will work with &lt;em&gt;any database ever&lt;/em&gt;&amp;rdquo; way, but
+rather we know what data storage requirements we&amp;rsquo;ll have for &lt;code&gt;greed&lt;/code&gt;, which
+means we can write adapters to hide whether we&amp;rsquo;re storing it in Postgresql,
+DynamoDB, a file system, or HDFS.&lt;/p&gt;
+
+&lt;p&gt;Maybe we won&amp;rsquo;t be able to completely satisfy our DataStorer interface with each
+backend - that&amp;rsquo;s okay! Do a &lt;code&gt;raise NotImplemented&lt;/code&gt;, and allow your calling code
+to deal with partial interfaces in non-critical functionality. Obviously you
+need to read &amp;amp; write data, but maybe you can&amp;rsquo;t provide the same level of
+searching you&amp;rsquo;d like across all backends. Okay. Life is a moving target. Choose
+your trade-offs, and above all stay flexible through modular code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Lessons Learned: Software</title>
+      <link>http://jad-b.github.io/post/Lessons%20Learned:%20Software/</link>
+      <pubDate>Thu, 28 Jul 2016 09:59:13 -0400</pubDate>
+      
+      <guid>http://jad-b.github.io/post/Lessons%20Learned:%20Software/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Use TLS from the beginning.&lt;/strong&gt;
+There aren&amp;rsquo;t many reasons you shouldn&amp;rsquo;t. Snakeoil gets you in the practice of
+managing the keys, but a self-signed or corporate wildcard cert that&amp;rsquo;s scoped
+to your development domain are even better. I&amp;rsquo;m finally seeing a plethora of
+key management tools&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:fe4463e88dd1ddad3485337b6892122f:kmt&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:fe4463e88dd1ddad3485337b6892122f:kmt&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; begin to propagate, so no excuses.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Write functional tests to run against any envinromnet.&lt;/strong&gt;
+This means they need to accept configuration options, and should only
+affect test data they&amp;rsquo;re responsible for creating and deleting. Now your
+integration tests can smoke-test production.
+If you can scope which tests run, which I know Python&amp;rsquo;s &lt;code&gt;nose&lt;/code&gt; and &lt;code&gt;pytest&lt;/code&gt;
+and Golang&amp;rsquo;s &lt;code&gt;go test -tags=smoke&lt;/code&gt; can do, you can limit your tests to fit
+your requirements of run time, data safety, and validation.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Incremental modifications over re-writes.&lt;/strong&gt;
+You have code running, and now you need to change it. It&amp;rsquo;s conceptually
+easiest to pretend like that code doesn&amp;rsquo;t exist, and write from scratch.
+But only in concept. Re-writes ignore the ecosystem that code runs within -
+the system&amp;rsquo;s that depend on it, the operational considerations you&amp;rsquo;ve learned to
+account for, and the realities of the world you&amp;rsquo;ve had to code around.
+Re-writes have a place. But they&amp;rsquo;re usually the harder choice, long-term.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s some ideas I&amp;rsquo;ve already had to use:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Don&amp;rsquo;t forget about search &amp;amp; replace. Rename old objects to
+&amp;ldquo;OldStructure&amp;rdquo;, or &amp;ldquo;StructureV1&amp;rdquo; while the deprecation is underway.
+People seem to get nervous about this, but if you missed something, a
+static language won&amp;rsquo;t compile, and a dynamically-typed language will have
+its tests fail. If both of those fail to catch the error, is it really a
+problem with the replacement, or with your safety nets?&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;REST API: Isolate the old and new logic into different functions. Deploy
+new changes to a &amp;ldquo;dark&amp;rdquo; endoint under a different path. Toggle between
+old &amp;amp; new using a query parameter, or swap them at runtime using a flag.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Database: Adding new columns is easy. Modifying existing requires
+staggered deploys between the DB and its clients (probably your
+downstream API(s)). Sorry.  At some point, you will be faced with the
+choice of doing a total re-write, followed by a nerve-wracking deploy,
+replete with cross-team coordination, or biting off that complexity in
+small changes and frequent deployments. Small changes let you deploy
+faster. Deploying faster =&amp;gt; Your work affects people faster. Mattering in
+other people&amp;rsquo;s lives =&amp;gt; putting off existential meaningless for one more
+day. Search &amp;ldquo;zero-downtime DB migration&amp;rdquo; for plenty of resources. I&amp;rsquo;m
+partial to the outline in Chapter 12 of &amp;ldquo;Continuous Delivery&amp;rdquo; by Jez
+Humble, titled &amp;ldquo;Managing Data&amp;rdquo;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Write backwards from your user interfaces&lt;/strong&gt;.
+Writing a web app? Start with the UI. You&amp;rsquo;re writing the REST API the UI calls?
+Start with the API description. &lt;a href=&#34;https://github.com/OAI/OpenAPI-Specification&#34;&gt;OpenAPI is a thing now&lt;/a&gt;, and I&amp;rsquo;m not going
+back. It&amp;rsquo;s a CLI tool? Write the options w/ flags, for what you know you
+need.&lt;/p&gt;
+
+&lt;p&gt;Only write for what someone needs right now. What someone wants but not needs
+should live in a design conversation elsewhere, such as a GitHub issue, a
+text document, or a JIRA ticket.&lt;/p&gt;
+
+&lt;p&gt;I believe this to be a (correct) generalization of &amp;ldquo;API-first&amp;rdquo; design and/or
+contract-driven design.&lt;/p&gt;
+
+&lt;p&gt;One possible argument: This delays potentially deal-breaking backend
+considerations that are far-removed from the end-user experience.&lt;/p&gt;
+
+&lt;p&gt;I think two things are imporant to keep in mind. First, your problem has
+likely been solved before, many times over. This is the case for most
+full-stack work. Thus, the amount of &amp;ldquo;unknowns&amp;rdquo; lurking out there
+are few, and always getting smaller. Second, all this really means is you
+have a conversation with your clients (The web UI team) exactly when you were
+actually building the tool they wanted. If anyone has examples of a tool
+simply can&amp;rsquo;t be made human-friendlier, I&amp;rsquo;d be interested to know.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:fe4463e88dd1ddad3485337b6892122f:kmt&#34;&gt;&lt;p&gt;Such as these:
+&lt;a href=&#34;https://aws.amazon.com/kms/&#34;&gt;Amazon KMS&lt;/a&gt;,
+&lt;a href=&#34;https://www.vaultproject.io/docs/secrets/pki/index.html&#34;&gt;Hashicorp&amp;rsquo;s Vault&amp;rsquo;s PKI Backend&lt;/a&gt;,
+&lt;a href=&#34;https://github.com/square/certstrap&#34;&gt;Square&amp;rsquo;s certstrap&lt;/a&gt;&lt;/p&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:fe4463e88dd1ddad3485337b6892122f:kmt&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Testing Timeouts In Go With Channel Selects</title>
+      <link>http://jad-b.github.io/sweng/Testing%20Timeouts%20in%20Go/</link>
+      <pubDate>Thu, 05 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://jad-b.github.io/sweng/Testing%20Timeouts%20in%20Go/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;import (
+    &amp;quot;net&amp;quot;
+    &amp;quot;testing&amp;quot;
+    &amp;quot;time&amp;quot;
+)
+
+func TestAddrResolve(t *testing.T) {
+    network, addr := &amp;quot;ip4&amp;quot;, &amp;quot;127.0.0.125:44151&amp;quot;
+    addrChan := make(chan error)
+
+    // Attempt to resolve IP addr
+    go func(ch chan error) {
+        _, err := net.DialTimeout(network, addr, 1 * time.Second)
+        addrChan &amp;lt;- err
+    }(addrChan)
+
+    // Now, see who returns a msg first
+    select {
+    case e := &amp;lt;-addrChan:
+        if e == nil {
+            t.Fatalf(&amp;quot;%s://%s should fail to resolve&amp;quot;, network, addr)
+        } else if testing.Verbose() { // Success!
+            t.Logf(&amp;quot;Call to %s://%s timed out.\nError\n\t%s&amp;quot;, network, addr, e)
+        }
+    case &amp;lt;-time.After(1 * time.Second):
+        t.Fatal(&amp;quot;Address resolution failed to timeout in one second.&amp;quot;)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Testing Distributed Systems</title>
+      <link>http://jad-b.github.io/sweng/Testing%20Distributed%20Systems/</link>
+      <pubDate>Tue, 19 Apr 2016 14:52:38 -0400</pubDate>
+      
+      <guid>http://jad-b.github.io/sweng/Testing%20Distributed%20Systems/</guid>
+      <description>
+
+&lt;p&gt;&lt;strong&gt;TL;DR: Takeaways&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Always, always, always handle errors appropriately. No &lt;code&gt;pass&lt;/code&gt;, no &lt;code&gt;/* TODO
+*/&lt;/code&gt;. &lt;em&gt;Something&lt;/em&gt; in the chain needs to verify it&amp;rsquo;s handled.&lt;/li&gt;
+&lt;li&gt;Using 3 nodes lets you reproduce 98% of error cases in distributed systems.&lt;/li&gt;
+&lt;li&gt;77% of catastrophic failures can be reproduced through unit tests&lt;/li&gt;
+&lt;li&gt;Log aggressively, and on both sides of events (message passing).&lt;/li&gt;
+&lt;li&gt;The big 5 error-ing events:
+
+&lt;ol&gt;
+&lt;li&gt;Startup&lt;/li&gt;
+&lt;li&gt;Writes from client&lt;/li&gt;
+&lt;li&gt;Node down/unreachable&lt;/li&gt;
+&lt;li&gt;Configuration change&lt;/li&gt;
+&lt;li&gt;Node join&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As a work project involving multiple moving pieces begins the move from
+proof-of-concept to preparing for production traffic, the various
+pieces are beginning to knit into a whole. In particular, a client-driven event
+requires that a list of registered services receive an update. Simple enough,
+but failure in this system would result in bad API traffic routing, or worse,
+all APIs becoming externally unavailable. Undesirable!&lt;/p&gt;
+
+&lt;p&gt;My previous experiences involved nothing more distributed than your basic
+web-server=&amp;gt;DB setup, so I took this as an opportunity to learn from other&amp;rsquo;s
+mistakes. Searching around turns up the following advice:&lt;/p&gt;
+
+&lt;h3 id=&#34;simple-testing-can-prevent-most-critical-failures:fab8ffd47911301da93228e4cb7d5640&#34;&gt;Simple Testing Can Prevent Most Critical Failures&lt;/h3&gt;
+
+&lt;p&gt;A whitepaper&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:fab8ffd47911301da93228e4cb7d5640:whitepaper&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:fab8ffd47911301da93228e4cb7d5640:whitepaper&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; out of the University of Toronto with some incredible
+statistics on avoiding the worst-of-the-bad: catastrophic failures&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:fab8ffd47911301da93228e4cb7d5640:catfail&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:fab8ffd47911301da93228e4cb7d5640:catfail&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;. They
+attribute 92% of CFs to bad error handling, with a further breakdown of&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;35% due to
+
+&lt;ul&gt;
+&lt;li&gt;Catching but not doing anything about the error&lt;/li&gt;
+&lt;li&gt;Aborting on an overly-general error (java&amp;rsquo;s &lt;code&gt;Throwable&lt;/code&gt;, Python&amp;rsquo;s
+&lt;code&gt;except:&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;A TODO/FIXME in place, but no handling&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;And 23% on aborting on a non-fatal error (failed to delete a temporary file)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;77%&lt;/strong&gt; of these failures they could reproduce using only unit tests. Admittedly,
+this is their example unit test:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void testLogRollAfterSplitStart {
+    // Create HBase cluster with 1 master and 2 Region Servers
+    startMiniCluster();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;hellip;which may stretch your imagining of unit tests. I believe what they were
+getting at is that the problems are testable within the scope of a single
+function&amp;rsquo;s setup/run/cleanup scope. Also, when your definition of unit test is
+&amp;ldquo;code that I wrote&amp;rdquo;, and the code that you wrote was HBase, that&amp;rsquo;s quite the
+scope.&lt;/p&gt;
+
+&lt;p&gt;Oh, and how about this: &lt;strong&gt;98% of problems could be recreated using no more than
+3 nodes&lt;/strong&gt;. Your 120 node Cassandra cluster&amp;rsquo;s dying? Odds are, you only need
+three players to recreate it locally.&lt;/p&gt;
+
+&lt;p&gt;An interesting point of difference the author&amp;rsquo;s noted between distributed and
+non-distributed systems was that distributed systems tend to have much better
+logging. As such, 84% of the studied failures had their triggering events
+logged. They logged so much that the author&amp;rsquo;s recommended more advanced log
+analysis techniques than a simple &lt;code&gt;grep ERROR&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;And to wrap this up: Starting up was the most dangerous time for a process, as
+summarized under &amp;ldquo;Lessons Learned&amp;rdquo;. More important is to take that list and mix
+it up - 90% of the failures could be categorized as a permutation of only three
+key events. Just two events interacting accounted for 50% of CFs.&lt;/p&gt;
+
+&lt;h4 id=&#34;further-reading:fab8ffd47911301da93228e4cb7d5640&#34;&gt;Further reading&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ConfErr - tests configuration errors within a realistic range&lt;/li&gt;
+&lt;li&gt;MODIST - Model checking for distributed system&lt;/li&gt;
+&lt;li&gt;FATE and DESTINI - Framework for cloud recovery testing&lt;/li&gt;
+&lt;li&gt;This looks interesting: KLEE - a code-coverage generator for C programs.
+  Can&amp;rsquo;t find any examples for Python though, which would be my use-case.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:fab8ffd47911301da93228e4cb7d5640:whitepaper&#34;&gt;&lt;a href=&#34;https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-yuan.pdf&#34;&gt;https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-yuan.pdf&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:fab8ffd47911301da93228e4cb7d5640:whitepaper&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:fab8ffd47911301da93228e4cb7d5640:catfail&#34;&gt;Failure of the system for a majority to all users.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:fab8ffd47911301da93228e4cb7d5640:catfail&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
