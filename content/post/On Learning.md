@@ -585,6 +585,71 @@ books resources from Eastern or African cultures.
 ## Harvard University's Teaching for Understanding/Project Zero
 
 ## Berkely: The How Students Learn Project
+For practice, let's apply SQ3R.
+
+### Survey
+Defines learning, different types of learning. Focuses on teacher-led
+instruction, as you'd expect from work by Berkeley, a teaching institution.
+Significant sections on improving understanding and retention.
+
+### Questions
+* What kinds of memory are there?
+* How are elaboration and organization different?
+* How does memory work?
+* How should people be taught?
+* What is mastery learning, and is it different from regular learning?
+* What are the most effective techniques for understanding? Remembering?
+* How much more effective is learning when you incorporate testing?
+* Is it more effective to lead a horse to water or help the horse find the water
+  on its own, when it comes to understanding & remembering?
+* Is their a universally "best" way to learn?
+* Why is it we _want_ to learn?
+
+### Review
+> we learn best when we learn progressively, building new knowledge on old
+> knowledge
+
+* Encoding
+    * Elaboration - association with existing knowledge
+    * Organization - grouping knowledge together
+* Knowledge
+    * Procedural
+        * Motor
+        * Mental
+        * Famous by the 10k hour rule
+    * Declarative
+        * Episodic - events in time
+        * Semantic - abstract knowledge
+
+* Grouping items aids in learning (organization). It also decreases interference
+  in recall later.
+
+* Multiple-choice tests help in cueing recall, thus easing pain initially. This
+  is a huge problem for MOOCs.
+* Multiple encodings per memory enhance its ability for recall later; more edges
+  to the same node.
+
+> Learning proceeds best when the student already has some background, on which
+> he or she can build, and which can provide a framework for generating
+> expectations and questions.
+
+* Pre-testing helps set the stage. This is a Catch-22 when you're self-learning,
+  unless there was an external repository of questions...I imagine the prompts
+  would need to be fairly rich in contextual information. Otherwise, "thin"
+  questions coupled with lack of background schema would be difficult to relate
+  to.
+
+**Left off at PQ4R**, which is a system that dates back to 1972! Why are these
+methodologies not taught more broadly? Why must I seek them out?
+
+
+## Resources
+First, the best
+* [How Students Learn -- and How We Can Help Them] is a truly excellent
+  overview and synthesis of actual teachers experience.
+* [How to Read a Book]. Reading for understanding is equivalent to constraining
+  yourself to learning from one medium, and this is _the_ book for doing so.
+
 [How Students Learn -- and How We Can Help Them]: http://socrates.berkeley.edu/~kihlstrm/GSI_2011.htm
 [Working Group and Speaker Series]: http://gsi.berkeley.edu/programs-services/hsl-project/hsl-speakers/
 [Active Learning AND Testing]: http://gsi.berkeley.edu/programs-services/hsl-project/hsl-speakers/shimamura/
