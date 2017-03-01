@@ -598,7 +598,7 @@ Significant sections on improving understanding and retention.
 * How does memory work?
 * How should people be taught?
 * What is mastery learning, and is it different from regular learning?
-* What are the most effective techniques for understanding? Remembering?
+* What are the most effective techniques for understanding? For remembering?
 * How much more effective is learning when you incorporate testing?
 * Is it more effective to lead a horse to water or help the horse find the water
   on its own, when it comes to understanding & remembering?
@@ -642,6 +642,73 @@ Significant sections on improving understanding and retention.
 **Left off at PQ4R**, which is a system that dates back to 1972! Why are these
 methodologies not taught more broadly? Why must I seek them out?
 
+We primarily think of learning by experience. Observational learning is when we
+leverage other people's experiences to learn from them. We learn by example much
+as a child does when it observes its parents, and we learn by precept when we
+are taught from experience by proveyors of this knowledge.
+
+> There is no more efficient way for students to learn, I think, than from a
+> well-organized course of lectures accompanied by a well-written textbook
+
+Mastery learning progresses a student when sufficient skill is demonstrated,
+instead of a timeline. The proctor (teacher) determines course
+structure, dividing course content into related modules or chunks, and sets the
+progression. The teacher then becomes a passive resource, answering questions
+and pointing out mistakes. The student progresses once they've tested highly
+enough on a module. See the paper "Good-Bye, Teacher", 1968.
+
+Distributed testing and practice testing stands as the two most productive
+learning techniques. What's impressive is the generality of the positive impact
+testing has. Testing immediately after study helps, and so does testing a week
+after. Testing improves performance even without feedback as to what you got
+wrong. Testing improves memory over re-reading. Testing beats
+mind(concept)-mappping the material. Interestingly, the effect may be subtle,
+too subtle for conscious awareness - the "test" group under-reported the benefit
+they'd received from testing compared to the cramming and concept-mapping group.
+A moral for self-doubt and objective measures.
+
+
+> We learn by being tested, or by testing ourselves.
+
+> Testing improves retention, even more than extra study, and this is true even
+> when subjects don't get any feedback from the test
+
+Spaced repetition is far more effective than cramming; heard that enough. The
+authors estimate that the optimal spacing is "5-10% of the study-test delay"(?).
+Interleaved problem types makes _practice_ feel more difficult, but improves
+test performance (so hopefully real understanding as well). So mix it up
+(interleave). But not too much (Skinner's PSI course modules). The author has a
+short rebuttal to complaints against "teaching to test", where he argues that if
+the test is good, that's exactly what we want! Curriculums _should_ change to
+teach the test; "what gets measured, gets improved".
+
+- "What Works, What Doesn't" Scientific American Mind, Oct, 2013.
+- Rohrer & Pashler (2010) - Test effetiveness
+- Cepeda et al., 2008 - Spaced repetition
+
+
+**So what makes a good test?**. The questions should be obviously related to the
+material (Face validity). They should be  a representative sampling of the
+knowledge body (Content validity). They should correlate with some form of
+external performance (empirical validity). And question performance within a
+test should correlate to each other (Internal Consistency).
+
+Repeatedly, the notion that "testing is hard" appears and re-appears (and
+re-appears, and re-appears). But, I begin to wonder if one's
+mastery/understanding is _best_ demonstrated by the ability to generate tests?
+It almost seems paradoxical, but I expect its more a progression: A better mind
+generates better questions. You learn best by testing, at first taking tests,
+and then writing them. It forces you to re-re-re-think the essence of the topic,
+trying to tease from it ever-more accurate abstractions and concepts.
+
+Cumulative final exams are probably the best test you can take, due to forcing
+students to re-study the entire body of knowledge under one context.
+
+When creating a test, or even a question, make clear the following: What exactly
+is it you want the student to do? What is the pedagogical purpose behind the
+task? How will you evaluate the quality of the work?
+
+**Left Off at Direct Instruction vs. Discovery Learning**
 
 ## Resources
 First, the best
