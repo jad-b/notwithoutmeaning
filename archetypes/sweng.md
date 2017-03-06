@@ -1,5 +1,5 @@
 +++
-categories = ["software engineering"]
-tags = ["programming", "software engineering"]
+categories = ["software"]
+tags = ["programming"]
 +++
 
