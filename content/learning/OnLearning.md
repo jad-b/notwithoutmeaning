@@ -4,12 +4,25 @@ title = "On Learning"
 categories = ["thoughts"]
 tags = ["learning", "metalearning"]
 +++
+## A Succinct Version of This Book
+To save you some time, here's everything you need to understand:
+
+* Effective, efficient learning is finding the answers to your questions.
+* Learning + creation = Understanding.
+
+If that completely jives with you, then you may wish to skip to the reference
+guides for the sake of comparing notes on implementation.
+
+If the above two points raise questions, then read on. If they don't raise
+questions and you're not a "completely jives" person, then it's good that you're
+reading this. You don't know how to learn.
+
 ## Why Learn How to Learn?
 Why spend time learning _how_ to learn, instead of just learning what you want?
 What are the problems we overcome when learning? What are our goals?
 What are the short and long-term benefits from optimizing how we learn?
 
-## What *is* Learning?
+## What is Learning?
 
 ## The System: Discover, Understand, Remember
 
@@ -78,7 +91,7 @@ Ever since hearing Ben Vigoda mention off-hand during an OSCON 2015 presentation
 on probabilistic programming that research has shown humans can learn to
 recognize a new object after about 3-5 exposures, I've wondered if there's a bit
 of magic to that range. Coupling that with phenomenon like Spaced Repetition for
-studying, can we arrive at a approximately-optimal solution for studying?
+studying, can we arrive at an approximately-optimal solution for studying?
 
 I think we can. Say you're reading a textbook split into chapters, with sections
 within those chapters. I propose a schedule like this:
@@ -135,7 +148,7 @@ topics we wish to learn.
 
 ## How Do You Know?
 ### How Do We Know What We Know? Episotmology nutshelled.
-### How Do We Know What When We Know It? Taking the Measure of Ourselves
+### How Do We Know When We Know It? Taking the Measure of Ourselves
 * Reading
     * Topic of section/chapter/textbook
     * Time spent reading

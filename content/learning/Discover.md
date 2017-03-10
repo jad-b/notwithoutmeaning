@@ -3,15 +3,14 @@ date = "2017-03-06T09:28:49-05:00"
 title = "Discover"
 tags = ["metalearning"]
 categories = ["learning"]
-
 +++
+
 ## Finding Sources
-1. Guess at a topic
-1. Overreach
+1. Guess at your desired topic
+1. Overreach by diving right into it.
     1. Identify what you're confused by.
         * Write down every word, concept, and reference you don't understand.
-    1. Find the prerequisite concepts for what confuses you.
-1. Repeat until you're on known ground.
+1. Return to Repeat until you're on known ground.
 1. Gather resources
     1. Identify at least three resources. Each should take a different
        approach: different wording, different examples, different formats
