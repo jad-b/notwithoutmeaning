@@ -1,0 +1,58 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  font: 400 1rem/1.6rem Georgia, "Sorts Mill Goudy", "Source Sans Pro", "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.main-grid {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: 20vh auto;
+}
+
+header {
+  grid-column: 1/4;
+  align-self: center;
+}
+
+.header-wrapper{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto;
+}
+
+.header-wrapper .surely-all-this {
+    grid-column: 2 / 4;
+    grid-row: 1 / 2;
+    text-transform: uppercase;
+    letter-spacing: .5rem;
+    text-align: right;
+    vertical-align: bottom;
+    font-size: 3rem;
+}
+
+.header-wrapper .not-without-meaning {
+    grid-column: 3 / 5;
+    grid-row: 2 / 3;
+    margin-top: -18px;
+    text-transform: uppercase;
+    letter-spacing: .3rem;
+}
+
+.content {
+  grid-row: 2;
+}
+
+.redden {
+  color: #f55b5b;
+}
+
