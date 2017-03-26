@@ -9,7 +9,7 @@ html {
 body {
   min-height: 100vh;
   display: grid;
-  font: 400 1rem/1.6rem Georgia, "Sorts Mill Goudy", "Source Sans Pro", "Open Sans", "Helvetica Neue", sans-serif;
+  font: 400 1.5rem/1.8rem Georgia, "Sorts Mill Goudy", "Source Sans Pro", "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .main-grid {
@@ -18,17 +18,33 @@ body {
   grid-template-columns: auto 1fr auto;
   grid-template-rows: auto 1fr;
   grid-gap: 1rem;
+  grid-template-areas:
+    "header header header"
+    "sidebar content .";
+}
+
+/* Retina screen upscales the ppi; look to the computed size in for actual
+ * breakpoints */
+@media (min-width: 800px) {
+  .main-grid {
+    grid-template-columns: auto 80vw auto;
+  }
+}
+
+@media (min-width: 1440px) {
+  .main-grid {
+    grid-template-columns: auto 60vw auto;
+  }
 }
 
 header {
-  grid-column: 1/4;
+  grid-area: header;
   align-self: center;
 }
 
 .header-wrapper{
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: auto;
 }
 
 .header-wrapper .surely-all-this {
@@ -53,8 +69,7 @@ header {
 }
 
 .content {
-  grid-column: 2 / 3;
-  grid-row: 2;
+  grid-area: content;
 }
 
 .redden {
