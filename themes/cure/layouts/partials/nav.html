@@ -1,0 +1,9 @@
+<nav>
+  <ul>
+    {{ range $key, $elem := .Site.Sections -}}
+    {{ if $key -}} {{/* 1st element seems to be missing a key */}}
+    <li>{{ $key }}</li>
+    {{- end }}
+    {{- end }}
+  </ul>
+</nav>

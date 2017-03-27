@@ -1,31 +1,27 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}/curate.css">
-  </head>
+{{ partialCached "head.html" . }}
 
-  <body>
-    <main class="main-grid">
+<main class="main-grid">
 
-      <header>
-        <div class="header-wrapper">
-          <h1 class="surely-all-this">Surely all this</h1>
-          <h1 class="not-without-meaning">
-            is <span class="redden">not</span> without meaning</h1>
-        </div>
-      </header>
+  <header>
+    <div class="header-wrapper">
+      <h1 class="surely-all-this">Surely all this</h1>
+      <h1 class="not-without-meaning">
+        is <span class="redden">not</span> without meaning</h1>
+    </div>
+  </header>
 
-      <article class="content">
+  {{ partial "nav.html" . }}
 
-        <section>
-           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut ligula nisl. Sed eget bibendum magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent eu varius mauris. Sed convallis massa placerat erat varius, quis faucibus diam pharetra. Sed ultricies massa mollis mi consectetur, a venenatis turpis pretium. Fusce pretium bibendum nibh, at ullamcorper elit tincidunt laoreet. Ut fringilla metus eu mollis vehicula. Duis feugiat ut arcu id dignissim. Pellentesque porta cursus rutrum. Sed luctus nec felis eget rhoncus. Suspendisse semper maximus sem, vitae commodo purus fringilla placerat.
+  <article class="content">
 
-  In lacinia eros sed purus porttitor aliquam. Donec blandit mattis condimentum. Proin sed urna ac urna vehicula rutrum ac eu justo. Phasellus posuere rutrum urna at tempor. Aenean condimentum imperdiet cursus. Nam imperdiet, velit non mattis dapibus, metus magna convallis felis, non faucibus diam turpis id mauris. Nulla facilisi. Phasellus vel massa dui. Mauris sit amet porta neque. Nulla facilisi. Quisque sit amet leo varius, aliquet diam sed, scelerisque nibh.
-        </section>
+    <section>
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut ligula nisl. Sed eget bibendum magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent eu varius mauris. Sed convallis massa placerat erat varius, quis faucibus diam pharetra. Sed ultricies massa mollis mi consectetur, a venenatis turpis pretium. Fusce pretium bibendum nibh, at ullamcorper elit tincidunt laoreet. Ut fringilla metus eu mollis vehicula. Duis feugiat ut arcu id dignissim. Pellentesque porta cursus rutrum. Sed luctus nec felis eget rhoncus. Suspendisse semper maximus sem, vitae commodo purus fringilla placerat.
 
-      </article>
+In lacinia eros sed purus porttitor aliquam. Donec blandit mattis condimentum. Proin sed urna ac urna vehicula rutrum ac eu justo. Phasellus posuere rutrum urna at tempor. Aenean condimentum imperdiet cursus. Nam imperdiet, velit non mattis dapibus, metus magna convallis felis, non faucibus diam turpis id mauris. Nulla facilisi. Phasellus vel massa dui. Mauris sit amet porta neque. Nulla facilisi. Quisque sit amet leo varius, aliquet diam sed, scelerisque nibh.
+    </section>
 
-    </main>
-  </body>
-</html>
+  </article>
+
+</main>
+
+{{ partialCached "footer.html" . }}
