@@ -2,6 +2,7 @@
   <ul>
     {{ range $key, $elem := .Site.Sections -}}
     {{ if $key -}} {{/* 1st element seems to be missing a key */}}
+    <!--TODO Create & link to section pages -->
     <li>{{ $key }}</li>
     {{- end }}
     {{- end }}
