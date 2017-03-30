@@ -12,6 +12,10 @@ body {
   font: 400 1.5rem/1.8rem Georgia, "Sorts Mill Goudy", "Source Sans Pro", "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+@media (min-width: 800px) {
+  font-size: 1.8rem;
+}
+
 p {
   text-indent: 30px;
 }
