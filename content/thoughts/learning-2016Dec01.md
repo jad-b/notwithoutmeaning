@@ -1,8 +1,8 @@
 +++
 categories = ["journal"]
 date = "2016-12-01T09:30:55-05:00"
-tags = ["learning", "clrs"]
-title = "2016Dec01 - Self-Study"
+tags = ["thoughts", "learning", "clrs"]
+title = "2016Dec01 - Self-Study - CLRS 5.3"
 +++
 
 ##### Takeaways
