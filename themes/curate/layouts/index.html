@@ -10,17 +10,26 @@
     </div>
   </header>
 
-  {{ partial "nav.html" . }}
+  {{ partialCached "nav.html" . }}
 
   <article class="content">
-    <!--TODO Display last 10 articles -->
+    {{ template "_internal/pagination.html" . }}
 
+    {{ range .Paginator.Pages }}
     <section>
-       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut ligula nisl. Sed eget bibendum magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent eu varius mauris. Sed convallis massa placerat erat varius, quis faucibus diam pharetra. Sed ultricies massa mollis mi consectetur, a venenatis turpis pretium. Fusce pretium bibendum nibh, at ullamcorper elit tincidunt laoreet. Ut fringilla metus eu mollis vehicula. Duis feugiat ut arcu id dignissim. Pellentesque porta cursus rutrum. Sed luctus nec felis eget rhoncus. Suspendisse semper maximus sem, vitae commodo purus fringilla placerat.
+      <div class="content-header">
+        <a href="{{ .Permalink }}">
+          <h1 class="content-title">{{ .Title }}</h1>
+        </a>
+        <div class="content-ts">{{ .Date.Format "Mon, 2006 Jan 2" }}</div>
+        <div class="content-tags">Tags</div>
+      </div>
 
-In lacinia eros sed purus porttitor aliquam. Donec blandit mattis condimentum. Proin sed urna ac urna vehicula rutrum ac eu justo. Phasellus posuere rutrum urna at tempor. Aenean condimentum imperdiet cursus. Nam imperdiet, velit non mattis dapibus, metus magna convallis felis, non faucibus diam turpis id mauris. Nulla facilisi. Phasellus vel massa dui. Mauris sit amet porta neque. Nulla facilisi. Quisque sit amet leo varius, aliquet diam sed, scelerisque nibh.
+      <p>{{ .Summary }}</p>
     </section>
+    {{ end }}
 
+    {{ template "_internal/pagination.html" . }}
   </article>
 
 </main>

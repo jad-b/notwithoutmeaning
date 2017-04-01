@@ -6,6 +6,8 @@ editor = "vi"
 
 disqusShortname = "not-without-meaning"
 
+paginate = "10"
+
 [taxonomies]
 tag = "tags"
 category = "categories"
