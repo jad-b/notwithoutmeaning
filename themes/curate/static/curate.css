@@ -20,6 +20,28 @@ p {
   text-indent: 30px;
 }
 
+a {
+  color: #4d4e53;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #166d99;
+}
+
+hr {
+  width: 100%;
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ddd, #333, #ddd)
+}
+
+.link-inactive {
+  pointer-events; none;
+  cursor: default;
+}
+
 .main-grid {
   width: 100vw;
   display: grid;
@@ -34,17 +56,26 @@ p {
 
 nav {
   grid-area: nav;
-  font-weight: 700;
-  font: 700 1.7rem/1.8rem Georgia, "Sorts Mill Goudy", "Source Sans Pro", "Open Sans", "Helvetica Neue", sans-serif;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  font: 700 1.7rem/1.8rem Cinzel,"Open Sans";
   text-transform: uppercase;
 }
 
-nav > ul {
+/* Navbar links to major sections */
+.nav-links {
+  flex: 1 1;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-around;
-  padding-left: 0px;
-  list-style: none;
+  align-items: center;
+  padding: .2rem;
+}
+
+.book-links {
+  width: 80%;
 }
 
 /* Retina screen upscales the ppi; look to the computed size for actual
@@ -57,7 +88,7 @@ nav > ul {
 
 @media (min-width: 1440px) {
   .main-grid {
-    grid-template-columns: auto 60vw auto;
+    grid-template-columns: auto 50vw auto;
   }
 }
 
