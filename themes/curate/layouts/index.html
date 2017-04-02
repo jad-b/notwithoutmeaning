@@ -18,11 +18,15 @@
     {{ range .Paginator.Pages }}
     <section>
       <div class="content-header">
-        <a href="{{ .Permalink }}">
-          <h1 class="content-title">{{ .Title }}</h1>
-        </a>
-        <div class="content-ts">{{ .Date.Format "Mon, 2006 Jan 2" }}</div>
-        <div class="content-tags">Tags</div>
+        <div class="content-title">
+          <a href="{{ .Permalink }}">
+            <h1 class="content-title">{{ .Title }}</h1>
+          </a>
+        </div>
+        <div class="content-header-meta">
+          <div class="content-ts">Created {{ .Date.Format "Mon, 2006 Jan 2" }}</div>
+          <div class="content-tags">These, Are, Tags</div>
+        </div>
       </div>
 
       <p>{{ .Summary }}</p>

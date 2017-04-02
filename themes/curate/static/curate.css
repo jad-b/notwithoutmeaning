@@ -146,6 +146,34 @@ li.active > a {
   line-height: 1.4rem;
 }
 
+.content-header {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.content-title {
+  flex: 3 1 66%;
+  font-size: 1.5em;
+}
+
+.content-header-meta {
+  height: 100%;
+  flex: 1 1 33%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+}
+
+.content-ts {
+  flex: 1 1;
+}
+
+.content-tags {
+  flex: 2 1;
+}
+
 /* Footer */
 footer {
   grid-row: 4;
