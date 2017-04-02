@@ -24,8 +24,12 @@
           </a>
         </div>
         <div class="content-header-meta">
-          <div class="content-ts">Created {{ .Date.Format "Mon, 2006 Jan 2" }}</div>
-          <div class="content-tags">These, Are, Tags</div>
+          <div class="content-ts">{{ .Date.Format "Monday, 2006 Jan 2" }}</div>
+          <ul class="content-tags">
+          {{ range sort .Params.tags }}
+          <li><a href="{{ "/tags/" | relLangURL}}{{ . | urlize }}">{{ .  }}</a></li>
+          {{ end }}
+          </div>
         </div>
       </div>
 

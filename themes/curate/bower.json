@@ -1,5 +1,5 @@
 {
-  "name": "stark",
+  "name": "curate",
   "homepage": "https://github.com/jad-b/Archimedes",
   "authors": [
     "jad-b <j.american.db@gmail.com>"
@@ -10,7 +10,7 @@
     "Hugo",
     "simple"
   ],
-  "license": "GPLv3",
+  "license": "MPL",
   "ignore": [
     "**/.*",
     "node_modules",

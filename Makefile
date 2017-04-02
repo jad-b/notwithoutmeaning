@@ -20,4 +20,4 @@ deploy:
 	docker restart archimedes_nginx_1
 
 serve:
-	hugo serve -D
+	hugo serve -D --bind 0.0.0.0
