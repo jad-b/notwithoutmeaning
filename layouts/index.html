@@ -25,9 +25,11 @@
         </div>
         <div class="content-header-meta">
           <div class="content-ts">{{ .Date.Format "Monday, 2006 Jan 2" }}</div>
+          {{ if .Params.tags }}
           <ul class="content-tags">
           {{ range sort .Params.tags }}
           <li><a href="{{ "/tags/" | relLangURL}}{{ . | urlize }}">{{ .  }}</a></li>
+          {{ end }}
           {{ end }}
           </div>
         </div>
