@@ -1,7 +1,6 @@
 baseurl = "http://jad-b.github.io"
 languageCode = "en-us"
 title = "not without meaning"
-theme = "curate"
 editor = "vi"
 
 disqusShortname = "not-without-meaning"
