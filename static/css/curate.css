@@ -155,16 +155,14 @@ li.active > a {
   align-items: flex-start;
 }
 
-.content-ts {}
-
 .content-title {
   flex: 3 1 66%;
   font-size: 1.5em;
-  line-height: 1em;
 }
 
 .content-title h1 {
   margin: .5em 0;
+  line-height: 1em;
 }
 
 .content-section-tags {
@@ -213,7 +211,7 @@ li.active > a {
   }
 }
 
-.content a {
+.content p > a {
   text-decoration: underline;
 }
 
