@@ -1,7 +1,7 @@
 *, *:before, *:after {
   box-sizing: border-box;
 }
-
+css/
 html {
   font-size: 16px;
 }
@@ -211,6 +211,10 @@ li.active > a {
   .content-section-tags {
     flex-direction: row;
   }
+}
+
+.content a {
+  text-decoration: underline;
 }
 
 /* Footer */
