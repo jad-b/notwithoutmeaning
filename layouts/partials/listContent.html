@@ -1,30 +1,13 @@
 <article class="content">
   {{ template "_internal/pagination.html" . }}
 
-  {{ range .Paginator.Pages }}
+  {{- range .Paginator.Pages -}}
   <section>
-    <div class="content-header">
-      <div class="content-title">
-        <a href="{{ .Permalink }}">
-          <h1 class="content-title">{{ .Title }}</h1>
-        </a>
-      </div>
-      <div class="content-header-meta">
-        <div class="content-ts">{{ .Date.Format "Monday, 2006 Jan 2" }}</div>
-        {{ if .Params.tags }}
-          <ul class="content-tags">
-          {{ range sort .Params.tags }}
-            <li><a href="{{ "/tags/" | relLangURL}}{{ . | urlize }}">{{ .  }}</a></li>
-          {{ end }}
-          </ul>
-        {{ end }}
-        </div>
-      </div>
-    </div>
+    {{- partial  "contentHeader.html" . -}}
 
     <p>{{ .Summary }}</p>
   </section>
-  {{ end }}
+  {{- end -}}
 
   {{ template "_internal/pagination.html" . }}
 </article>
