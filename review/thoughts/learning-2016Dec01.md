@@ -52,7 +52,8 @@ several of the books I found:
   another book on the topic.
 
 The findings mostly came from [this
-post](https://www.quora.com/What-are-some-good-online-courses-and-books-available-for-learning-probability-and-statistics/answer/Justin-Rising?srid=9cIW). I must confess to myself, I find the theory as interesting as the application.
+post](https://www.quora.com/What-are-some-good-online-courses-and-books-available-for-learning-probability-and-statistics/answer/Justin-Rising?srid=9cIW).
+I must confess to myself, I find the theory as interesting as the application.
 
 How will I know to take a step back, and move to a different textbook? Maybe
 expecting to complete a subject in one pass is silly; perhaps I should be

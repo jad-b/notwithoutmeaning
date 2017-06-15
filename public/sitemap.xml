@@ -1,216 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <url>
-    <loc>http://jad-b.github.io/</loc>
-    <lastmod>2017-02-07T11:02:48-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/o16n/monitoring/Principles/</loc>
-    <lastmod>2017-02-07T11:02:48-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/o16n/monitoring/Principles/</loc>
-    <lastmod>2017-02-07T11:02:29-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/restapi/datetime/</loc>
-    <lastmod>2017-01-12T12:24:46-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/testing/tdd/</loc>
-    <lastmod>2017-01-09T10:34:58-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/post/Fitness/</loc>
-    <lastmod>2017-01-04T10:03:36-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/sweng/jit/</loc>
-    <lastmod>2017-01-04T09:27:41-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/sweng/Lessons%20in%20Python/</loc>
-    <lastmod>2016-12-20T17:21:48-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/delivery/Versioning/</loc>
-    <lastmod>2016-12-20T11:18:47-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/mgmt/Planning%20Your%20Project/</loc>
-    <lastmod>2016-12-17T12:20:35-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/restapi/</loc>
-    <lastmod>2016-12-17T12:18:21-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/about/</loc>
-    <lastmod>2016-12-17T11:41:37-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/o16n/</loc>
-    <lastmod>2016-12-17T11:38:38-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/mgmt/JIRA/</loc>
-    <lastmod>2016-12-17T11:37:26-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/mgmt/</loc>
-    <lastmod>2016-12-17T11:37:26-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/Glossary/</loc>
-    <lastmod>2016-12-17T11:37:15-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/arch/</loc>
-    <lastmod>2016-12-17T11:37:15-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/delivery/</loc>
-    <lastmod>2016-12-17T11:37:11-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/design/</loc>
-    <lastmod>2016-12-17T11:35:46-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/testing/</loc>
-    <lastmod>2016-12-17T11:35:46-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/design/Error%20Handling/</loc>
-    <lastmod>2016-12-08T14:21:50-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/Logging/</loc>
-    <lastmod>2016-12-08T14:21:50-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/o16n/monitoring/Logging/</loc>
-    <lastmod>2016-12-08T14:21:50-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/testing/Testing%20HTTP%20Applications/</loc>
-    <lastmod>2016-12-08T14:21:50-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/journal/learning-2016Dec01/</loc>
-    <lastmod>2016-12-01T09:30:55-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/post/Coffee/</loc>
-    <lastmod>2016-11-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/post/Probabilistic%20Graphical%20Models/</loc>
-    <lastmod>2016-10-08T20:27:03-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/sweng/Concept%20for%20a%20Vice-Driven%20Deployment%20System/</loc>
-    <lastmod>2016-07-29T10:43:26-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/post/Multi-_%20Modeling/</loc>
-    <lastmod>2016-07-28T10:26:22-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/post/Lessons%20Learned:%20Software/</loc>
-    <lastmod>2016-07-28T09:59:13-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/post/Why%20Not%20School/</loc>
-    <lastmod>2016-05-28T07:42:13-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/notes/ODSC2016%20-%20Friday/</loc>
-    <lastmod>2016-05-20T10:21:22-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/post/Gradient%20Descent%20Ascending/</loc>
-    <lastmod>2016-05-13T07:20:33-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/sweng/Testing%20Timeouts%20in%20Go/</loc>
-    <lastmod>2016-05-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/sweng/Testing%20Distributed%20Systems/</loc>
-    <lastmod>2016-04-19T14:52:38-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/quote/An%20Expert%20On%20Feeling%20Good/</loc>
-    <lastmod>2016-04-14T10:18:07-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/quote/Born%20Artists/</loc>
-    <lastmod>2016-04-14T10:17:18-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/quote/Civilization%20Advances/</loc>
-    <lastmod>2016-04-12T10:28:35-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/quote/Abstractions/</loc>
-    <lastmod>2016-04-11T08:16:04-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/quote/Concurrency%20vs.%20Parallelism/</loc>
-    <lastmod>2016-04-09T09:25:06-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/quote/Shame/</loc>
-    <lastmod>2016-04-07T06:50:35-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/quote/Naturally%20Iterative/</loc>
-    <lastmod>2016-04-07T06:48:04-04:00</lastmod>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>http://jad-b.github.io/about/</loc>
@@ -218,34 +8,19 @@
   </url>
   
   <url>
-    <loc>http://jad-b.github.io/post/The%20Aggressive%20Student/</loc>
-    <lastmod>2016-03-28T09:55:02-04:00</lastmod>
+    <loc>http://jad-b.github.io/categories/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://jad-b.github.io/post/A%20Learning%20System/</loc>
-    <lastmod>2015-10-10T00:00:00+00:00</lastmod>
+    <loc>http://jad-b.github.io/tags/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://jad-b.github.io/post/On%20Learning/</loc>
-    <lastmod>2015-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/Checklist/</loc>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/seprimer/</loc>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/sweng/DDoS%20Simulator/</loc>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/sweng/Monitoring/</loc>
+    <loc>http://jad-b.github.io/</loc>
+    <lastmod>2016-04-02T15:16:28-04:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>

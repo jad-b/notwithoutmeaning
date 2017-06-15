@@ -1,6 +1,10 @@
 .PHONY: dev  serve
+
+setup:
+	sudo snap install hugo
+
 serve:
-	hugo serve --bind 0.0.0.0
+	snap run hugo serve --bind 0.0.0.0
 
 dev:
-	hugo  serve --bind 0.0.0.0 -D
+	snap run hugo  serve --bind 0.0.0.0 -D

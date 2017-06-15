@@ -1,5 +1,0 @@
-+++
-categories = ["software"]
-tags = ["programming"]
-+++
-
