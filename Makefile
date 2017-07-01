@@ -6,7 +6,7 @@ setup:
 # Build the production files
 SRC_FILES=$(shell find archetypes/ content/ layouts/ static/ -type f)
 public: $(SRC_FILES)
-	hugo
+	rm -rf public/* && hugo
 
 # Publish files to public site
 publish: public
