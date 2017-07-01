@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine Learning on while true: continue</title>
+    <link>http://jad-b.github.io/categories/machine-learning/</link>
+    <description>Recent content in Machine Learning on while true: continue</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 13 May 2016 07:20:33 -0400</lastBuildDate>
+    <atom:link href="http://jad-b.github.io/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Gradient Descent: Ascending</title>
+      <link>http://jad-b.github.io/post/Gradient%20Descent%20Ascending/</link>
+      <pubDate>Fri, 13 May 2016 07:20:33 -0400</pubDate>
+      
+      <guid>http://jad-b.github.io/post/Gradient%20Descent%20Ascending/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Gradient descent keeps ascending my cost.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;Funny story&lt;/em&gt;, the issue wasn&amp;rsquo;t with the gradient descent implementation at all, but rather
+the cost function(least squares). I was calculating my error by subtracting my
+predicted values from the actual values(y), &lt;code&gt;$error = predicted - y$&lt;/code&gt;, instead of the other
+way around, &lt;code&gt;$ error = y - predicted$&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;This washed out when it came to calculating cost, since you end up squaring the error:&lt;/p&gt;
+
+&lt;div&gt;$$
+    J(\theta) = \frac{1}{2m}\sum_{i=1}^m(h_{\theta}(x^{i}) - y^{i})^{2}
+$$&lt;/div&gt;
+
+&lt;p&gt;but it &lt;em&gt;doesn&amp;rsquo;t&lt;/em&gt; get squared when you calculate the gradient:&lt;/p&gt;
+
+&lt;div&gt;$$
+    \theta_{j} := \alpha\frac{1}{m}\sum_{i=1}^m (h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}
+$$&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

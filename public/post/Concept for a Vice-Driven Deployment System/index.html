@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+
+    <link rel="stylesheet" href="http://jad-b.github.io/css/stark.css">
+    <link rel="stylesheet" href="http://jad-b.github.io/css/prism.css">
+    <link rel="stylesheet" href="http://jad-b.github.io/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy|Lato:100,300,400,600">
+
+    
+    
+    <title>Concept for a Vice Driven Deployment System - while true: continue</title>
+    <meta content=" - The education of a curious man." property="og:description">
+    <meta content="Concept for a Vice Driven Deployment System - while true: continue" property="og:title">
+    
+      
+      <meta content="deployment" name="keywords">
+      
+    
+    
+
+  </head>
+
+  <body>
+
+    <header class="hero grid">
+      <a class="logo" href="#">
+        <p>while true:</p><p class="logo-continue">continue</p>
+      </a>
+    </header>
+
+      
+      <main class="site-content grid">
+
+
+<article>
+
+  <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="http://jad-b.github.io/post/Concept%20for%20a%20Vice-Driven%20Deployment%20System/"> Concept for a Vice Driven Deployment System </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Fri, Jul 29, 2016</p>
+
+</div>
+
+
+
+<p class="content-keywords">deployment</p>
+
+
+
+  
+
+  <p>Alright, here me out: we could totally write a deployment service that was leveraged each of the seven cardinal sins.
+Here&rsquo;s my take on it:</p>
+
+<ul>
+<li>Pride - Deploys code</li>
+<li>Envy - Manages config</li>
+<li>Wrath - Runs functional/smoke tests</li>
+<li>Gluttony - Data visualization; &ldquo;feast your eyes&rdquo;</li>
+<li>Lust - Messaging &amp; notifications; something about sharing with other people,
+so the community aspect</li>
+<li>Sloth - Deployment automation; pride =&gt; sloth</li>
+<li>Greed - Deployment data; greed would feed gluttony</li>
+</ul>
+
+<p>Throw this behind a CLI &amp; chat bot, and ta-da, you&rsquo;re a <code>vice pride deploy
+&lt;project&gt;</code> away from releasing code.</p>
+
+<p>Now, I&rsquo;m going to be partial to this because I&rsquo;m in love with the cleverness of
+my own ideas.  You&rsquo;d have to make it good, and you&rsquo;d have to make it
+future-proof. This is how I&rsquo;d do it:</p>
+
+<p>Write the interface first. If you&rsquo;ve mastered the deploy of <em>any</em> piece of
+reasonably complex software (a.k.a. greater than just <code>scp</code>-ing files to a
+box), you know what you want from a deployment assistant. Code up that
+interface, and stub out the functionality as you go. I&rsquo;d want something like:</p>
+
+<pre><code># Retrieve configuration for the deploy; could subsume within the next step
+vice envy &lt;options...&gt; &lt;project&gt;
+# Deploy our project!
+vice pride deploy &lt;project&gt;
+# Run our post-release smoke tests
+vice wrath &lt;project&gt; &lt;options...&gt;
+# Visualize how our deploy went
+vice gluttony report &lt;project&gt;
+# See how _all_ our projects are looking
+vice gluttony report &lt;saved dashboard name&gt;
+# Drop a message in Slack about the release
+vice lust project -m &quot;Everything's looking good, guys&quot;
+# Backup our deploy data into S3
+vice greed backup &lt;options...&gt; &lt;S3 URL&gt;
+</code></pre>
+
+<p>Which means I&rsquo;d need a way of making <code>vice</code> (I guess the collective name of
+this tool is <code>vice</code>? Is now.) aware of <code>&lt;project&gt;</code>. Communication is either
+push- or pull-based, so it&rsquo;s either that <code>vice</code> know&rsquo;s how to find projects, or
+projects register themselves with <code>vice</code>. But, you know what? <em>That</em> matters
+far less than what I want my interaction with <code>vice</code> to be like. Both models
+would work, just like Chef and Ansible work. If one&rsquo;s better than the other,
+and we start with the lesser, it&rsquo;ll be our good engineering practices of
+writing loosely-coupled, modular code that saves us headaches during the refactor.</p>
+
+<p>Which brings me to modularity. If you want code to survive over time, it has to
+be modular, which in this context means we need to be able to write new
+backends for emerging technologies that satisfy the same functional interfaces.
+Was that a mouthful? Try this: We want <code>vice</code> to be compatible with new tech.
+Not in an auto-magical &ldquo;<code>vice</code> will work with <em>any database ever</em>&rdquo; way, but
+rather we know what data storage requirements we&rsquo;ll have for <code>greed</code>, which
+means we can write adapters to hide whether we&rsquo;re storing it in Postgresql,
+DynamoDB, a file system, or HDFS.</p>
+
+<p>Maybe we won&rsquo;t be able to completely satisfy our DataStorer interface with each
+backend - that&rsquo;s okay! Do a <code>raise NotImplemented</code>, and allow your calling code
+to deal with partial interfaces in non-critical functionality. Obviously you
+need to read &amp; write data, but maybe you can&rsquo;t provide the same level of
+searching you&rsquo;d like across all backends. Okay. Life is a moving target. Choose
+your trade-offs, and above all stay flexible through modular code.</p>
+
+
+</article>
+
+<div id="disqus_thread"></div>
+<script>
+   var disqus_config = function () {
+     this.page.url = "http:\/\/jad-b.github.io\/post\/Concept%20for%20a%20Vice-Driven%20Deployment%20System\/";
+     
+   };
+
+  
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var d = document, s = d.createElement('script');
+
+    s.src = "//while-true-continue.disqus.com/embed.js";
+
+    s.setAttribute('data-timestamp', + new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+<noscript>Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+    comments powered by Disqus.
+  </a>
+</noscript>
+
+
+  </main>
+
+    <footer>
+
+      <span class="copyright">
+        <i class="fa fa-copyright"></i>
+        <a href="j.american.db@gmail.com">j.american.db@gmail.com</a>
+      </span>
+
+
+      <span class="profile-links">
+
+        
+        <a href="https://github.com/jad-b">
+          <img alt="jad-b @ GitHub"
+               src="http://jad-b.github.io/img/octocat.svg"
+               width="32"
+               height="32">
+        </a>
+
+        
+        <a href="https://www.goodreads.com/user/show/43556621-jeremy-dobbins-bucklad">
+          <img alt="Goodreads"
+               src="https://www.goodreads.com/assets/layout/header/nav_g_icon.svg"
+               width="32"
+               height="32">
+        </a>
+
+        
+        <iframe allowtransparency="true" scrolling="no" frameborder="no"
+          src="https://w.soundcloud.com/icon/?url=http%3A%2F%2Fsoundcloud.com%2Fjeremy-dobbins-bucklad&color=orange_white&size=32"
+          style="width: 32px; height: 32px;"></iframe>
+
+        
+        <a href="http://8tracks.com/herbert-finkleton">
+          <img alt="8Tracks"
+               src="http://images.8tracks.com/avatar/i/006/193/171/52608.original-3203.jpg?rect=0,0,500,500&q=98&fm=jpg&fit=max&w=56&h=56"
+               width="32"
+               height="32">
+        </a>
+      </span> 
+
+    </footer>
+
+  
+<script src="http://jad-b.github.iojs/prism.js" async></script>
+
+<script type="text/javascript" src="http://jad-b.github.iojs/MathJax.js" async></script>
+<script type="text/x-mathjax-config" defer>
+
+
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config" defer>
+  
+  
+  
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+
+<script id="dsq-count-scr" src="//while-true-continue.disqus.com/count.js" async></script>
+
+  </body>
+
+</html>
+
