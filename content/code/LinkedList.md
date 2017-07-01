@@ -1,9 +1,8 @@
 +++
 categories = ["code"]
 date = "2017-05-31T09:25:35-04:00"
-tags = ["programming", "data structures", "interview"]
-title = "LinkedList"
-draft = "true"
+tags = ["programming", "data structures"]
+title = "The Linked List"
 +++
 # The Linked List
 A linked-list is a _linked_ (as opposed to contiguous) data structure, chained
