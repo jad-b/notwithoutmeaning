@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thoughts on while true: continue</title>
+    <link>http://jad-b.github.io/categories/thoughts/</link>
+    <description>Recent content in Thoughts on while true: continue</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 10 Oct 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://jad-b.github.io/categories/thoughts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>On Learning</title>
+      <link>http://jad-b.github.io/post/On%20Learning/</link>
+      <pubDate>Sat, 10 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://jad-b.github.io/post/On%20Learning/</guid>
+      <description>
+
+&lt;p&gt;This document will serve as a case study on learning, using learning databases as the problem.&lt;/p&gt;
+
+&lt;h3 id=&#34;glossay&#34;&gt;Glossay&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;grounding&lt;/strong&gt; give (something abstract) a firm theoretical or practical basis&lt;/p&gt;
+
+&lt;h2 id=&#34;concepts&#34;&gt;Concepts&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&amp;hellip;and what matters most is Understanding. And Understanding starts with &amp;ldquo;What Matters&amp;rdquo; - &lt;a href=&#34;http://www.quora.com/How-do-I-get-started-in-Artificial-Intelligence&#34;&gt;Quora: Forays into AI&lt;/a&gt;
+because we get better with practice as we get more experience, which is a hallmark of any Intuition based skill - &lt;a href=&#34;http://syntience.com/rch.pdf&#34;&gt;Reductionism Considered Harmful&lt;/a&gt;
+This is another hallmark of Intuition based skills: they cannot be taught as high level rules, they have to be experienced bottom up. This is, incidentally, also the difference between Teaching and Coaching - [ibid]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Using features of the information to classifying &amp;amp; divide concepts.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Begin with the problem space. Overview of &amp;ldquo;Why are we learning this? What are the fundamental problems this is trying to address?&amp;rdquo; Try and use a &lt;em&gt;concrete&lt;/em&gt; example; &lt;em&gt;ground&lt;/em&gt; it.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Why do we use databases? We need ways to manage incredibly large sets of data and its metadata. Metadata can include the relationships within data.
+
+&lt;ul&gt;
+&lt;li&gt;This grounds the upcoming concept against the student&amp;rsquo;s pre-existing
+patterns.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;What problems do databases have to solve? Writing to disk is very slow compared to the rest of I/O, so all databases need to optimize this. How they do so is a significant difference between databases.
+
+&lt;ul&gt;
+&lt;li&gt;We can use this difference as a means of classifying and comparing different databases.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Provide a framework for comparison&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Would listing up-front the variables for comparison overwhelm or assist? Perhaps this is size-dependent on the number of variables.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Use a common example across the different categories&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For databases, have a given set of data, and depict how it&amp;rsquo;s stored in different DBs.&lt;/li&gt;
+&lt;li&gt;In military terms, this would be the &amp;ldquo;walk&amp;rdquo; phase - hand-holding still involved. The &amp;ldquo;run&amp;rdquo; might be creating a data set, and having the student depict the different style of storage.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;techniques&#34;&gt;Techniques&lt;/h2&gt;
+
+&lt;p&gt;Tim Ferris promotes &lt;code&gt;DSSS&lt;/code&gt; and it&amp;rsquo;s sub-steps, &lt;code&gt;CaFE&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;DSSS&lt;/strong&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Deconstruction
+
+&lt;ul&gt;
+&lt;li&gt;Reducing&lt;/li&gt;
+&lt;li&gt;Interviewing&lt;/li&gt;
+&lt;li&gt;Reversal&lt;/li&gt;
+&lt;li&gt;Translating&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Selection (The &lt;sup&gt;80&lt;/sup&gt;&amp;frasl;&lt;sub&gt;20&lt;/sub&gt; rule)&lt;/li&gt;
+&lt;li&gt;Sequencing (The order in which you choose to learn)&lt;/li&gt;
+&lt;li&gt;Stakes (The carrot &amp;amp; the stick)&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CaFE&lt;/strong&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Compression
+
+&lt;ul&gt;
+&lt;li&gt;How can I represent the essential 20% in a compact reference?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Frequency
+
+&lt;ul&gt;
+&lt;li&gt;What is most sustainable schedule I can manage for learning this information?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Encoding
+
+&lt;ul&gt;
+&lt;li&gt;How can I leverage anchors, connections, and whatever tricks possible to make this information stick?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;recursive-horizon-expansion&#34;&gt;Recursive Horizon Expansion&lt;/h3&gt;
+
+&lt;h4 id=&#34;phase-1-unknown-unknown-s&#34;&gt;Phase 1) Unknown Unknown&amp;rsquo;s&lt;/h4&gt;
+
+&lt;p&gt;Read summaries
+Gather resources
+Identify major questions and early stumbling blocks. For instance, machine
+Learning requires linear algebra basics from the get-go, and an intermediate
+skills in such in order to understand things like PCA.&lt;/p&gt;
+
+&lt;h4 id=&#34;phase-2-intake&#34;&gt;Phase 2) Intake&lt;/h4&gt;
+
+&lt;p&gt;Read through material until confused (diminishing returns), or 45 minutes.
+Perform an assessment of prevous material.&lt;/p&gt;
+
+&lt;h4 id=&#34;phase-3-understand&#34;&gt;Phase 3) Understand&lt;/h4&gt;
+
+&lt;p&gt;Do; else, teach.&lt;/p&gt;
+
+&lt;h2 id=&#34;explaining-101&#34;&gt;Explaining, 101&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;What the hell is it?
+
+&lt;ul&gt;
+&lt;li&gt;As explained in terms I already know. Or if there&amp;rsquo;s no way for this to
+relate it to me without explaining something else, start there.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Why do I need it?
+
+&lt;ul&gt;
+&lt;li&gt;Why is this relevant? Why are people excited?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
