@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Science on while true: continue</title>
+    <link>http://jad-b.github.io/categories/data-science/</link>
+    <description>Recent content in Data Science on while true: continue</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 May 2016 10:21:22 -0400</lastBuildDate>
+    <atom:link href="http://jad-b.github.io/categories/data-science/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ODSC 2016 - Friday</title>
+      <link>http://jad-b.github.io/post/ODSC2016%20-%20Friday/</link>
+      <pubDate>Fri, 20 May 2016 10:21:22 -0400</pubDate>
+      
+      <guid>http://jad-b.github.io/post/ODSC2016%20-%20Friday/</guid>
+      <description>
+
+&lt;p&gt;&lt;strong&gt;Goto&lt;/strong&gt;: &lt;a href=&#34;No page found with path or logical name &#34;post/ODSC2016 - Saturday.md&#34;.
+&#34;&gt;Saturday&lt;/a&gt; &amp;amp;
+&lt;a href=&#34;No page found with path or logical name &#34;post/ODSC2016 - Sunday.md&#34;.
+&#34;&gt;Sunday&amp;rsquo;s&lt;/a&gt; notes.&lt;/p&gt;
+
+&lt;h1 id=&#34;friday-morning&#34;&gt;Friday - Morning&lt;/h1&gt;
+
+&lt;h2 id=&#34;building-a-recommendation-system&#34;&gt;Building a Recommendation System&lt;/h2&gt;
+
+&lt;p&gt;Speaker: &lt;a href=&#34;https://www.linkedin.com/in/cfregly&#34;&gt;Chris Fregly&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;spark&#34;&gt;Spark&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;On Spark &amp;amp; Tableau (or Redshift):&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;When you&amp;rsquo;re connecting Tableau to Spark, it&amp;rsquo;s all going through one JVM, the HiveThrift
+server (which converts SQL into Java talk).  You want to make sure you&amp;rsquo;re pushding down as
+much computation as possible to Spark, saving the HiveThrift server cycles. This way you
+collect the results of your computation for display in your visualization engine.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;On Graph Analysis&lt;/strong&gt;
+If you&amp;rsquo;re doing network analysis using Spark, look at using GraphFrames over GraphX.
+GraphFrames is fully supported in Spark2. Both are only good for offline graph analytics;
+transactional graph queries should be loaded into a dedicated Graph DB like Neo4j.&lt;/p&gt;
+
+&lt;p&gt;People don&amp;rsquo;t seem to test these systems! I suppose if you&amp;rsquo;re already monitoring
+performance and model prediction accuracy, you &lt;em&gt;are&lt;/em&gt; testing them. And it&amp;rsquo;d be easy enough
+to mock up I/O for subsets to confirm functionality.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Spark - Packages&lt;/code&gt;: a marketplace for Spark packages&lt;/p&gt;
+
+&lt;h4 id=&#34;spark-2-0&#34;&gt;Spark 2.0&lt;/h4&gt;
+
+&lt;p&gt;Big focus on codegen: A &lt;code&gt;map&lt;/code&gt; followed by a &lt;code&gt;filter&lt;/code&gt; will get re-written into a single method, reducing function calls.
+Relies on &lt;a href=&#34;http://unkrig.de/w/Janino&#34;&gt;Project Janino&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Lot of talk about
+&lt;a href=&#34;https://databricks.com/blog/2015/04/28/project-tungsten-bringing-spark-closer-to-bare-metal.html&#34;&gt;Tungsten&lt;/a&gt;,
+to include new low-level data structures, code generation, and more.&lt;/p&gt;
+
+&lt;p&gt;Spark 2.0 will support exporting models as PMML. PMML is the common data representation of ML models.&lt;/p&gt;
+
+&lt;h4 id=&#34;probabilistic-data-structures&#34;&gt;Probabilistic data structures&lt;/h4&gt;
+
+&lt;p&gt;Paco Nathan: Good work on probabilistic structures. &lt;a href=&#34;https://www.linkedin.com/in/ceteri&#34;&gt;https://www.linkedin.com/in/ceteri&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;When you allow the possibility of error into your queries, a 14 bit structure can store
+1e9 counts, w/ an error of .81%,&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;HyperLogLog&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Particular hash function used by HLL guarantees the data will be uniformly distributed.
+Something about taking subsets of the data.&lt;/li&gt;
+&lt;li&gt;If you have guaranteed uniform distribution, you can check for a distinct number of
+users by only checking the beginning of the structure. Similar to Numenta&amp;rsquo;s SDR
+bitmasks.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CountMin Sketch&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Creates a (# of hash functions, # of bits) table. Every item gets an entry in each
+row (per hash function). Each table cell is a count of how many times a hash
+function has created that bit value. When you want the count for an item, you hash
+it, and take the &lt;em&gt;minimum&lt;/em&gt; of all rows. You&amp;rsquo;re guaranteed to always be &amp;gt;= the &lt;em&gt;true&lt;/em&gt;
+count of the item. The &lt;code&gt;&amp;gt;&lt;/code&gt; is due to overlap with other items.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Also: &lt;a href=&#34;https://en.wikipedia.org/wiki/Bloom_filter&#34;&gt;&lt;strong&gt;Bloom Filters&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Size in Memory of 1e6 item
+
+&lt;ul&gt;
+&lt;li&gt;HyperLogLog: 16,472 bytes&lt;/li&gt;
+&lt;li&gt;Naive Array: 4,800,016 bytes&lt;/li&gt;
+&lt;li&gt;CountMin Sketch: 310,944 bytes&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Came across this &lt;a href=&#34;https://en.wikipedia.org/wiki/Bloom_filter&#34;&gt;overview&lt;/a&gt; when looking up
+info on HyperLogLog.&lt;/p&gt;
+
+&lt;h3 id=&#34;lessons-from-netflix&#34;&gt;Lessons from Netflix&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A logging company that also streams movies&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Chris worked on the Netflix Streaming Services team as a Data Engineer, and his experience
+there came up in many examples.&lt;/p&gt;
+
+&lt;p&gt;Stated &amp;ldquo;Netflix tends to build over buy&amp;rdquo;; if you take their &lt;a href=&#34;https://github.com/netflix&#34;&gt;GitHub
+repo&lt;/a&gt; organization as a good representation of what they&amp;rsquo;ve
+built, that&amp;rsquo;s 111 repos worth of projects (as of 2016May23, using &lt;code&gt;curl&lt;/code&gt; + &lt;code&gt;jq&lt;/code&gt;). Of
+course, they&amp;rsquo;ve already severly limited how much they have to build by heavily leveraging
+the capabilities of AWS.&lt;/p&gt;
+
+&lt;p&gt;Noted they&amp;rsquo;ve been using &lt;a href=&#34;https://prestodb.io/&#34;&gt;Presto&lt;/a&gt;, a ANSI SQL tool for querying
+multiple datasources at once, for ad-hoc analytics. Presto replaces Apache Hive, as long
+as you don&amp;rsquo;t need fault tolerance, as it stores its intermediate results in memory.&lt;/p&gt;
+
+&lt;p&gt;As the number of microservices grew, breakages in one API tended to bring down a &lt;em&gt;lot&lt;/em&gt; of
+services. Interestingly, &lt;a href=&#34;https://www.linkedin.com/in/adriancockcroft&#34;&gt;Adrian Cockcroft&lt;/a&gt; mentioned these breakages
+tend to show one-level away from the root of the problem in the &lt;em&gt;dependent&lt;/em&gt; APIs, which is
+echoes a lesson learned in Athletic Training: Pain starts up the chain. To combat these
+breakages, they developed &lt;a href=&#34;https://www.linkedin.com/in/adriancockcroft&#34;&gt;Hystrix&lt;/a&gt;.
+Hystrix implements the &lt;a href=&#34;http://martinfowler.com/bliki/CircuitBreaker.html&#34;&gt;Circuit Breaker
+pattern&lt;/a&gt;. I haven&amp;rsquo;t dived into the
+library well enough to know exactly, but I know it solved a few problems:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;What broke?&lt;/li&gt;
+&lt;li&gt;What&amp;rsquo;s the fallback?&lt;/li&gt;
+&lt;li&gt;Metric gathering on API requests.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Also: &lt;code&gt;Hystrix&lt;/code&gt; can collapse multiple requests for the same object into one. Natural if
+you&amp;rsquo;ve got a connector library going in between all of your API requests.&lt;/p&gt;
+
+&lt;p&gt;Has Hystrix been re-implemented in any other languages?&lt;/p&gt;
+
+&lt;h4 id=&#34;data-pipeline&#34;&gt;Data Pipeline&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.slideshare.net/cfregly/dc-spark-users-group-march-15-2016-spark-and-netflix-recommendations&#34;&gt;Slideshare here, goto slide 104&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;v1 - Producers =&amp;gt; Chukwa =&amp;gt; S3 =&amp;gt; EMR&lt;/li&gt;
+&lt;li&gt;v2 - Producers =&amp;gt; Chukwa {=&amp;gt; S3 =&amp;gt; EMR} &amp;amp; {=&amp;gt; Kafka =&amp;gt; Stream Consumers &amp;amp; more}&lt;/li&gt;
+&lt;li&gt;v3 - Producers =&amp;gt; Kafka =&amp;gt; Router =&amp;gt; {S3, ElasticSearch, {Kafka =&amp;gt; Stream Consumers}}&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Netflix runs a 10k node Memcached cluster that ML models get loaded into, amongst apparently everything else.&lt;/p&gt;
+
+&lt;h4 id=&#34;the-netflix-prize&#34;&gt;The Netflix Prize&lt;/h4&gt;
+
+&lt;p&gt;Background: Given (movieID, userID, userRating, timestamp), improve predictions by 10%.
+For a long time, the improvment was stuck around 7%. The key was when &lt;em&gt;timestamp&lt;/em&gt; got
+incorporated into the predictive models. Essentially, they had to adjust for each humans&amp;rsquo;
+bias. Some examples of said bias adjustments:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Alice effect: Alice rates lower than avg.&lt;/li&gt;
+&lt;li&gt;Inception effect: Certain movies always get rated above avg&lt;/li&gt;
+&lt;li&gt;Overall mean rating of a movie; high ratings encourage high ratings&lt;/li&gt;
+&lt;li&gt;# of people who&amp;rsquo;ve rated a movie&lt;/li&gt;
+&lt;li&gt;# of days since user&amp;rsquo;s first rating&lt;/li&gt;
+&lt;li&gt;# of days since movie&amp;rsquo;s first rating&lt;/li&gt;
+&lt;li&gt;Mood, time of day, day of week&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;friday-afternoon&#34;&gt;Friday - Afternoon&lt;/h1&gt;
+
+&lt;h2 id=&#34;deploying-serving-models&#34;&gt;Deploying &amp;amp; Serving models&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://tensorflow.github.io/serving/&#34;&gt;TensorFlow Serving&lt;/a&gt; provides a means of deploying
+and running predictions on the models.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Dstream&lt;/code&gt; is the RDD of Spark Streaming; the mini-batch that&amp;rsquo;s just come in.
+Holden Karrau - High Performance Spark talks about using RDDs in place of DataFrames&lt;/p&gt;
+
+&lt;p&gt;What he&amp;rsquo;d use in a Production-ready system today:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Workflow: Airflow. Describe DAGs of tasks in Python.&lt;/li&gt;
+&lt;li&gt;Extract-Transform-Load (ETL): PySpark. More Python than Java/Scala datasci people running around.&lt;/li&gt;
+&lt;li&gt;Serving layer: Redis. Rock-solid, very fast.&lt;/li&gt;
+&lt;li&gt;Data Stitching: nifi (maybe). Collects info from many many sources and convert into a single format.&lt;/li&gt;
+&lt;li&gt;Storage: Elasticsearch to begin, and maybe forever. Scales well, good APIs; use it until you can&amp;rsquo;t.
+
+&lt;ul&gt;
+&lt;li&gt;Spark-Elasticsearch connector is very advanced; takes advantage of data locality&lt;/li&gt;
+&lt;li&gt;Starting to tout itself as a GraphDB?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Monitoring: Ganglia.&lt;/li&gt;
+&lt;li&gt;Logging: ELK fo&amp;rsquo; sho&amp;rsquo;&lt;/li&gt;
+&lt;li&gt;Queueing: Kafka, if you have the ops team to support it. Otherwise, check out AWS Kinesis.&lt;/li&gt;
+&lt;li&gt;Streaming
+
+&lt;ul&gt;
+&lt;li&gt;Kafka Streams or Flink. May want to &amp;ldquo;write to the Apache Beam API&amp;rdquo; - came out of Google.&lt;/li&gt;
+&lt;li&gt;Storm is proven, but not getting a lot of new development. Twitter has written an API-compatible replacement
+called Heron.&lt;/li&gt;
+&lt;li&gt;Flink has a first-class processing for Complex Data Processing - whatever that
+means.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Machine Learning: Depends on your language preference. If Python, then TensorFlow, sklearn, nltk.&lt;/li&gt;
+&lt;li&gt;IDL: Spark is &lt;em&gt;all about&lt;/em&gt; Parquet. In-memory version is Apache Arrow.
+
+&lt;ul&gt;
+&lt;li&gt;SparkSQL is the most mature. Edit: A later speaker from Terabyte remarked on
+SparkSQL being the most &lt;em&gt;immature&lt;/em&gt;, when compared to Apache Hive, Impala, Drill.&lt;/li&gt;
+&lt;li&gt;Any project Michael Armbrust is on is going to be developed well&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;good-cool-ideas&#34;&gt;Good &amp;amp; Cool ideas&lt;/h2&gt;
+
+&lt;p&gt;Spark&amp;rsquo;s &lt;code&gt;new StandardScaler=(withMean=True, withStd=False)&lt;/code&gt; lets you toggle how you feature scale.
+PCA wants mean normalization, without std dev, but linear regression will want both.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;TextRank&lt;/code&gt;: Finds the sentence that best summarizes the corpus.&lt;/p&gt;
+
+&lt;p&gt;Cluster density can be measured by WSSSE (Within Set Sum of Squared Errors); lower is better.&lt;/p&gt;
+
+&lt;p&gt;Speaker mentioned anecdotally that 2 or 3 friends in the last 6 months had ditched
+Cassandra clusters in favor of ElasticSearch.&lt;/p&gt;
+
+&lt;p&gt;You don&amp;rsquo;t want to be doing read-heavy analytics on your write-heavy Cassandra
+cluster; either have two separate clusters and setup replication from W=&amp;gt;R, or
+read the SSTable files off the disk.&lt;/p&gt;
+
+&lt;p&gt;StitchFix - Fill out preferences for clothes, then a stylist selects five items to ship you. Anything you send back you
+fill out why you don&amp;rsquo;t like it. NLP interpets the written response, neural nets learn the style, and they&amp;rsquo;ll even ship
+feedback to the designers saying what they&amp;rsquo;ve learned.&lt;/p&gt;
+
+&lt;p&gt;Interesting thing to note: Often mentioned new technologies as a &amp;ldquo;recruiting point&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;skflow: A scikit-learn API compatible replacment with TensorFlow as a backend.&lt;/p&gt;
+
+&lt;h2 id=&#34;resources&#34;&gt;Resources&lt;/h2&gt;
+
+&lt;p&gt;&amp;ldquo;Jupyter notebooks for developers&amp;rdquo; &amp;amp; &amp;ldquo;Matplotlib for Developers&amp;rdquo; from O&amp;rsquo;Reilly.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

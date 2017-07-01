@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+
+    <link rel="stylesheet" href="http://jad-b.github.io/css/stark.css">
+    <link rel="stylesheet" href="http://jad-b.github.io/css/prism.css">
+    <link rel="stylesheet" href="http://jad-b.github.io/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy|Lato:100,300,400,600">
+
+    
+    
+    <title>Testing Distributed Systems - while true: continue</title>
+    <meta content=" - The education of a curious man." property="og:description">
+    <meta content="Testing Distributed Systems - while true: continue" property="og:title">
+    
+      
+      <meta content="programming, distributed systems, testing" name="keywords">
+      
+    
+    
+
+  </head>
+
+  <body>
+
+    <header class="hero grid">
+      <a class="logo" href="#">
+        <p>while true:</p><p class="logo-continue">continue</p>
+      </a>
+    </header>
+
+      
+      <main class="site-content grid">
+
+
+<article>
+
+  <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="http://jad-b.github.io/post/Testing%20Distributed%20Systems/"> Testing Distributed Systems </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Tue, Apr 19, 2016</p>
+
+</div>
+
+
+
+<p class="content-keywords">programming, distributed systems, testing</p>
+
+
+
+  
+
+  
+
+<p><strong>TL;DR: Takeaways</strong></p>
+
+<ul>
+<li>Always, always, always handle errors appropriately. No <code>pass</code>, no <code>/* TODO
+*/</code>. <em>Something</em> in the chain needs to verify it&rsquo;s handled.</li>
+<li>Using 3 nodes lets you reproduce 98% of error cases in distributed systems.</li>
+<li>77% of catastrophic failures can be reproduced through unit tests</li>
+<li>Log aggressively, and on both sides of events (message passing).</li>
+<li>The big 5 error-ing events:
+
+<ol>
+<li>Startup</li>
+<li>Writes from client</li>
+<li>Node down/unreachable</li>
+<li>Configuration change</li>
+<li>Node join</li>
+</ol></li>
+</ul>
+
+<p>As a work project involving multiple moving pieces begins the move from
+proof-of-concept to preparing for production traffic, the various
+pieces are beginning to knit into a whole. In particular, a client-driven event
+requires that a list of registered services receive an update. Simple enough,
+but failure in this system would result in bad API traffic routing, or worse,
+all APIs becoming externally unavailable. Undesirable!</p>
+
+<p>My previous experiences involved nothing more distributed than your basic
+web-server=&gt;DB setup, so I took this as an opportunity to learn from other&rsquo;s
+mistakes. Searching around turns up the following advice:</p>
+
+<h3 id="simple-testing-can-prevent-most-critical-failures">Simple Testing Can Prevent Most Critical Failures</h3>
+
+<p>A whitepaper<sup class="footnote-ref" id="fnref:whitepaper"><a rel="footnote" href="#fn:whitepaper">1</a></sup> out of the University of Toronto with some incredible
+statistics on avoiding the worst-of-the-bad: catastrophic failures<sup class="footnote-ref" id="fnref:catfail"><a rel="footnote" href="#fn:catfail">2</a></sup>. They
+attribute 92% of CFs to bad error handling, with a further breakdown of</p>
+
+<ul>
+<li>35% due to
+
+<ul>
+<li>Catching but not doing anything about the error</li>
+<li>Aborting on an overly-general error (java&rsquo;s <code>Throwable</code>, Python&rsquo;s
+<code>except:</code>)</li>
+<li>A TODO/FIXME in place, but no handling</li>
+</ul></li>
+<li>And 23% on aborting on a non-fatal error (failed to delete a temporary file)</li>
+</ul>
+
+<p><strong>77%</strong> of these failures they could reproduce using only unit tests. Admittedly,
+this is their example unit test:</p>
+
+<pre><code class="language-java">public void testLogRollAfterSplitStart {
+    // Create HBase cluster with 1 master and 2 Region Servers
+    startMiniCluster();
+</code></pre>
+
+<p>&hellip;which may stretch your imagining of unit tests. I believe what they were
+getting at is that the problems are testable within the scope of a single
+function&rsquo;s setup/run/cleanup scope. Also, when your definition of unit test is
+&ldquo;code that I wrote&rdquo;, and the code that you wrote was HBase, that&rsquo;s quite the
+scope.</p>
+
+<p>Oh, and how about this: <strong>98% of problems could be recreated using no more than
+3 nodes</strong>. Your 120 node Cassandra cluster&rsquo;s dying? Odds are, you only need
+three players to recreate it locally.</p>
+
+<p>An interesting point of difference the author&rsquo;s noted between distributed and
+non-distributed systems was that distributed systems tend to have much better
+logging. As such, 84% of the studied failures had their triggering events
+logged. They logged so much that the author&rsquo;s recommended more advanced log
+analysis techniques than a simple <code>grep ERROR</code>.</p>
+
+<p>And to wrap this up: Starting up was the most dangerous time for a process, as
+summarized under &ldquo;Lessons Learned&rdquo;. More important is to take that list and mix
+it up - 90% of the failures could be categorized as a permutation of only three
+key events. Just two events interacting accounted for 50% of CFs.</p>
+
+<h4 id="further-reading">Further reading</h4>
+
+<ul>
+<li>ConfErr - tests configuration errors within a realistic range</li>
+<li>MODIST - Model checking for distributed system</li>
+<li>FATE and DESTINI - Framework for cloud recovery testing</li>
+<li>This looks interesting: KLEE - a code-coverage generator for C programs.
+  Can&rsquo;t find any examples for Python though, which would be my use-case.</li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:whitepaper"><a href="https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-yuan.pdf">https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-yuan.pdf</a>
+ <a class="footnote-return" href="#fnref:whitepaper"><sup>[return]</sup></a></li>
+<li id="fn:catfail">Failure of the system for a majority to all users.
+ <a class="footnote-return" href="#fnref:catfail"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+
+</article>
+
+<div id="disqus_thread"></div>
+<script>
+   var disqus_config = function () {
+     this.page.url = "http:\/\/jad-b.github.io\/post\/Testing%20Distributed%20Systems\/";
+     
+   };
+
+  
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var d = document, s = d.createElement('script');
+
+    s.src = "//while-true-continue.disqus.com/embed.js";
+
+    s.setAttribute('data-timestamp', + new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+<noscript>Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+    comments powered by Disqus.
+  </a>
+</noscript>
+
+
+  </main>
+
+    <footer>
+
+      <span class="copyright">
+        <i class="fa fa-copyright"></i>
+        <a href="j.american.db@gmail.com">j.american.db@gmail.com</a>
+      </span>
+
+
+      <span class="profile-links">
+
+        
+        <a href="https://github.com/jad-b">
+          <img alt="jad-b @ GitHub"
+               src="http://jad-b.github.io/img/octocat.svg"
+               width="32"
+               height="32">
+        </a>
+
+        
+        <a href="https://www.goodreads.com/user/show/43556621-jeremy-dobbins-bucklad">
+          <img alt="Goodreads"
+               src="https://www.goodreads.com/assets/layout/header/nav_g_icon.svg"
+               width="32"
+               height="32">
+        </a>
+
+        
+        <iframe allowtransparency="true" scrolling="no" frameborder="no"
+          src="https://w.soundcloud.com/icon/?url=http%3A%2F%2Fsoundcloud.com%2Fjeremy-dobbins-bucklad&color=orange_white&size=32"
+          style="width: 32px; height: 32px;"></iframe>
+
+        
+        <a href="http://8tracks.com/herbert-finkleton">
+          <img alt="8Tracks"
+               src="http://images.8tracks.com/avatar/i/006/193/171/52608.original-3203.jpg?rect=0,0,500,500&q=98&fm=jpg&fit=max&w=56&h=56"
+               width="32"
+               height="32">
+        </a>
+      </span> 
+
+    </footer>
+
+  
+<script src="http://jad-b.github.iojs/prism.js" async></script>
+
+<script type="text/javascript" src="http://jad-b.github.iojs/MathJax.js" async></script>
+<script type="text/x-mathjax-config" defer>
+
+
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config" defer>
+  
+  
+  
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+
+<script id="dsq-count-scr" src="//while-true-continue.disqus.com/count.js" async></script>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta name="generator" content="Hugo 0.16" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+
+    <link rel="stylesheet" href="http://jad-b.github.io/css/stark.css">
+    <link rel="stylesheet" href="http://jad-b.github.io/css/prism.css">
+    <link rel="stylesheet" href="http://jad-b.github.io/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy|Lato:100,300,400,600">
+
+    
+    
+    <title>while true: continue</title>
+    <meta content="The education of a curious man." property="og:description">
+    <meta content="while true: continue" property="og:title">
+    <meta
+      content="quote, programming, machine-learning, metalearning, testing, autodidact, concurrency, conference, data, data-science, deployment, distributed-systems, golang, learning, math, mlsl, notes, "
+      name="keywords">
+    
+
+  </head>
+
+  <body>
+
+    <header class="hero grid">
+      <a class="logo" href="#">
+        <p>while true:</p><p class="logo-continue">continue</p>
+      </a>
+    </header>
+
+      
+      <main class="site-content grid">
+
+
+
+  <section>
+    <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="http://jad-b.github.io/post/Concept%20for%20a%20Vice-Driven%20Deployment%20System/"> Concept for a Vice Driven Deployment System </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Fri, Jul 29, 2016</p>
+
+</div>
+
+
+
+<p class="content-keywords">deployment</p>
+
+
+    
+      <p>Alright, here me out: we could totally write a deployment service that was leveraged each of the seven cardinal sins.
+Here&rsquo;s my take on it:</p>
+
+    
+    
+      <div class="read-more-link">
+        <a href="/post/Concept%20for%20a%20Vice-Driven%20Deployment%20System/">Read more...</a.>
+      </div>
+    
+  </section>
+
+  <section>
+    <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="http://jad-b.github.io/post/Multi-_%20Modeling/"> Multi-[_blank_] Modeling </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Thu, Jul 28, 2016</p>
+
+</div>
+
+
+
+
+    
+      Multilevel models are statistical models of parameters that vary at more than one level. - source: [Multilevel model:wikipedia]. This implies that the same parameters can take different values amongst sibling models of different parents. To illustrate, let&rsquo;s work through the example given in wikipedia: A basic linear regression model for predicting income may take age, class, gender, and race as parameters: $f(age,class,gender,race) = income$. However, this is likely to predict the same income for a 45-year old black man in Seattle, WA as it would for one in Mobile, AL.
+    
+    
+      <div class="read-more-link">
+        <a href="/post/Multi-_%20Modeling/">Read more...</a.>
+      </div>
+    
+  </section>
+
+  <section>
+    <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="http://jad-b.github.io/post/Lessons%20Learned:%20Software/"> Lessons Learned: Software </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Thu, Jul 28, 2016</p>
+
+</div>
+
+
+
+<p class="content-keywords">programming</p>
+
+
+    
+      Use TLS from the beginning. There aren&rsquo;t many reasons you shouldn&rsquo;t. Snakeoil gets you in the practice of managing the keys, but a self-signed or corporate wildcard cert that&rsquo;s scoped to your development domain are even better. I&rsquo;m finally seeing a plethora of key management tools1 begin to propagate, so no excuses. Write functional tests to run against any envinromnet. This means they need to accept configuration options, and should only affect test data they&rsquo;re responsible for creating and deleting.
+    
+    
+      <div class="read-more-link">
+        <a href="/post/Lessons%20Learned:%20Software/">Read more...</a.>
+      </div>
+    
+  </section>
+
+  <section>
+    <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="http://jad-b.github.io/post/Why%20Not%20School/"> Why I&#39;m Not Getting My Graduate Degree (Yet). </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Sat, May 28, 2016</p>
+
+</div>
+
+
+
+<p class="content-keywords">data science, metalearning, autodidact</p>
+
+
+    
+      A new option is emerging alongside graduate programs for ambitious would-be
+students: Teach yourself.
+    
+    
+      <div class="read-more-link">
+        <a href="/post/Why%20Not%20School/">Read more...</a.>
+      </div>
+    
+  </section>
+
+  <section>
+    <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="http://jad-b.github.io/post/ODSC2016%20-%20Friday/"> ODSC 2016 - Friday </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Fri, May 20, 2016</p>
+
+</div>
+
+
+
+<p class="content-keywords">conference, notes, programming, data, machine learning</p>
+
+
+    
+      Goto: Saturday &amp; Sunday&rsquo;s notes. Friday - Morning Building a Recommendation System Speaker: Chris Fregly Spark On Spark &amp; Tableau (or Redshift): When you&rsquo;re connecting Tableau to Spark, it&rsquo;s all going through one JVM, the HiveThrift server (which converts SQL into Java talk). You want to make sure you&rsquo;re pushding down as much computation as possible to Spark, saving the HiveThrift server cycles. This way you collect the results of your computation for display in your visualization engine.
+    
+    
+      <div class="read-more-link">
+        <a href="/post/ODSC2016%20-%20Friday/">Read more...</a.>
+      </div>
+    
+  </section>
+
+  <section>
+    <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="http://jad-b.github.io/post/Gradient%20Descent%20Ascending/"> Gradient Descent: Ascending </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Fri, May 13, 2016</p>
+
+</div>
+
+
+
+<p class="content-keywords">mlsl, machine learning, math</p>
+
+
+    
+      <blockquote>
+<p>Gradient descent keeps ascending my cost.</p>
+</blockquote>
+
+<p><em>Funny story</em>, the issue wasn&rsquo;t with the gradient descent implementation at all, but rather
+the cost function(least squares). I was calculating my error by subtracting my
+predicted values from the actual values(y), <code>$error = predicted - y$</code>, instead of the other
+way around, <code>$ error = y - predicted$</code>.</p>
+
+    
+    
+      <div class="read-more-link">
+        <a href="/post/Gradient%20Descent%20Ascending/">Read more...</a.>
+      </div>
+    
+  </section>
+
+  <section>
+    <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="http://jad-b.github.io/post/Testing%20Timeouts%20in%20Go/"> Testing Timeouts In Go With Channel Selects </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Thu, May 5, 2016</p>
+
+</div>
+
+
+
+<p class="content-keywords">golang, concurrency, testing</p>
+
+
+    
+      <pre><code class="language-go">import (
+    &quot;net&quot;
+    &quot;testing&quot;
+    &quot;time&quot;
+)
+
+func TestAddrResolve(t *testing.T) {
+    network, addr := &quot;ip4&quot;, &quot;127.0.0.125:44151&quot;
+    addrChan := make(chan error)
+
+    // Attempt to resolve IP addr
+    go func(ch chan error) {
+        _, err := net.DialTimeout(network, addr, 1 * time.Second)
+        addrChan &lt;- err
+    }(addrChan)
+
+    // Now, see who returns a msg first
+    select {
+    case e := &lt;-addrChan:
+        if e == nil {
+            t.Fatalf(&quot;%s://%s should fail to resolve&quot;, network, addr)
+        } else if testing.Verbose() { // Success!
+            t.Logf(&quot;Call to %s://%s timed out.\nError\n\t%s&quot;, network, addr, e)
+        }
+    case &lt;-time.After(1 * time.Second):
+        t.Fatal(&quot;Address resolution failed to timeout in one second.&quot;)
+    }
+}
+</code></pre>
+
+    
+    
+  </section>
+
+  <section>
+    <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="http://jad-b.github.io/post/Testing%20Distributed%20Systems/"> Testing Distributed Systems </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Tue, Apr 19, 2016</p>
+
+</div>
+
+
+
+<p class="content-keywords">programming, distributed systems, testing</p>
+
+
+    
+      <p><strong>TL;DR: Takeaways</strong></p>
+
+<ul>
+<li>Always, always, always handle errors appropriately. No <code>pass</code>, no <code>/* TODO
+*/</code>. <em>Something</em> in the chain needs to verify it&rsquo;s handled.</li>
+<li>Using 3 nodes lets you reproduce 98% of error cases in distributed systems.</li>
+<li>77% of catastrophic failures can be reproduced through unit tests</li>
+<li>Log aggressively, and on both sides of events (message passing).</li>
+<li>The big 5 error-ing events:
+
+<ol>
+<li>Startup</li>
+<li>Writes from client</li>
+<li>Node down/unreachable</li>
+<li>Configuration change</li>
+<li>Node join</li>
+</ol></li>
+</ul>
+
+    
+    
+      <div class="read-more-link">
+        <a href="/post/Testing%20Distributed%20Systems/">Read more...</a.>
+      </div>
+    
+  </section>
+
+  <section>
+    <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="http://jad-b.github.io/post/The%20Aggressive%20Student/"> The Aggressive Student </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Mon, Mar 28, 2016</p>
+
+</div>
+
+
+
+
+    
+      Learning is being in a race against yourself. These things help. The Rapid Acquisistion of Highly-Technical Information Learning very technical information is unique from the general problem of learning in a few ways. First of all, the end-result is entirely mental. Either you understand the concepts well enough to accomplish your task, or you do not. This is in contrast to learning a song on the piano, where a subconscious system is learning instead, like training motor patterns for rote memorization.
+    
+    
+      <div class="read-more-link">
+        <a href="/post/The%20Aggressive%20Student/">Read more...</a.>
+      </div>
+    
+  </section>
+
+  <section>
+    <div class="grid content-title">
+
+  
+  <h1 class="cell">
+    <a href="http://jad-b.github.io/post/On%20Learning/"> On Learning </a>
+  </h1>
+
+  
+
+  
+  <p class="cell content-timestamp">Last updated on Sat, Oct 10, 2015</p>
+
+</div>
+
+
+
+<p class="content-keywords">learning, metalearning</p>
+
+
+    
+      This document will serve as a case study on learning, using learning databases as the problem. Glossay grounding give (something abstract) a firm theoretical or practical basis Concepts &hellip;and what matters most is Understanding. And Understanding starts with &ldquo;What Matters&rdquo; - Quora: Forays into AI because we get better with practice as we get more experience, which is a hallmark of any Intuition based skill - Reductionism Considered Harmful This is another hallmark of Intuition based skills: they cannot be taught as high level rules, they have to be experienced bottom up.
+    
+    
+      <div class="read-more-link">
+        <a href="/post/On%20Learning/">Read more...</a.>
+      </div>
+    
+  </section>
+
+
+  </main>
+
+    <footer>
+
+      <span class="copyright">
+        <i class="fa fa-copyright"></i>
+        <a href="j.american.db@gmail.com">j.american.db@gmail.com</a>
+      </span>
+
+
+      <span class="profile-links">
+
+        
+        <a href="https://github.com/jad-b">
+          <img alt="jad-b @ GitHub"
+               src="http://jad-b.github.io/img/octocat.svg"
+               width="32"
+               height="32">
+        </a>
+
+        
+        <a href="https://www.goodreads.com/user/show/43556621-jeremy-dobbins-bucklad">
+          <img alt="Goodreads"
+               src="https://www.goodreads.com/assets/layout/header/nav_g_icon.svg"
+               width="32"
+               height="32">
+        </a>
+
+        
+        <iframe allowtransparency="true" scrolling="no" frameborder="no"
+          src="https://w.soundcloud.com/icon/?url=http%3A%2F%2Fsoundcloud.com%2Fjeremy-dobbins-bucklad&color=orange_white&size=32"
+          style="width: 32px; height: 32px;"></iframe>
+
+        
+        <a href="http://8tracks.com/herbert-finkleton">
+          <img alt="8Tracks"
+               src="http://images.8tracks.com/avatar/i/006/193/171/52608.original-3203.jpg?rect=0,0,500,500&q=98&fm=jpg&fit=max&w=56&h=56"
+               width="32"
+               height="32">
+        </a>
+      </span> 
+
+    </footer>
+
+  
+<script src="http://jad-b.github.iojs/prism.js" async></script>
+
+<script type="text/javascript" src="http://jad-b.github.iojs/MathJax.js" async></script>
+<script type="text/x-mathjax-config" defer>
+
+
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config" defer>
+  
+  
+  
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+
+<script id="dsq-count-scr" src="//while-true-continue.disqus.com/count.js" async></script>
+
+  </body>
+
+</html>
+

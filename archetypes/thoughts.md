@@ -1,4 +1,0 @@
-+++
-categories = ["journal"]
-tags = ["learning"]
-+++
