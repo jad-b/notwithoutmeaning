@@ -253,3 +253,12 @@ img.gh-icon {
 .redden {
   color: #f55b5b;
 }
+
+/* Should be changed to reflect the rest of the site's styles */
+code.has-jax {
+  font: inherit;
+  font-size: 100%;
+  background: inherit;
+  border: inherit;
+  color: #515151;
+}

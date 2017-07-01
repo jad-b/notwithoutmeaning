@@ -2,6 +2,8 @@
 
 setup:
 	sudo snap install hugo
+	# Setup public repo as a subtre
+	git subtree add --prefix public public master --squash
 
 # Build the production files
 SRC_FILES=$(shell find archetypes/ content/ layouts/ static/ -type f)
