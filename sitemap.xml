@@ -1,99 +1,51 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://jad-b.github.io/code/odsc2017/</loc>
+    <lastmod>2017-05-03T08:29:09-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://jad-b.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://jad-b.github.io/code/</loc>
+    <lastmod>2017-05-03T08:29:09-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://jad-b.github.io/tags/conference/</loc>
+    <lastmod>2017-05-03T08:29:09-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://jad-b.github.io/tags/data-science/</loc>
+    <lastmod>2017-05-03T08:29:09-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://jad-b.github.io/categories/software/</loc>
+    <lastmod>2017-05-03T08:29:09-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://jad-b.github.io/tags/</loc>
+    <lastmod>2017-05-03T08:29:09-04:00</lastmod>
+    <priority>0</priority>
+  </url>
   
   <url>
     <loc>http://jad-b.github.io/</loc>
-    <lastmod>2016-07-29T10:43:26-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/post/Concept%20for%20a%20Vice-Driven%20Deployment%20System/</loc>
-    <lastmod>2016-07-29T10:43:26-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/post/Multi-_%20Modeling/</loc>
-    <lastmod>2016-07-28T10:26:22-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/post/Lessons%20Learned:%20Software/</loc>
-    <lastmod>2016-07-28T09:59:13-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/post/Why%20Not%20School/</loc>
-    <lastmod>2016-05-28T07:42:13-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/post/ODSC2016%20-%20Friday/</loc>
-    <lastmod>2016-05-20T10:21:22-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/post/Gradient%20Descent%20Ascending/</loc>
-    <lastmod>2016-05-13T07:20:33-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/post/Testing%20Timeouts%20in%20Go/</loc>
-    <lastmod>2016-05-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/post/Testing%20Distributed%20Systems/</loc>
-    <lastmod>2016-04-19T14:52:38-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/quote/An%20Expert%20On%20Feeling%20Good/</loc>
-    <lastmod>2016-04-14T10:18:07-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/quote/Born%20Artists/</loc>
-    <lastmod>2016-04-14T10:17:18-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/quote/Civilization%20Advances/</loc>
-    <lastmod>2016-04-12T10:28:35-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/quote/Abstractions/</loc>
-    <lastmod>2016-04-11T08:16:04-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/quote/Concurrency%20vs.%20Parallelism/</loc>
-    <lastmod>2016-04-09T09:25:06-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/quote/Shame/</loc>
-    <lastmod>2016-04-07T06:50:35-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/quote/Naturally%20Iterative/</loc>
-    <lastmod>2016-04-07T06:48:04-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/about/</loc>
-    <lastmod>2016-04-02T15:16:28-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/post/The%20Aggressive%20Student/</loc>
-    <lastmod>2016-03-28T09:55:02-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/post/On%20Learning/</loc>
-    <lastmod>2015-10-10T00:00:00+00:00</lastmod>
+    <lastmod>2017-05-03T08:29:09-04:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>

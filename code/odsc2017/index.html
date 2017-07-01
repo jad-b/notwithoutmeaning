@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Not Without Meaning</title>
+    <meta name="description" content="The personal writings of jdb">
+    <meta name="author" content="Jeremy Dobbins-Bucklad">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+
+    <link rel="stylesheet" href="/css/curate.css">
+    <link rel="stylesheet" href="/css/prism.css">
+  </head>
+
+  <body>
+
+
+<main class="main-grid">
+
+  <header class="hero">
+  <h1 class="surely-all-this">Surely all this</h1>
+  <h1 class="not-without-meaning">
+    is <span class="redden">not</span> without meaning</h1>
+</header>
+
+
+  <nav>
+  <div class="nav-links">
+    <a href="http://jad-b.github.io">All</a>
+    <a href="http://jad-b.github.iothoughts">Thoughts</a>
+    <a href="http://jad-b.github.iocode">Code</a>
+    <a href="http://jad-b.github.ioquotes">Quotes</a>
+  </div>
+  <hr>
+  
+</nav>
+
+
+
+<article class="content">
+
+  <section>
+    <header class="content-header">
+
+  <div class="content-title-ts">
+    <time datetime="2017-05-03" class="content-ts">
+      Wednesday, 2017 May 3
+    </time>
+
+    <a href="http://jad-b.github.io/code/odsc2017/" class="content-title">
+      <h1>ODSC2017</h1>
+    </a>
+  </div>
+
+  <div class="content-section-tags">
+    <div class="content-section">code</div><ul class="content-tags"><li><a href="/tags/conference">conference</a></li><li><a href="/tags/data-science">data science</a></li></ul></div>
+</header>
+
+
+    <p>Notes from the <a href="https://www.odsc.com/boston">Open Data Science Conference</a> in Boston.</p>
+
+<p></p>
+
+<h1 id="may-3rd-trainings">May 3rd - Trainings</h1>
+
+<h2 id="intro-to-advanced-deep-learning-with-dli">Intro to &amp; Advanced Deep Learning with DLI</h2>
+
+<ul>
+<li>Speaker: Charles Killam (NVIDIA)</li>
+<li>Labs: Using Neural Networks for image segmentation, recognition, and
+time-series health record text extraction.</li>
+</ul>
+
+<p>When classifying: one input neuron per dimension; one output neuron per feature.
+Network size gets referred to as (n-1), as you don&rsquo;t count the input layer.
+So a 3-layer network has an input, two hidden, and one output layer(s).</p>
+
+<p>Convolution=Kernel=Filter. Usually, each convolution decreases the output
+dimensions. However, by using &ldquo;padding&rdquo;(?) you can maintain the original
+dimesnions, and deconvolutions can inflate dimensions. There is a notion of
+&ldquo;channels&rdquo;, such as RGB image data having three channels, one per color value.
+Convolutions can also create channels. When you say &ldquo;convolution 1 creates 100
+convolution outputs&rdquo;, you are requesting 100 output kernels to be initialized
+and applied, creating a 1:100 series of outputs. Combinatorial <em>explosion</em>.</p>
+
+<p>There are a few key hyper-parameters: Training set size, batch size, and epoch.
+Batch size is the number of data points your framework performs before before
+aggregating and backpropagating the loss through the network. Epochs refer to
+the number of times the framework trains on your training set. At the end of
+each epoch, the network is tested using a validation set. You <em>should</em> see the
+overall loss decrease during validation. If it goes up, your model has
+<strong>overfit</strong>. Presumably, you could just use the last good values before you
+detected overfitting. But it can be trickier than that, as some variation is
+natural during training.</p>
+
+<p>What falls on the Data Scientist:
+* Hyperparameter selection
+* Transfer Learning / Fine-Tuning (Re-using existing trained networks)
+* Hidden layer architecture; how many, what size.</p>
+
+<p>Tips:
+* Think [10,100] layers when getting started.
+* Annealed learning rate is a Good Thing.
+* Mean normalization is still required before processing, just like with other
+  ML methods.</p>
+
+<p>Keras is a high-level abstraction over neural network frameworks. It&rsquo;s
+compatible with both Theano and TensorFlow, so is probably a good level to rest
+at. Plus, it has the potential to add the Next Hot Framework as a backend,
+saving you rewriting.</p>
+
+<p>Recurrent Neural Networks are appropriate for a broad variety of tasks, such as
+video frame classification, audio somethings, NLP, and time series analysis. In
+fact, its modeling things <em>as</em> sequences that makes them appropriate for RNNs.
+RNNs remember state from previous inputs. Normally, you run into a &ldquo;vanishing
+gradient&rdquo;, as the influence of values diminishes as they age. Using Long
+Short-Term Memory units (LSTMs), we can remember theoretically infinitely long
+chains.</p>
+
+<p>Resources: cs231n Stanford Classes. Videos 1-4 on Why NNs?, 5-10 on parameter
+selection, 11-12 on Recurrent Neural Networks.</p>
+
+<h3 id="questions">Questions</h3>
+
+<blockquote>
+<p>How do you visualize the layer features?
+TensorFlow can do some of this for you. NVIDIA&rsquo;s DIGITS also supported layer
+visualization on top of CAFFE, not sure if it does for others.</p>
+</blockquote>
+
+<h1 id="may-4th-day-1-of-sessions">May 4th, Day 1 of Sessions</h1>
+
+<h2 id="deep-neural-networks-using-tensorboard">Deep Neural Networks using TensorBoard</h2>
+
+<p>Let&rsquo;s start from the beginning. Fed data, you model outputs a value per data
+point (or a set of values, when classifying). You compare your prediction
+against the true value using an <em>error function</em>, which outputs a value telling
+you how bad a job you did. Often, these don&rsquo;t come out neatly between 0-1, as
+probability dictates, so you use a sigmoid/tanh function to compress everything
+between [0,1]. The total error of your model needs to account for the error
+amongst all your predictions. Maximum Likelihood = Highest product of all
+probabilities. But products become tiny and volatile as we get lots of terms.
+Instead, we can sum the log of each probability. If we sum the negative
+logarithms, then higher probabilities sum to <em>smaller</em> numbers: <code>log(0.6) -
+log(.2) - log(.1) - log(.) = 4.8</code>. This makes our goal easy: reach zero. With
+our error in hand, we calculate derivatives to take us towards lower error, and
+apply it using gradient descent (gradient rate sold separately). So we feed in
+some data, calculate the error of our predictions, squash them down between
+[0,1], and use our error to update our model.</p>
+
+<p>But you knew that. Let&rsquo;s talk LSTMs. LSTMs are full networks in themselves, with
+four interacting layers. These layers together are referred to as a cell, and
+cells have state. The LSTM has mechanisms for controlling how much new
+information affects state called &ldquo;gates&rdquo;. A gate is a sigmoid function followed
+by pointwise multiplication. Values <code>&lt;=0</code> aren&rsquo;t allowed through, and values <code>&gt;=
+1</code> are completely allowed.</p>
+
+<p>The first gate helps the cell to forget. It takes the previous output and
+current input, multiplies them by the weights of the gate, adjusts by bias, and
+squashes the whole thing through the sigmoid. Thus, we only output values
+between [0,1].</p>
+
+<div>$$
+f_t = \sigma(W_f \cdot [h_{t-1}, x_t] + b_f)
+$$</div>
+
+<p>The next gate determines what information we&rsquo;ll store. We need to identify what
+values we&rsquo;ll update (<code>$i_t$</code>), as well the candidate values for what  we&rsquo;ll
+update them with (<code>$C_t$</code>).  We sigmoid the values we identify to update, while
+we <code>tanh</code> the candidate values.</p>
+
+<div>$$
+i_t = \sigma(W_i \cdot [h_{t-1}, x_t] + b_i) \
+C_t = tanh(W_C \cdot [h_{t-1}, x_t] + b_C)
+$$</div>
+
+<p>With that, we actually need to forget. We forget our prevous cell state through
+by multiplying our previous cell state with the forgetting gate layer above, and
+sum in our updated cell state we just calculated.</p>
+
+<h2 id="analyzing-evictions-during-the-housing-crisis">Analyzing Evictions During the Housing Crisis</h2>
+
+<p>Dataiku gives you a graph-based data pipeline design tool that gives you a GUI
+interface into most common operations, from ETL to ML. Our instructor used it to
+show that poor black people in Missouri get evicted a lot.  I can&rsquo;t but feel the
+point was missed.</p>
+
+<h2 id="anomaly-detection-in-wireless-networks-using-mobile-phone-data">Anomaly Detection in Wireless Networks using Mobile Phone Data</h2>
+
+<p>Proactive &gt; Reactive. You must look at distributions over data points to
+ascertain actual behavior. Once compared to our prior baseline knowledge, we
+can identify actively degrading conditions, and use visualizations to determine
+the root cause.</p>
+
+<p>Identified &ldquo;procedure duration&rdquo;, i.e. how long a specific request took, was
+the single best indicator for detecting degradation. Having only a single
+variable kept analysis performance quick. A request can be &ldquo;provide me a
+service&rdquo; (service request), or &ldquo;terminate my service/free the radio channel&rdquo;
+(release request).  Initially tried to analyze e&rsquo;rything and got nowhere. Key
+was to focus on the objective, which led ID&rsquo;ing the service &amp; release request as
+KPIs.</p>
+
+<p>Self-Organizing Maps (SOMs) are a form of unsupervised NNs that produce a low
+(like, 2) dimensional representation of the input space. It&rsquo;d be interesting if
+existing NN packages, like TF or Theano, could be tricked into creating SOMs.</p>
+
+<h2 id="agenda">Agenda</h2>
+
+<ul>
+<li>Building Deep NNs using TensorBoard (313) [11,1145]</li>
+<li>Pomegranate: fast and flexible probabilistic modeling in python (311)
+[1145,1230]</li>
+<li>Analyzing Evictions During the Housing Crisis [1330,1500]</li>
+<li>The Cognitive Computing Promise (310)[1500,1545]</li>
+<li>Anomaly Detection in Wireless Networks using Mobile Phone Data (301)
+[1615,1700]</li>
+</ul>
+
+<h2 id="wishlist">Wishlist</h2>
+
+<ul>
+<li>Using AI to Answer Science Questions [1145,1230]</li>
+<li>Visualizing the Health of the Internet with Measurement Lab [1145,1230]</li>
+<li>Fuzzy Matching to the Rescue: Aligning Survey Design Across Time (310)
+[1700,1745]</li>
+<li>Utilizing Machine Learning for Malware/Botnet Detection (311) [1630,1800]</li>
+</ul>
+
+<h1 id="may-5th-day-2-of-sessions">May 5th, Day 2 of Sessions</h1>
+
+<h2 id="agenda-1">Agenda</h2>
+
+<ul>
+<li>Geospatail Voronoi Analysis (310) [9,945]</li>
+<li>Deep Learning for Multivariate Time-series analysis (313) [945,1030]</li>
+<li>Robust  Regression: Solving the challenges posed by Dirty Data (Ballroom A) [11,1145]</li>
+<li>Making Decisions Under Uncertainty Using Bayesian Inference and Stan
+(309) [1145,1230]</li>
+<li>The Biological Path towards Strong AI (310) [1230,1315]</li>
+<li>Interpretability and the Future of ML  (Ballroom A) [1415,1500]</li>
+<li>The Power and Pains of Smartphone Sensor Data (309) [1500,1545]</li>
+<li>From the Trenches: Managing and Building Data Science Teams (309) [1615, 1700]</li>
+</ul>
+
+<h2 id="wishlist-1">Wishlist</h2>
+
+<ul>
+<li>Data Science is Software Development (311) [1330,1500]</li>
+<li>Labeling Medical Documents with ML (313) [1630,1715]</li>
+<li>Behind the scenes of training, managing, and deploying ML models</li>
+<li>Applying DS Tools to Understand Web Traffic (310) [1700,1745]</li>
+<li>The Barbell Effect of ML (309) [1230,1315]</li>
+<li>Telling a Quantitative Story / Corporate Data Science by Angela Bassa</li>
+</ul>
+
+<h2 id="deep-learning-for-multivariate-time-series-analysis-mvtsa">Deep Learning for Multivariate Time-series analysis (MvTSA)</h2>
+
+<p>Desires for TS ML: Classification, Regression, Forecasating, Anomaly Detection.
+Remember: Regression is the predicting of values <em>within the bounds of your
+existing data</em>, not predicting <em>outside</em> the range of what you&rsquo;ve seen.</p>
+
+<p>Traditional methods of MvTSA include comparing the euclidean distance between
+two series - but it fails to detect the same TS shifted ahead. Dynamic Time
+Warping (DTW) can adjust for such things, but it&rsquo;s <code>$O(n^2)$</code>, and thus somewhat
+expensive. There&rsquo;s Symbolic Representation, where you bin its values with
+labels. This turns your TS into a string of bin labels, which lets you use
+existing string comparison algos. There&rsquo;s Feature Extraction, using moving avg,
+Short Time Fourier Transform (STF), shapelets(?), and dimensionality reduction.</p>
+
+<p>But now we&rsquo;ve got RNNs. They&rsquo;re hard to train; their recurrence means that its
+current state means depends on all states before it (Real Time BackPropagation
+(RTBP). We can &ldquo;unroll&rdquo; them into distinct layers, and apply BackPropagation
+Through Time (BPTT).</p>
+
+<p>He presented two options here:  Sequence-to-Sequence, and Sequence-to-1. He
+mentioned preferring S21 over S2S.</p>
+
+<p>An intuition on ConvNNs: You can think of conv kernels as selecting for which
+parts of the image look the most like the kernel itself.</p>
+
+<p>FIR in signal processing == 1D ConvNN.</p>
+
+<p>They&rsquo;re hiring!</p>
+
+<h2 id="robust-regression-solving-the-challenges-posed-by-dirty-data">Robust Regression: Solving the challenges posed by Dirty Data</h2>
+
+<p>OLS is highly vulnerable to outliers. We want to minimze the influence of
+outliers on our loss function. An ideal loss function is Non-negative, minimums
+at 0, symmetric, and monotonic. If we convert the problem to weighted least
+squares, we get closer; as our a residual grows large, its weight gets smaller.
+Thus, we de-influence outliers. This creates a cyclic dependency, <em>but</em>
+iteratively reweighted least squares gets around this. The most common form of
+IRWS is the Huber loss function.  It has a steep increase of error as we grow
+larger, so we convert them to straight lines at an arbitrary point. Essentially,
+we cap how the size of their weight. The German-McClure and Tukey loss functions
+actually remove outliers entirely after a certain point,  zeroing out outlier
+influence. This class of outlier-accounting loss functions is called
+M-Estimators.</p>
+
+<p>There is another way, called Random sample consensus (RANSAC). Sample M points
+from the  dataset. Fit a line, and count the number of inliers of your entire
+dataset that fallwithin a residual threshold. Iterate for a time, and select the
+best model.</p>
+
+<h2 id="making-decisions-under-uncertainty-using-bayesian-inference-and-stan">Making Decisions Under Uncertainty Using Bayesian Inference and Stan</h2>
+
+<p>Too much. But I did get a good picture.</p>
+
+<p>![Picture goes here]()</p>
+
+<h2 id="the-power-and-pains-of-smartphone-sensor-data">The Power and Pains of Smartphone Sensor Data</h2>
+
+<p>The IMU (Interial Measurement Unit) is built from the gyroscope, accelerometer,
+and magnetometer. The gyroscope measures rotation, the magnetometer for
+magnetic/electrical fields, and the accelerometer explains itself.</p>
+
+<p>GPS Data Workflow: Raw GPS Data -&gt; Map Provider -&gt; Data Science -&gt; &hellip;
+GPS is a battery drain, so casual sampling might be 15-30 seconds</p>
+
+<h2 id="from-the-trenches-managing-and-building-data-science-teams">From the Trenches: Managing and Building Data Science Teams</h2>
+
+<p>To build domain knowledge, plan on embedding/rotating the new person with their
+pertinent counterpart. Consider these embeddings as a prereq to their
+progression.</p>
+  </section>
+</article>
+
+
+    </main>
+
+    <footer>
+      <hr>
+      <a class="site-desc" href="http://jad-b.github.ioabout">The education of a curious man.</a>
+      <a href="https://github.com/jad-b" class="gh-link">
+        <img src="http://jad-b.github.ioimg/GitHub-Mark-32px.png" class="gh-icon">
+      </a>
+    </footer>
+
+    <script async src="/js/prism.js"></script>
+    <script async src="/js/MathJax.js"></script>
+  </body>
+</html>
+
