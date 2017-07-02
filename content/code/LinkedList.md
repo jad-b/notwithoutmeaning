@@ -4,10 +4,10 @@ date = "2017-05-31T09:25:35-04:00"
 tags = ["programming", "data structures"]
 title = "The Linked List"
 +++
-# The Linked List
-A linked-list is a _linked_ (as opposed to contiguous) data structure, chained
-together by the use of references within each node that point to the next (and
-previous, in the case of doubly-linked lists) element.
+A linked-list is a _linked_ (as opposed to contiguous), _recursive_ data structure.
+Values are stored within nodes chained together by references to the next (and
+previous, in the case of doubly-linked lists) node. It can be used to
+efficiently implement *Stacks*, *Queues*, and *Bags*.
 
 <!--more-->
 
@@ -25,8 +25,6 @@ so you must instead rely on local knowledge, such as ndoes within a graph.
 
 Alternatively: A linked-list is a very boring graph, where the only edge
 relation is that of `next` (or `precedes`, as in "Node A _precedes_ Node B").
-
-Lists are _recursive_ data structures.
 
 ## Behaviors
 We will assume our list is made of Nodes that wrap actual data values, with
