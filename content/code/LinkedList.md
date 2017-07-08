@@ -26,7 +26,7 @@ so you must instead rely on local knowledge, such as ndoes within a graph.
 Alternatively: A linked-list is a very boring graph, where the only edge
 relation is that of `next` (or `precedes`, as in "Node A _precedes_ Node B").
 
-## Behaviors
+## Layout & Behaviors
 We will assume our list is made of Nodes that wrap actual data values, with
 at least a pointer to the next Node in the list; doubly-linked lists also have a
 pointer to the previous node.
