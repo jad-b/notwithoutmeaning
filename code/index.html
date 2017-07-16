@@ -41,6 +41,23 @@
 <section><header class="content-header">
 
   <div class="content-title-ts">
+    <time datetime="2017-07-13" class="content-ts">
+      Thursday, 2017 Jul 13
+    </time>
+
+    <a href="http://jad-b.github.io/code/ringbuffer/" class="content-title">
+      <h1>Ring Buffer</h1>
+    </a>
+  </div>
+
+  <div class="content-section-tags">
+    <div class="content-section">code</div><ul class="content-tags"><li><a href="/tags/programming">programming</a></li></ul></div>
+</header>
+<p>A ring buffer is a circular Queue of fixed size. When data would be written past the end of the buffer, it instead wraps around to overwrite data at the beginning. Allocating memory only once provides performance improvements, and the fixed size provides constant memory usage.
+Key Points  Decide between using a size variable or allocating an extra slot for differentiating between empty and full conditions. Decide whether to overwrite or throw an error if an overwrite would occur.</p>
+  </section><section><header class="content-header">
+
+  <div class="content-title-ts">
     <time datetime="2017-05-31" class="content-ts">
       Wednesday, 2017 May 31
     </time>
@@ -53,9 +70,7 @@
   <div class="content-section-tags">
     <div class="content-section">code</div><ul class="content-tags"><li><a href="/tags/data-structures">data structures</a></li><li><a href="/tags/programming">programming</a></li></ul></div>
 </header>
-<p><h1 id="the-linked-list">The Linked List</h1>
-
-<p>A linked-list is a <em>linked</em> (as opposed to contiguous), <em>recursive</em> data structure.
+<p><p>A linked-list is a <em>linked</em> (as opposed to contiguous), <em>recursive</em> data structure.
 Values are stored within nodes chained together by references to the next (and
 previous, in the case of doubly-linked lists) node. It can be used to
 efficiently implement <em>Stacks</em>, <em>Queues</em>, and <em>Bags</em>.</p>
