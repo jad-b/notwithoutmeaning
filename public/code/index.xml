@@ -6,10 +6,20 @@
     <description>Recent content in Codes on not without meaning</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 31 May 2017 09:25:35 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 13 Jul 2017 07:20:24 -0400</lastBuildDate>
     
 	<atom:link href="http://jad-b.github.io/code/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ring Buffer</title>
+      <link>http://jad-b.github.io/code/ringbuffer/</link>
+      <pubDate>Thu, 13 Jul 2017 07:20:24 -0400</pubDate>
+      
+      <guid>http://jad-b.github.io/code/ringbuffer/</guid>
+      <description>A ring buffer is a circular Queue of fixed size. When data would be written past the end of the buffer, it instead wraps around to overwrite data at the beginning. Allocating memory only once provides performance improvements, and the fixed size provides constant memory usage.
+Key Points  Decide between using a size variable or allocating an extra slot for differentiating between empty and full conditions. Decide whether to overwrite or throw an error if an overwrite would occur.</description>
+    </item>
     
     <item>
       <title>The Linked List</title>
@@ -17,9 +27,7 @@
       <pubDate>Wed, 31 May 2017 09:25:35 -0400</pubDate>
       
       <guid>http://jad-b.github.io/code/linkedlist/</guid>
-      <description>&lt;h1 id=&#34;the-linked-list&#34;&gt;The Linked List&lt;/h1&gt;
-
-&lt;p&gt;A linked-list is a &lt;em&gt;linked&lt;/em&gt; (as opposed to contiguous), &lt;em&gt;recursive&lt;/em&gt; data structure.
+      <description>&lt;p&gt;A linked-list is a &lt;em&gt;linked&lt;/em&gt; (as opposed to contiguous), &lt;em&gt;recursive&lt;/em&gt; data structure.
 Values are stored within nodes chained together by references to the next (and
 previous, in the case of doubly-linked lists) node. It can be used to
 efficiently implement &lt;em&gt;Stacks&lt;/em&gt;, &lt;em&gt;Queues&lt;/em&gt;, and &lt;em&gt;Bags&lt;/em&gt;.&lt;/p&gt;
