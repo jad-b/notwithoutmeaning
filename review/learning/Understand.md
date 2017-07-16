@@ -12,7 +12,6 @@ we'll curtail it to SQ2R.
 1. Survey
     1. Goal: Get a feel for what material you'll be covering, and where the
        boundaries of your current understanding lies.
-    1.
 1. Question
     1. Goal: To make explicit your own lack(s) of understanding regarding the
        material; to focus your efforts on consciously finding specific answers.
@@ -36,4 +35,17 @@ we'll curtail it to SQ2R.
 
 ## Open Questions
 * What do you do if a section is too difficult?
-    * How do you judge difficulty? Subjectively, via Flow?
+    * How do you judge difficulty? Subjectively, via flow?
+
+## Recite
+### Examples vs. Problems: A Gradient
+When should you stop going over examples and start tackling problems? I have yet
+to find any scientific approach, but my personal heuristics follow.
+
+* If you don't know where to even start, you need more examples.
+* If you struggle for 5-15 minutes and don't know what to do next,
+    * Formalize, to the best of your ability, your confusion in the form of
+      questions, and use those as your jumping-off point.
+* If you can slowly-but-steadily make progress:
+    * Congratulations! You've more to learn through application than observance.
+      Of course, seek examples to verify and accelerate your approach.
