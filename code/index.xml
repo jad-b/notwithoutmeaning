@@ -22,6 +22,16 @@ Key Points  Decide between using a size variable or allocating an extra slot for
     </item>
     
     <item>
+      <title>Hash Table</title>
+      <link>http://jad-b.github.io/code/hashtable/</link>
+      <pubDate>Sun, 02 Jul 2017 16:54:10 -0400</pubDate>
+      
+      <guid>http://jad-b.github.io/code/hashtable/</guid>
+      <description>A hash table is an array where keys are assigned integer indices by means of a hash function. Presumably, the keys have a related set of data, usually called the value, for which they provide a identifier.
+A major dichotomy in hash table implementations is in how they deal with collisions. Chaining treats each array slot as a bucket for a linked list. Keys which hash to the same index are pushed onto the list.</description>
+    </item>
+    
+    <item>
       <title>The Linked List</title>
       <link>http://jad-b.github.io/code/linkedlist/</link>
       <pubDate>Wed, 31 May 2017 09:25:35 -0400</pubDate>
