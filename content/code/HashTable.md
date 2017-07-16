@@ -1,7 +1,6 @@
 +++
 categories = ["code"]
 tags = ["programming"]
-draft = true
 date = 2017-07-02T16:54:10-04:00
 title = "Hash Table"
 +++
@@ -40,6 +39,8 @@ must be rehashed, or explicitly by the user creating a new, larger hash table
 and importing elements from the old.
 
 > What's an ideal load factor?
+
+## Time Complexity
 
 Time Complexity|Average|Worst
 ---------|-------|-------
