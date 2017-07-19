@@ -10,18 +10,18 @@ beginning. Allocating memory only once provides performance improvements, and
 the fixed size provides constant memory usage.
 
 ### Key Points
+* Writing means putting a variable in the queue tail, and advancing the write pointer.
+  Reading means returning the variable from the queue's head, and advancing the
+  read pointer.
 * Decide between using a `size` variable or allocating an extra slot for
   differentiating between empty and full conditions.
 * Decide whether to overwrite or throw an error if an overwrite would occur.
 * The `read` pointer _never_ advances past the `write` pointer.
-* If overwriting, the `read` pointer needs to be advanced as well.
-* Careful when you increment `size` relative to testing for emptiness or
-  fullness.
 
 ## Complexity
 Time Complexity|Average |Worst
 ---------------|--------|-------
-Deletion       |`$O(1)$`|`$O(n)$`
+Dequeue        |`$O(1)$`|`$O(1)$`
 Enqueue        |`$O(1)$`|`$O(1)$`
 
 ## Behavior
@@ -32,10 +32,9 @@ Enqueue        |`$O(1)$`|`$O(1)$`
   the user.
   * Let W and R be the location of the write and read pointers.
   * If R == W, the buffer is empty
+    * If size == buf.length
+      * Advance the read pointer
     * Write to the slot, and advance the write pointer
-    * If R == W after advancing,
-      * Advance the read pointer, so reads start with the oldest data.
-
 * `dequeue(B, x)`: Read the next available value.
   Similar but opposite to `enqueue` above, the method must signal an inability
   to read from an _empty_ queue.
@@ -69,3 +68,11 @@ array once.
 Ping-pong buffering alternates reading and writing between two different
 buffers, removing intra-buffer race conditions between reads and writes at the
 cost of twice the memory.
+
+There are two choices when it comes to tracking the current size of the queue:
+keeping a `size` attribute, or allocating `$n+1$` space. The former is
+implemented above. The latter has an empty condition where `$buf.write ==
+buf.read$`, and a full condition of `$buf.write == buf.read + 1$` _or_
+`$buf.write == 1 && buf.read == buf.length$`. In words, the queue is full
+anytime the next write would bring the read and write pointers back on top of
+each other. [CLR09]
