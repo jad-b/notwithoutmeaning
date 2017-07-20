@@ -40,13 +40,6 @@ and importing elements from the old.
 
 > What's an ideal load factor?
 
-## Time Complexity
-
-Time Complexity|Average|Worst
----------|-------|-------
-Search   |`$O(1)$`|`$O(n)$`
-Insertion|`$O(1)$`|`$O(n)$`
-Deletion |`$O(1)$`|`$O(n)$`
 
 ## Behaviors
 * `insert(h, k, v)`: Insert the key `k` and value `v` into the hash table `h`.
@@ -59,6 +52,14 @@ the current min/max as an attribute on the hash table, updating with O(1) cost
 during insertions and amortizing the O(n) of finding the new min/max within
 deletions. However, if the access pattern is to repeatedly remove the min/max
 value, which is common, this degenerates into `$O(n^2)$` perormance.
+
+### Time Complexity
+
+Time Complexity|Average|Worst
+---------|-------|-------
+Search   |`$O(1)$`|`$O(n)$`
+Insertion|`$O(1)$`|`$O(n)$`
+Deletion |`$O(1)$`|`$O(n)$`
 
 ## Layout
 The goal is to associate keys with values in an access-efficient manner. You can
@@ -87,15 +88,21 @@ mutable struct HashTable{K,V}
     minimum::V
 
     # Hash tables using open addressing might also keep variables such as:
+    # (Taken from Julia's Dict implementation)
 
     # The longest-seen probe run to insert an element. Knowing this, we can
-    # cut-off searches after this.
+    # cut-off searches longer that this threshold.
     maxprobe::Integer
     # The first `k` index containing values, saving `k` time when performing a
     # linear scan
     idxfloor:Integer
 end
 ```
+
+### Space Complexity
+We store `$n$` keys and values, so storage is ultimately `$n$`. However, we also
+pay the overhead of our linked list implementation, so very large tables can
+save on `$n$` pointer space by only using a singly-linked list.
 
 ## Notes
 Double-hasing is the most commonly recommended algorithm for probing in an open
