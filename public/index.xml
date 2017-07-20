@@ -41,6 +41,15 @@ A major dichotomy in hash table implementations is in how they deal with collisi
     </item>
     
     <item>
+      <title>Stupid All the Time</title>
+      <link>http://jad-b.github.io/quotes/stupidallthetime/</link>
+      <pubDate>Sun, 02 Jul 2017 00:00:00 -0400</pubDate>
+      
+      <guid>http://jad-b.github.io/quotes/stupidallthetime/</guid>
+      <description>In sum, to really try to be informed and literate today is to feel stupid nearly all the time and to need help.</description>
+    </item>
+    
+    <item>
       <title>The Linked List</title>
       <link>http://jad-b.github.io/code/linkedlist/</link>
       <pubDate>Wed, 31 May 2017 09:25:35 -0400</pubDate>
@@ -63,15 +72,6 @@ efficiently implement &lt;em&gt;Stacks&lt;/em&gt;, &lt;em&gt;Queues&lt;/em&gt;, 
       <description>&lt;p&gt;Notes from the &lt;a href=&#34;https://www.odsc.com/boston&#34;&gt;Open Data Science Conference&lt;/a&gt; in Boston.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://jad-b.github.io/quote/stupidallthetime/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://jad-b.github.io/quote/stupidallthetime/</guid>
-      <description></description>
     </item>
     
   </channel>

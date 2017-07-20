@@ -18,6 +18,11 @@
   </url>
   
   <url>
+    <loc>http://jad-b.github.io/quotes/stupidallthetime/</loc>
+    <lastmod>2017-07-02T00:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://jad-b.github.io/code/linkedlist/</loc>
     <lastmod>2017-05-31T09:25:35-04:00</lastmod>
   </url>
@@ -25,10 +30,6 @@
   <url>
     <loc>http://jad-b.github.io/code/odsc2017/</loc>
     <lastmod>2017-05-03T08:29:09-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jad-b.github.io/quote/stupidallthetime/</loc>
   </url>
   
   <url>
@@ -74,16 +75,19 @@
   
   <url>
     <loc>http://jad-b.github.io/tags/quote/</loc>
+    <lastmod>2017-07-02T00:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://jad-b.github.io/categories/quote/</loc>
+    <loc>http://jad-b.github.io/quotes/</loc>
+    <lastmod>2017-07-02T00:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://jad-b.github.io/quote/</loc>
+    <loc>http://jad-b.github.io/categories/quotes/</loc>
+    <lastmod>2017-07-02T00:00:00-04:00</lastmod>
     <priority>0</priority>
   </url>
   

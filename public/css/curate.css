@@ -102,6 +102,15 @@ header.hero {
     text-transform: uppercase;
 }
 
+header.hero a:hover {
+  color: #f55b5b;
+}
+
+header.hero a > .redden:hover {
+  color: black;
+}
+
+
 /* Navigation */
 nav {
   grid-area: nav;
@@ -272,4 +281,13 @@ code.has-jax {
   background: inherit;
   border: inherit;
   color: #515151;
+}
+
+.quote {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.quote > .quote-source {
+  align-self: flex-end;
 }
