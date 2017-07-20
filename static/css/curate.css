@@ -102,6 +102,15 @@ header.hero {
     text-transform: uppercase;
 }
 
+header.hero a:hover {
+  color: #f55b5b;
+}
+
+header.hero a > .redden:hover {
+  color: black;
+}
+
+
 /* Navigation */
 nav {
   grid-area: nav;
