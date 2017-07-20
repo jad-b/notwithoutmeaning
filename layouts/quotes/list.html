@@ -1,0 +1,23 @@
+{{ partialCached "top.html" . }}
+
+<article class="content">
+  {{ template "_internal/pagination.html" . }}
+
+  {{- range .Paginator.Pages -}}
+  <section>
+    {{- partial  "contentHeader.html" . -}}
+
+    <div class="quote">
+      <blockquote>
+        {{ .Content }}
+      </blockquote>
+      <p class="quote-source" >- {{ .Params.author }}</p>
+    </div>
+
+  </section>
+  {{- end -}}
+
+  {{ template "_internal/pagination.html" . }}
+</article>
+
+{{ partialCached "footer.html" . }}

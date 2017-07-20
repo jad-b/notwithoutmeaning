@@ -1,0 +1,18 @@
+{{ partialCached "top.html" . }}
+
+<article class="content">
+
+  <section>
+    {{ partial "contentHeader.html" . }}
+
+    <div class="quote">
+      <blockquote>
+        {{ .Content }}
+      </blockquote>
+      <p class="quote-source" >- {{ .Params.author }}</p>
+    </div>
+
+  </section>
+</article>
+
+{{ partialCached "footer.html" . }}

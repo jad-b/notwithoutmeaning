@@ -273,3 +273,12 @@ code.has-jax {
   border: inherit;
   color: #515151;
 }
+
+.quote {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.quote > .quote-source {
+  align-self: flex-end;
+}
