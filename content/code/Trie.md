@@ -58,6 +58,10 @@ struct Trie{K,V}
     count::Int
 end
 ```
+In a Trie with `$N$` nodes, and an alphabet of size `$R$`, and `$w$` is the
+average key length, a Trie requires between `$RN$` to `$RNw$` space. Every node
+has `$R$` links. If every key character is different in each word, then you need
+`$Nw$` nodes.
 
 ## Behaviors
 Function signatures are written in Haskell; suck it. To save space, the type
@@ -85,6 +89,11 @@ search |`$O(L)$`|`$O(L)$`
 insertion|`$O(L)$`|`$O(L)$`
 Deletion |`$O(L)$`|`$O(L)$`
 traverse|`$O(n)$`|`$O(n)$`
+
+## Check on Learning
+Why do Tries not need to store the key in their nodes?
+
+How much space does an R-way Trie require?
 
 ## Notes
 Ternary Search Tries (TSTs), invented by Sedgewick, use three pointer: less
