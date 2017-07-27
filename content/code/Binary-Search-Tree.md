@@ -29,21 +29,25 @@ Balanced
 [Source](https://xlinux.nist.gov/dads/HTML/completeBinaryTree.html).
 
 
-### Time Complexity
-Time Complexity|Average|Worst
----------|-------|-------
-Search   |`$O(log\,n)$`|`$O(n)$`
-Insertion|`$O(log\,n)$`|`$O(n)$`
-Deletion |`$O(log\,n)$`|`$O(n)$`
-Minimum/Maximum|`$O(log\,n)$`|`$O(n)$`
-Predecessor/Successor|`$O(log\,n)$`|`$O(n)$`
+## Layout
+At its core, a BST is a Node than can link to two other nodes, with each link
+subject to a different invariant (`<=` or `>`). Having a third pointer back to
+the node's parent greatly saves time when performing `delete`
 
-When a BST is well-balanced , all operations take `$lg\,n$` time to complete.
-This is due to the recursive halving of options as you descend from the root to
-the target node, hence `$lg\,n$` time. In the worst, most-unbalanced scenario,
-nodes are added to the BST in sorted order, creating a [linked list]({{< relref
-"LinkedList.md" >}}). Thus, maintaining a balanced tree is worth the effort,
-and can be done using a red-black tree, AVL tree, and or some _k_-ary trees.
+```julia
+# Umbrella type for empty and actual nodes
+abstract type BSTNodeType end
+
+# Represents null values within the BST
+struct EmptyBSTNode <: BSTNodeType end
+
+mutable struct BSTNode{T}
+    value::T
+    parent::BSTNodeType{T}
+    left::BSTNodeType{T}
+    right::BSTNodeType{T}
+end
+```
 
 ## Behaviors
 Here I use an OOP-convention for keys & values, assuming that for the object's
@@ -78,25 +82,22 @@ attributes to form an indentifying key.
   node with respect to its children. The callback can be an accumulator if it
   is a function closure and uses a captured variable to store state.
 
-## Layout
-At its core, a BST is a Node than can link to two other nodes, with each link
-subject to a different invariant (`<=` or `>`). Having a third pointer back to
-the node's parent greatly saves time when performing `delete`
+### Time Complexity
+Time Complexity|Average|Worst
+---------|-------|-------
+Search   |`$O(log\,n)$`|`$O(n)$`
+Insertion|`$O(log\,n)$`|`$O(n)$`
+Deletion |`$O(log\,n)$`|`$O(n)$`
+Minimum/Maximum|`$O(log\,n)$`|`$O(n)$`
+Predecessor/Successor|`$O(log\,n)$`|`$O(n)$`
 
-```julia
-# Umbrella type for empty and actual nodes
-abstract type BSTNodeType end
+When a BST is well-balanced , all operations take `$lg\,n$` time to complete.
+This is due to the recursive halving of options as you descend from the root to
+the target node, hence `$lg\,n$` time. In the worst, most-unbalanced scenario,
+nodes are added to the BST in sorted order, creating a [linked list]({{< relref
+"LinkedList.md" >}}). Thus, maintaining a balanced tree is worth the effort,
+and can be done using a red-black tree, AVL tree, and or some _k_-ary trees.
 
-# Represents null values within the BST
-struct EmptyBSTNode <: BSTNodeType end
-
-mutable struct BSTNode{T}
-    value::T
-    parent::BSTNodeType{T}
-    left::BSTNodeType{T}
-    right::BSTNodeType{T}
-end
-```
 
 ## Notes
 BST's are conceptually simple, but tricky in the details. It becomes important
