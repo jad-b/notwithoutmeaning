@@ -17,32 +17,10 @@ A.k.a "prefix tree".
 
 ## When should I use it?
 * You can represent your data as a large string or lots of strings
-* You need to test for valid substrings
-* You need to find valid words, given a prefix.
+* Given a string, test if it's a word, or a substring of a word.
+* Given a prefix, find all words containing that prefix.
 
 ## Layout
-As a tree, the root node represents the empty prefix. Since it's a tree, every
-node can be treated as the root of a new Trie, with a starting prefix of all
-nodes along the path to that node. As such, there is no need to explicitly have
-a wrapper Trie structure around the nodes, unless additional data related to the
-entire data structure is being stored.
-
-Tries typically have an array of pointers to their child nodes. The size of the
-child array is determined by the size of the alphabet the strings are drawn
-from, typically represented by `$R$`, and the entire Trie may be referred to as
-an R-way Trie.  Unfortunately, the need to have `$R$` at each node greatly
-increases memory usage.
-
-Trie nodes do not actually need to store the symbol they represent. Since the
-alphabet is finite, each symbol can be indexed within the alphabet, at least by
-some arbitrary order. Since we have a map of symbol `<=>` integer, this gets rid
-of the need to actually store the Symbol in the node.
-
-As mentioned, only Trie nodes that represent the last symbol in a valid string
-will have a value. This is a conceptual shift from other trees, but all goes
-back to the Trie maximizing on speed of (partial-)key lookups over compact
-storage.
-
 ```julia
 struct Trie{K,V}
     "The value stored at key `k`, if there is one."
@@ -58,6 +36,33 @@ struct Trie{K,V}
     count::Int
 end
 ```
+As a tree, the root node represents the empty prefix. Since it's a tree, every
+node can be treated as the root of a new Trie, with a starting prefix of all
+nodes along the path to that node. As such, there is no need to explicitly have
+a wrapper Trie structure around the nodes, unless additional data related to the
+entire data structure is being stored.
+
+Tries typically have an array of pointers to their child nodes. The size of the
+child array is determined by the size of the alphabet the strings are drawn
+from, typically represented by `$R$`, leading to the nomenclature "an _R-_-way
+Trie". Unfortunately, the need to have `$R$` at each node greatly increases
+memory usage.
+
+Trie nodes do not need to store the actual symbol they represent. Since the
+alphabet is finite, we can map every symbol to an integer. As we iterate through
+the key, each symbol can be turned into an array indice. When we search for
+values, each child index can be converted back into a symbol and appended to the
+current prefix.
+
+As mentioned, only Trie nodes that represent the last symbol in a valid string
+will have a value. This is a conceptual shift from other trees, but all goes
+back to the Trie maximizing on speed of (partial-)key lookups over compact
+storage. If the Trie is _only_ being used to store the strings already encoded
+by the keys, then we only need to know if the current node is the end of a path
+representing a valid string. In that case, using a boolean attribute like
+`terminal` or extending the child array to have a special "sentinel" slot can
+work just as well as an outright `value` attribute.
+
 In a Trie with `$N$` nodes, and an alphabet of size `$R$`, and `$w$` is the
 average key length, a Trie requires between `$RN$` to `$RNw$` space. Every node
 has `$R$` links. If every key character is different in each word, then you need
@@ -89,11 +94,6 @@ search |`$O(L)$`|`$O(L)$`
 insertion|`$O(L)$`|`$O(L)$`
 Deletion |`$O(L)$`|`$O(L)$`
 traverse|`$O(n)$`|`$O(n)$`
-
-## Check on Learning
-Why do Tries not need to store the key in their nodes?
-
-How much space does an R-way Trie require?
 
 ## Notes
 Ternary Search Tries (TSTs), invented by Sedgewick, use three pointer: less
