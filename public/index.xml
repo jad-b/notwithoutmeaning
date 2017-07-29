@@ -13,31 +13,31 @@
     
     <item>
       <title>Binary  Heap</title>
-      <link>http://jad-b.github.io/code/binaryheap/</link>
+      <link>http://jad-b.github.io/code/binary-heap/</link>
       <pubDate>Mon, 17 Jul 2017 08:19:03 -0400</pubDate>
       
-      <guid>http://jad-b.github.io/code/binaryheap/</guid>
+      <guid>http://jad-b.github.io/code/binary-heap/</guid>
       <description>A Binary Heap is a binary tree where every parent &amp;ldquo;dominates&amp;rdquo; its children &amp;ldquo;Dominate&amp;rdquo; here means the parent comes out the winner in whatever comparison function it&amp;rsquo;s given, typically &amp;lt; or &amp;gt; when measuring against keys. This relation between a parent and its children within a heap is referred to as the heap property. It offers very efficient operations for finding the most &amp;ldquo;extreme&amp;rdquo; value, such as the minimum or maximum, and re-calculates that value in logarithmic time if its removed.</description>
     </item>
     
     <item>
       <title>Ring Buffer</title>
-      <link>http://jad-b.github.io/code/ringbuffer/</link>
+      <link>http://jad-b.github.io/code/ring-buffer/</link>
       <pubDate>Thu, 13 Jul 2017 07:20:24 -0400</pubDate>
       
-      <guid>http://jad-b.github.io/code/ringbuffer/</guid>
+      <guid>http://jad-b.github.io/code/ring-buffer/</guid>
       <description>A ring buffer is a circular Queue of fixed size. When data would be written past the end of the buffer, it instead wraps around to overwrite data at the beginning. Allocating memory only once provides performance improvements, and the fixed size provides constant memory usage.
 Key Points  Writing means putting a variable in the queue tail, and advancing the write pointer. Reading means returning the variable from the queue&amp;rsquo;s head, and advancing the read pointer.</description>
     </item>
     
     <item>
       <title>Hash Table</title>
-      <link>http://jad-b.github.io/code/hashtable/</link>
+      <link>http://jad-b.github.io/code/hash-table/</link>
       <pubDate>Sun, 02 Jul 2017 16:54:10 -0400</pubDate>
       
-      <guid>http://jad-b.github.io/code/hashtable/</guid>
-      <description>A hash table is an array where keys are assigned integer indices by means of a hash function. Presumably, the keys have a related set of data, usually called the value, for which they provide a identifier.
-A major dichotomy in hash table implementations is in how they deal with collisions. Chaining treats each array slot as a bucket for a linked list. Keys which hash to the same index are pushed onto the list.</description>
+      <guid>http://jad-b.github.io/code/hash-table/</guid>
+      <description>A hash table is an array where values are stored at indices calculated by putting the key through a hash function. It is a particularly efficient implementation of the dictionary ADT.
+A major dichotomy in hash table implementations is in how they deal with collisions. Chaining treats each array slot as a bucket for a linked list. Keys which hash to the same index are pushed onto the list. Open addressing uses a deterministic procedure, called probing, to search for open array slots.</description>
     </item>
     
     <item>
@@ -51,16 +51,14 @@ A major dichotomy in hash table implementations is in how they deal with collisi
     
     <item>
       <title>The Linked List</title>
-      <link>http://jad-b.github.io/code/linkedlist/</link>
+      <link>http://jad-b.github.io/code/the-linked-list/</link>
       <pubDate>Wed, 31 May 2017 09:25:35 -0400</pubDate>
       
-      <guid>http://jad-b.github.io/code/linkedlist/</guid>
+      <guid>http://jad-b.github.io/code/the-linked-list/</guid>
       <description>&lt;p&gt;A linked-list is a &lt;em&gt;linked&lt;/em&gt; (as opposed to contiguous), &lt;em&gt;recursive&lt;/em&gt; data structure.
 Values are stored within nodes chained together by references to the next (and
 previous, in the case of doubly-linked lists) node. It can be used to
-efficiently implement &lt;em&gt;Stacks&lt;/em&gt;, &lt;em&gt;Queues&lt;/em&gt;, and &lt;em&gt;Bags&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+efficiently implement &lt;em&gt;Stacks&lt;/em&gt;, &lt;em&gt;Queues&lt;/em&gt;, and &lt;em&gt;Bags&lt;/em&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>

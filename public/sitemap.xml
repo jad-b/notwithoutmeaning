@@ -3,17 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://jad-b.github.io/code/binaryheap/</loc>
+    <loc>http://jad-b.github.io/code/binary-heap/</loc>
     <lastmod>2017-07-17T08:19:03-04:00</lastmod>
   </url>
   
   <url>
-    <loc>http://jad-b.github.io/code/ringbuffer/</loc>
+    <loc>http://jad-b.github.io/code/ring-buffer/</loc>
     <lastmod>2017-07-13T07:20:24-04:00</lastmod>
   </url>
   
   <url>
-    <loc>http://jad-b.github.io/code/hashtable/</loc>
+    <loc>http://jad-b.github.io/code/hash-table/</loc>
     <lastmod>2017-07-02T16:54:10-04:00</lastmod>
   </url>
   
@@ -23,7 +23,7 @@
   </url>
   
   <url>
-    <loc>http://jad-b.github.io/code/linkedlist/</loc>
+    <loc>http://jad-b.github.io/code/the-linked-list/</loc>
     <lastmod>2017-05-31T09:25:35-04:00</lastmod>
   </url>
   
