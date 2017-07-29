@@ -5,14 +5,14 @@ tags = ["programming"]
 date = "2017-07-12T08:40:42-04:00"
 title = "Binary Search Tree"
 +++
-A __Binary Search Tree__ (BST) is a _recursive data structure_ composed of _nodes_
-with up to two edges pointing to child _nodes_. They are an extension of _binary
-trees_ in that the left child holds a value less than or equal to that of the
-parent's, while the right child holds a value greater than the parent's.
+A __Binary Search Tree__ (BST) is a _recursive_ data structure composed of
+nodes with up to two edges pointing to child nodes. They are an extension of
+_binary trees_ in that the left child holds a value less than or equal to that
+of the parent's, while the right child holds a value greater than the parent's.
 
-Being trees, they are a degenerate form of graphs. The edges linking
-parent-to-child nodes are usually just represented by pointers, and not
-full-fledged Edge object themselves, but could be.
+Being trees, they are a specific kind of graph; namely, one that is _connected_
+(every node has a path between it and every other node) and without _cycles_ (no
+path includes the same node twice).
 
 ### Terminology
 Complete
@@ -48,6 +48,11 @@ mutable struct BSTNode{T}
     right::BSTNodeType{T}
 end
 ```
+The edges linking parent-to-child nodes are usually just represented by
+pointers, and not full-fledged Edge objects, presumably because they aren't
+typically used to store much additional information about the edge, such as type
+(implicit in the variable, a la `parent` or `left`), nor specific edge
+attributes themselves.
 
 ## Behaviors
 Here I use an OOP-convention for keys & values, assuming that for the object's
@@ -97,7 +102,6 @@ the target node, hence `$lg\,n$` time. In the worst, most-unbalanced scenario,
 nodes are added to the BST in sorted order, creating a [linked list]({{< relref
 "LinkedList.md" >}}). Thus, maintaining a balanced tree is worth the effort,
 and can be done using a red-black tree, AVL tree, and or some _k_-ary trees.
-
 
 ## Notes
 BST's are conceptually simple, but tricky in the details. It becomes important

@@ -48,11 +48,14 @@ by Extracting every value sorts the values.
 ## Layout
 ```julia
 mutable struct BinaryHeap{T}
-    # Data storage
     data::Array{T,1}
-    # Comparison function, such as '<' (min heap) or '>' (max heap)
+    """
+    Comparison function, such as '<' (min heap) or '>' (max heap).
+    This is typically backed into the implementation, but I had a fun time
+    making it configurable.
+    """
     cmp
-    # Number of elements in the heap
+    "Number of elements in the heap"
     size::Int
 end
 ```
@@ -62,4 +65,4 @@ Building a heap from an array takes linear time, by calling `heapify` on the
 first half of the array.
 
 While other sorts prove a little faster in practice, if the data fits within
-main memory,
+main memory `heapsort(n)` is a viable option [Ski12].

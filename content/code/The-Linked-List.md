@@ -10,14 +10,6 @@ previous, in the case of doubly-linked lists) node. It can be used to
 efficiently implement *Stacks*, *Queues*, and *Bags*.
 
 <!--more-->
-
-Time Cmpx|Average|Worst
----------|-------|-------
-Access   |`$O(n)`|`$O(n)`
-Search   |`$O(n)`|`$O(n)`
-Insertion|`$O(1)`|`$O(1)`
-Deletion |`$O(1)`|`$O(1)`
-
 It is suitable for situations where fast insertions/deletions are required, and
 most access occurs at the head or tail of the list. Also if there is no way to
 have _a priori_ knowledge as to the absolute structure of the underlying data,
@@ -26,7 +18,7 @@ so you must instead rely on local knowledge, such as ndoes within a graph.
 Alternatively: A linked-list is a very boring graph, where the only edge
 relation is that of `next` (or `precedes`, as in "Node A _precedes_ Node B").
 
-## Layout & Behaviors
+## Layout
 We will assume our list is made of Nodes that wrap actual data values, with
 at least a pointer to the next Node in the list; doubly-linked lists also have a
 pointer to the previous node.
@@ -39,30 +31,29 @@ data. Think of how many object-oriented languages will have some form of an
 
 A sample doubly-linked list implementation might look like such (in no
 particular language):
-```
-struct Node
-    # Keys must be comparable for Equality, and Orderable if sorting or
-    # minimum() is required
-    key
-    # Actual data held by the node.
-    data
+
+```julia
+abstract type ListNode end
+
+struct DoublyLinkedNode{K,V} <: ListNode
+    """
+    Keys must be comparable for Equality, and Orderable if sorting or
+    minimum() is required
+    """
+    key::K
+    "Actual data held by the node."
+    data::V
     next::Node
     prev::Node
 end
 
-struct List
-    head::Node
-    tail::Node
+struct LinkedList{K,V}
+    head::ListNode
+    tail::ListNode
 end
 ```
 
-### Invariants
-* `last.next == nil`
-* `head.prev == nil`
-* If `len(List) == 0`, then `head == nil && tail == nil`
-* Only two pointers exist to a Node in a doubly-linked list, unless sub-lists
-  are being "shared".
-
+## Behaviors
 
 [Edm08] lists
 * `search(L, k)`: Return a pointer to the first element in `L` that contains the key `k`.
@@ -91,6 +82,22 @@ stored data may be tied to its uniqueness or ordering. For instance, often only
 or two fields get used as a primarry key in database tables. So you could search
 using a skeleton object containing only enough information to compare upon,
 getting the full object in return.
+For an unsorted linked list, the following hold true:
+
+### Time Complexity
+Time Cmpx|Average|Worst
+---------|-------|-------
+Access   |`$O(n)`|`$O(n)`
+Search   |`$O(n)`|`$O(n)`
+Append/Prepend (Deletion)|`$O(1)`|`$O(1)`
+Pop (Deletion)|`$O(1)`|`$O(1)`
+
+### Invariants
+* `last.next == nil`
+* `head.prev == nil`
+* If `len(List) == 0`, then `head == nil && tail == nil`
+* Only two pointers exist to a Node in a doubly-linked list, unless sub-lists
+  are being "shared".
 
 ## Notes
 The use of sentinel, or dummy records, can simplify `null`-handling logic
