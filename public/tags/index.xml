@@ -50,7 +50,11 @@
     <item>
       <title>Quote</title>
       <link>http://jad-b.github.io/tags/quote/</link>
+<<<<<<< HEAD
       <pubDate>Sun, 02 Jul 2017 00:00:00 -0400</pubDate>
+=======
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+>>>>>>> 1a0554488a6b0bb8c1ac600ea8f25f774c06f114
       
       <guid>http://jad-b.github.io/tags/quote/</guid>
       <description></description>

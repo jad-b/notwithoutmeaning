@@ -282,6 +282,7 @@ code.has-jax {
   border: inherit;
   color: #515151;
 }
+<<<<<<< HEAD:public/css/curate.css
 
 .quote {
   display: flex;
@@ -291,3 +292,5 @@ code.has-jax {
 .quote > .quote-source {
   align-self: flex-end;
 }
+=======
+>>>>>>> 1a0554488a6b0bb8c1ac600ea8f25f774c06f114:public/css/curate.css

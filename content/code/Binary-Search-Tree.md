@@ -1,7 +1,7 @@
 +++
 categories = ["code"]
 draft = "true"
-tags = ["programming"]
+tags = ["programming", "data structure"]
 date = "2017-07-12T08:40:42-04:00"
 title = "Binary Search Tree"
 +++

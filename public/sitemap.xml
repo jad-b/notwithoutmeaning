@@ -3,27 +3,43 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+<<<<<<< HEAD
     <loc>http://jad-b.github.io/code/binary-heap/</loc>
+=======
+    <loc>http://jad-b.github.io/code/binaryheap/</loc>
+>>>>>>> 1a0554488a6b0bb8c1ac600ea8f25f774c06f114
     <lastmod>2017-07-17T08:19:03-04:00</lastmod>
   </url>
   
   <url>
+<<<<<<< HEAD
     <loc>http://jad-b.github.io/code/ring-buffer/</loc>
+=======
+    <loc>http://jad-b.github.io/code/ringbuffer/</loc>
+>>>>>>> 1a0554488a6b0bb8c1ac600ea8f25f774c06f114
     <lastmod>2017-07-13T07:20:24-04:00</lastmod>
   </url>
   
   <url>
+<<<<<<< HEAD
     <loc>http://jad-b.github.io/code/hash-table/</loc>
+=======
+    <loc>http://jad-b.github.io/code/hashtable/</loc>
+>>>>>>> 1a0554488a6b0bb8c1ac600ea8f25f774c06f114
     <lastmod>2017-07-02T16:54:10-04:00</lastmod>
   </url>
   
   <url>
+<<<<<<< HEAD
     <loc>http://jad-b.github.io/quotes/stupidallthetime/</loc>
     <lastmod>2017-07-02T00:00:00-04:00</lastmod>
   </url>
   
   <url>
     <loc>http://jad-b.github.io/code/the-linked-list/</loc>
+=======
+    <loc>http://jad-b.github.io/code/linkedlist/</loc>
+>>>>>>> 1a0554488a6b0bb8c1ac600ea8f25f774c06f114
     <lastmod>2017-05-31T09:25:35-04:00</lastmod>
   </url>
   
@@ -33,6 +49,13 @@
   </url>
   
   <url>
+<<<<<<< HEAD
+=======
+    <loc>http://jad-b.github.io/quote/stupidallthetime/</loc>
+  </url>
+  
+  <url>
+>>>>>>> 1a0554488a6b0bb8c1ac600ea8f25f774c06f114
     <loc>http://jad-b.github.io/categories/</loc>
     <priority>0</priority>
   </url>
@@ -75,19 +98,30 @@
   
   <url>
     <loc>http://jad-b.github.io/tags/quote/</loc>
+<<<<<<< HEAD
     <lastmod>2017-07-02T00:00:00-04:00</lastmod>
+=======
+>>>>>>> 1a0554488a6b0bb8c1ac600ea8f25f774c06f114
     <priority>0</priority>
   </url>
   
   <url>
+<<<<<<< HEAD
     <loc>http://jad-b.github.io/quotes/</loc>
     <lastmod>2017-07-02T00:00:00-04:00</lastmod>
+=======
+    <loc>http://jad-b.github.io/categories/quote/</loc>
+>>>>>>> 1a0554488a6b0bb8c1ac600ea8f25f774c06f114
     <priority>0</priority>
   </url>
   
   <url>
+<<<<<<< HEAD
     <loc>http://jad-b.github.io/categories/quotes/</loc>
     <lastmod>2017-07-02T00:00:00-04:00</lastmod>
+=======
+    <loc>http://jad-b.github.io/quote/</loc>
+>>>>>>> 1a0554488a6b0bb8c1ac600ea8f25f774c06f114
     <priority>0</priority>
   </url>
   

@@ -72,12 +72,10 @@ has `$R$` links. If every key character is different in each word, then you need
 Function signatures are written in Haskell; suck it. To save space, the type
 signature will be `(Trie t, String k, V v, String pattern)`.
 
-* `search:: t -> k -> Maybe v`: Return the value stored at
-  key `k`.
+* `search:: t -> k -> Maybe v`: Return the value stored at key `k`.
 * `insert:: t -> k -> v -> Trie k v`: Insert a value at key `k`.
-* `traverse:: t -> f -> [t]`: Visit all nodes within the Trie. The following
-  methods depend on this method. This signature has it returning a list of Trie
-  nodes, but no return value is required.
+* `traverse:: t -> (t -> a) -> [a]`: Visit all nodes within the Trie, returning
+  a list of outputs created by calling `f` on every node.
     * `longestPrefix:: t -> k -> k`: Find the longest prefix of the given
       string, which could be the string itself.
     * `keysWithPrefix:: t -> k -> [k]`: Find keys with a given prefix.
